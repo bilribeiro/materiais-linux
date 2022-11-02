@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Capítulo 6. Comandos para manipulação de diretório</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="index.html" title="Guia Foca Linux" /><link rel="prev" href="ch05s09.html" title="Eliminando caracteres estranhos" /><link rel="next" href="ch06s02.html" title="cd" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Capítulo 6. Comandos para manipulação de diretório</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s09.html">Anterior</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch06s02.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-node">Comandos para manipulação de diretório</span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="cmdd"></a>Capítulo 6. Comandos para manipulação de diretório</h1></div></div></div><div class="toc"><p><strong>Índice</strong></p><dl class="toc"><dt><span class="section"><a href="ch06.html#comando-ls">ls</a></span></dt><dt><span class="section"><a href="ch06s02.html">cd</a></span></dt><dt><span class="section"><a href="ch06s03.html">pwd</a></span></dt><dt><span class="section"><a href="ch06s04.html">mkdir</a></span></dt><dt><span class="section"><a href="ch06s05.html">rmdir</a></span></dt></dl></div>
+<p>
+Abaixo comandos úteis para a manipulação de diretórios.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="comando-ls"></a>ls</h2></div></div></div>
+<p>
+Lista os arquivos de um diretório.
+</p>
+<p>
+<span class="command"><strong>ls</strong></span> [<span class="emphasis"><em>opções</em></span>]
+[<span class="emphasis"><em>caminho/arquivo</em></span>] [<span class="emphasis"><em>caminho1/arquivo1</em></span>]
+...
+</p>
+
+<p>
+onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>caminho/arquivo</em></span></span></dt><dd>
+<p>
+Diretório/arquivo que será listado.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>caminho1/arquivo1</em></span></span></dt><dd>
+<p>
+Outro Diretório/arquivo que será listado.  Podem ser feitas várias listagens de
+uma só vez.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-a, --all</span></dt><dd>
+<p>
+Lista todos os arquivos (inclusive os ocultos) de um diretório.
+</p>
+</dd><dt><span class="term">-A, --almost-all</span></dt><dd>
+<p>
+Lista todos os arquivos (inclusive os ocultos) de um diretório, exceto o
+diretório atual e o de nível anterior.
+</p>
+</dd><dt><span class="term">-B, --ignore-backups</span></dt><dd>
+<p>
+Não lista arquivos que terminam com ~ (Backup).
+</p>
+</dd><dt><span class="term">--color=PARAM</span></dt><dd>
+<p>
+Mostra os arquivos em cores diferentes, conforme o tipo de arquivo.  PARAM pode
+ser:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<span class="emphasis"><em>never</em></span> - Nunca lista em cores (mesma coisa de não usar o
+parâmetro --color).
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>always</em></span> - Sempre lista em cores conforme o tipo de arquivo.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>auto</em></span> - Somente colore a listagem se estiver em um
+terminal.
+</p>
+</li></ul></div>
+</dd><dt><span class="term">-d, --directory</span></dt><dd>
+<p>
+Lista os nomes dos diretórios ao invés do conteúdo.
+</p>
+</dd><dt><span class="term">-f</span></dt><dd>
+<p>
+Não classifica a listagem.
+</p>
+</dd><dt><span class="term">-F</span></dt><dd>
+<p>
+Insere um caracter após arquivos executáveis ('*'), diretórios ('/'), soquete
+('='), link simbólico ('@') e pipe ('|').  Seu uso é útil para identificar de
+forma fácil tipos de arquivos nas listagens de diretórios.
+</p>
+</dd><dt><span class="term">-G, --no-group</span></dt><dd>
+<p>
+Oculta a coluna de grupo do arquivo.
+</p>
+</dd><dt><span class="term">-h, --human-readable</span></dt><dd>
+<p>
+Mostra o tamanho dos arquivos em Kbytes, Mbytes, Gbytes.
+</p>
+</dd><dt><span class="term">-H</span></dt><dd>
+<p>
+Faz o mesmo que <code class="literal">-h</code>, mas usa unidades de 1000 ao invés de
+1024 para especificar Kbytes, Mbytes, Gbytes.
+</p>
+</dd><dt><span class="term">-l</span></dt><dd>
+<p>
+Usa o formato longo para listagem de arquivos.  Lista as permissões, data de
+modificação, donos, grupos, etc.
+</p>
+</dd><dt><span class="term">-n</span></dt><dd>
+<p>
+Usa a identificação de usuário e grupo numérica ao invés dos nomes.
+</p>
+</dd><dt><span class="term">-L, --dereference</span></dt><dd>
+<p>
+Lista o arquivo original e não o link referente ao arquivo.
+</p>
+</dd><dt><span class="term">-o</span></dt><dd>
+<p>
+Usa a listagem longa sem os donos dos arquivos (mesma coisa que -lG).
+</p>
+</dd><dt><span class="term">-p</span></dt><dd>
+<p>
+Mesma coisa que -F, mas não inclui o símbolo '*' em arquivos executáveis.  Esta
+opção é típica de sistemas <span class="command"><strong>Linux</strong></span>.
+</p>
+</dd><dt><span class="term">-R</span></dt><dd>
+<p>
+Lista diretórios e sub-diretórios recursivamente.
+</p>
+</dd><dt><span class="term">--full-time</span></dt><dd>
+<p>
+Lista data e hora completa.
+</p>
+</dd><dt><span class="term">Classificação da listagem</span></dt><dd>
+<p>
+A listagem pode ser classificada usando-se as seguintes opções:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">-f</span></dt><dd>
+<p>
+Não classifica, e usa -au para listar os arquivos.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Inverte a ordem de classificação.
+</p>
+</dd><dt><span class="term">-c</span></dt><dd>
+<p>
+Classifica pela data de alteração.
+</p>
+</dd><dt><span class="term">-X</span></dt><dd>
+<p>
+Classifica pela extensão.
+</p>
+</dd><dt><span class="term">-U</span></dt><dd>
+<p>
+Não classifica, lista os arquivos na ordem do diretório.
+</p>
+</dd><dt><span class="term">-Z</span></dt><dd>
+<p>
+Exibe o contexto SELinux de cada arquivo.
+</p>
+</dd></dl></div>
+</dd></dl></div>
+
+<p>
+Uma listagem feita com o comando <code class="literal">ls -la</code> normalmente é
+mostrada da seguinte maneira:
+</p>
+<pre class="screen">
+-rwxr-xr--  1  gleydson user    8192 nov 4 16:00 teste
+</pre>
+<p>
+Abaixo as explicações de cada parte:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">-rwxr-xr--</code></span></dt><dd>
+<p>
+São as permissões de acesso ao arquivo teste.  A primeira letra (da esquerda)
+identifica o tipo do arquivo, se tiver um <code class="literal">d</code> é um diretório,
+se tiver um "-" é um arquivo normal.
+</p>
+<p>
+As permissões de acesso é explicada em detalhes em <a class="xref" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios">Capítulo 11, <em>Permissões de acesso a arquivos e diretórios</em></a>.
+</p>
+</dd><dt><span class="term"><code class="literal">1</code></span></dt><dd>
+<p>
+Se for um diretório, mostra a quantidade de sub-diretórios existentes dentro
+dele.  Caso for um arquivo, será 1.
+</p>
+</dd><dt><span class="term"><code class="literal">gleydson</code></span></dt><dd>
+<p>
+Nome do dono do arquivo <code class="filename">teste</code>.
+</p>
+</dd><dt><span class="term"><code class="literal">user</code></span></dt><dd>
+<p>
+Nome do grupo que o arquivo <code class="filename">teste</code> pertence.
+</p>
+</dd><dt><span class="term"><code class="literal">8192</code></span></dt><dd>
+<p>
+Tamanho do arquivo (em bytes).
+</p>
+</dd><dt><span class="term"><code class="literal">nov</code></span></dt><dd>
+<p>
+Mês da criação/ última modificação do arquivo.
+</p>
+</dd><dt><span class="term"><code class="literal">4</code></span></dt><dd>
+<p>
+Dia que o arquivo foi criado.
+</p>
+</dd><dt><span class="term"><code class="literal">16:00</code></span></dt><dd>
+<p>
+Hora em que o arquivo foi criado/modificado.  Se o arquivo foi criado há mais
+de um ano, em seu lugar é mostrado o ano da criação do arquivo.
+</p>
+</dd><dt><span class="term"><code class="filename">teste</code></span></dt><dd>
+<p>
+Nome do arquivo.
+</p>
+</dd></dl></div>
+
+<p>
+Exemplos do uso do comando <span class="command"><strong>ls</strong></span>:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">ls</code> - Lista os arquivos do diretório atual.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">ls /bin /sbin</code> - Lista os arquivos do diretório /bin e /sbin
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">ls -la /bin</code> - Listagem completa (vertical) dos arquivos do
+diretório /bin inclusive os ocultos.
+</p>
+</li></ul></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s09.html">Anterior</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch06s02.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Eliminando caracteres estranhos </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> cd</td></tr></table></div></body></html>

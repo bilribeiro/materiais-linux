@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Comandos</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch02.html" title="Capítulo 2. Explicações Básicas" /><link rel="prev" href="ch02s04.html" title="Nomeando Arquivos e Diretórios" /><link rel="next" href="ch02s06.html" title="Comandos Externos" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Comandos</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s04.html">Anterior</a> </td><th width="60%" align="center">Capítulo 2. Explicações Básicas</th><td width="20%" align="right"> <a accesskey="n" href="ch02s06.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Explicações Básicas</a></span> &gt; <span class="breadcrumb-node">Comandos</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basico-comandos"></a>Comandos</h2></div></div></div>
+<p>
+Comandos são ordens que passamos ao sistema operacional para executar uma
+determinada tarefa.
+</p>
+<p>
+Cada comando tem uma função específica, devemos saber a função de cada comando
+e escolher o mais adequado para fazer o que desejamos, por exemplo:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<span class="command"><strong>ls</strong></span> - Mostra arquivos de diretórios
+</p>
+</li><li class="listitem">
+<p>
+<span class="command"><strong>cd</strong></span> - Para mudar de diretório
+</p>
+</li></ul></div>
+<p>
+Este guia tem uma lista de vários comandos organizados por categoria com a
+explicação sobre o seu funcionamento e as opções aceitas (incluindo alguns
+exemplos).
+</p>
+<p>
+É sempre usado um espaço depois do comando para separá-lo de uma opção ou
+parâmetro que será passado para o processamento.  Um comando pode receber
+opções e parâmetros:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>opções</em></span></span></dt><dd>
+<p>
+As <span class="emphasis"><em>opções</em></span> são usadas para controlar como o comando será
+executado, por exemplo, para fazer uma listagem mostrando o <span class="emphasis"><em>dono,
+grupo, tamanho dos arquivos</em></span> você deve digitar <code class="literal">ls
+-l</code>.
+</p>
+<p>
+Opções podem ser passadas ao comando através de um "-" ou "--":
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">-</span></dt><dd>
+<p>
+Opção identificada por uma letra.  Podem ser usadas mais de uma opção com um
+único hífen.  O comando <code class="literal">ls -l -a</code> é a mesma coisa de
+<code class="literal">ls -la</code>
+</p>
+</dd><dt><span class="term">--</span></dt><dd>
+<p>
+Opção identificada por um nome.  Também chamado de opção extensa.  O comando
+<code class="literal">ls --all</code> é equivalente a <code class="literal">ls -a</code>.
+</p>
+</dd></dl></div>
+<p>
+Pode ser usado tanto "-" como "--", mas há casos em que somente "-" ou "--"
+esta disponível.
+</p>
+</dd><dt><span class="term">parâmetros</span></dt><dd>
+<p>
+Um parâmetro identifica o <span class="emphasis"><em>caminho, origem, destino, entrada
+padrão</em></span> ou <span class="emphasis"><em>saída padrão</em></span> que será passada ao
+comando.
+</p>
+<p>
+Se você digitar: <code class="literal">ls /usr/share/doc/copyright</code>,
+<code class="filename">/usr/share/doc/copyright</code> será o parâmetro passado ao
+comando <span class="command"><strong>ls</strong></span>, neste caso queremos que ele liste os arquivos do
+diretório <span class="emphasis"><em>/usr/share/doc/copyright</em></span>.
+</p>
+<p>
+É normal errar o nome de comandos, mas não se preocupe, quando isto acontecer o
+sistema mostrará a mensagem <code class="literal">command not found</code> (comando não
+encontrado) e voltará ao aviso de comando.  As mensagens de erro não fazem
+nenhum mal ao seu sistema, somente dizem que algo deu errado para que você
+possa corrigir e entender o que aconteceu.  No <span class="command"><strong>GNU/Linux</strong></span>,
+você tem a possibilidade de criar comandos personalizados usando outros
+comandos mais simples (isto será visto mais adiante).  Os comandos se encaixam
+em duas categorias: <span class="emphasis"><em>Comandos Internos</em></span> e <span class="emphasis"><em>Comandos
+Externos</em></span>.
+</p>
+</dd></dl></div>
+
+<p>
+Por exemplo: <code class="literal">"ls -la /usr/share/doc"</code>, <code class="literal">ls</code>
+é o comando, <code class="literal">-la</code> é a opção passada ao comando, e
+<code class="literal"><code class="filename">/usr/share/doc</code></code> é o diretório passado
+como parâmetro ao comando <code class="literal">ls</code>.
+</p>
+
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-comandos-internos"></a>Comandos Internos</h3></div></div></div>
+<p>
+São comandos que estão localizados dentro do interpretador de comandos
+(normalmente o <span class="command"><strong>Bash</strong></span>) e não no disco.  Eles são carregados na
+memória RAM do computador junto com o interpretador de comandos.
+</p>
+<p>
+Quando executa um comando, o interpretador de comandos verifica primeiro se ele
+é um <span class="emphasis"><em>Comando Interno</em></span> caso não seja é verificado se é um
+<span class="emphasis"><em>Comando Externo</em></span>.
+</p>
+<p>
+Exemplos de comandos internos são: <code class="literal">cd, exit, echo, bg, fg, source,
+help</code>
+</p>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s04.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s06.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Nomeando Arquivos e Diretórios </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Comandos Externos</td></tr></table></div></body></html>

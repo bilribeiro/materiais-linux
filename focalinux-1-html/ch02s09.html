@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Terminal Virtual (console)</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch02.html" title="Capítulo 2. Explicações Básicas" /><link rel="prev" href="ch02s08.html" title="Interpretador de comandos" /><link rel="next" href="ch02s10.html" title="Login" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Terminal Virtual (console)</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s08.html">Anterior</a> </td><th width="60%" align="center">Capítulo 2. Explicações Básicas</th><td width="20%" align="right"> <a accesskey="n" href="ch02s10.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Explicações Básicas</a></span> &gt; <span class="breadcrumb-node">Terminal Virtual (console)</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basico-terminal"></a>Terminal Virtual (console)</h2></div></div></div>
+<p>
+Terminal (ou console) é o teclado e tela conectados em seu computador.  O
+<span class="command"><strong>GNU/Linux</strong></span> faz uso de sua característica
+<span class="emphasis"><em>multi-usuária</em></span> usando os "terminais virtuais".  Um terminal
+virtual é uma segunda seção de trabalho completamente independente de outras,
+que pode ser acessada no computador local ou remotamente via <span class="command"><strong>telnet,
+rsh, rlogin,</strong></span> etc.
+</p>
+<p>
+No <span class="command"><strong>GNU/Linux</strong></span>, em modo texto, você pode acessar outros
+terminais virtuais segurando a tecla <code class="literal">ALT</code> e pressionando
+<code class="literal">F1 a F6</code>.  Cada tecla de função corresponde a um número de
+terminal do 1 ao 6 (o sétimo é usado por padrão pelo ambiente gráfico X).  O
+<span class="command"><strong>GNU/Linux</strong></span> possui mais de 63 terminais virtuais, mas apenas 6
+estão disponíveis inicialmente por motivos de economia de memória RAM 
+ (cada
+terminal virtual ocupa aproximadamente 350 Kb de memória RAM, desative a
+quantidade que não estiver usando para liberar memória RAM para uso de outros
+programas!). 
+</p>
+<p>
+Se estiver usando o modo gráfico, você deve segurar <code class="literal">CTRL</code>+
+<code class="literal">ALT</code> enquanto pressiona uma tela de &lt;F1&gt; a &lt;F6&gt;.
+Para voltar ao modo gráfico, pressione
+<code class="literal">CTRL</code>+<code class="literal">ALT</code>+ &lt;F7&gt;.
+</p>
+
+<p>
+Um exemplo prático: Se você estiver usando o sistema no Terminal 1 com o nome
+"joao" e desejar entrar como "root" para instalar algum programa, segure
+<code class="literal">ALT</code> enquanto pressiona &lt;F2&gt; para abrir o segundo
+terminal virtual e faça o login como "root".  Será aberta uma nova seção para o
+usuário "root" e você poderá retornar a hora que quiser para o primeiro
+terminal pressionando <code class="literal">ALT</code>+&lt;F1&gt;.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s08.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s10.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Interpretador de comandos </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Login</td></tr></table></div></body></html>

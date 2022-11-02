@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Desmontando uma partição de disco</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch04.html" title="Capítulo 4. Discos e Partições" /><link rel="prev" href="ch04s05.html" title="Montando (acessando) uma partição de disco" /><link rel="next" href="ch05.html" title="Capítulo 5. Execução de programas" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Desmontando uma partição de disco</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s05.html">Anterior</a> </td><th width="60%" align="center">Capítulo 4. Discos e Partições</th><td width="20%" align="right"> <a accesskey="n" href="ch05.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch04.html">Discos e Partições</a></span> &gt; <span class="breadcrumb-node">Desmontando uma partição de disco</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="disc-desmontagem"></a>Desmontando uma partição de disco</h2></div></div></div>
+<p>
+Utilize o comando <span class="command"><strong>umount</strong></span> para desmontar um sistema de
+arquivos que foi montado com o <span class="command"><strong>mount</strong></span>.  Você deve ter
+permissões de root para desmontar uma partição.
+</p>
+<p>
+<span class="command"><strong>umount</strong></span> [<span class="emphasis"><em>dispositivo</em></span>/<span class="emphasis"><em>ponto de montagem</em></span>]
+</p>
+<p>
+Você pode tanto usar <code class="literal">umount /dev/sda1</code> como <code class="literal">umount
+/mnt</code> para desmontar um sistema de arquivos
+<code class="filename">/dev/sda1</code> montado em <code class="filename">/mnt</code>.
+</p>
+ 
+<p>
+<span class="emphasis"><em>Observação:</em></span> O comando <span class="command"><strong>umount</strong></span> executa o
+<span class="command"><strong>sync</strong></span> automaticamente no momento da desmontagem, para
+garantir que todos os dados ainda em memória RAM sejam salvos.
+</p> 
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s05.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Montando (acessando) uma partição de disco </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Capítulo 5. Execução de programas</td></tr></table></div></body></html>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>cp</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch07.html" title="Capítulo 7. Comandos para manipulação de Arquivos" /><link rel="prev" href="ch07s03.html" title="rm" /><link rel="next" href="ch07s05.html" title="mv" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">cp</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s03.html">Anterior</a> </td><th width="60%" align="center">Capítulo 7. Comandos para manipulação de Arquivos</th><td width="20%" align="right"> <a accesskey="n" href="ch07s05.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch07.html">Comandos para manipulação de Arquivos</a></span> &gt; <span class="breadcrumb-node">cp</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="comando-cp"></a>cp</h2></div></div></div>
+<p>
+Copia arquivos.
+</p>
+
+<p>
+<span class="command"><strong>cp</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>origem</em></span>]
+[<span class="emphasis"><em>destino</em></span>]
+</p>
+<p>
+onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>origem</em></span></span></dt><dd>
+<p>
+Arquivo que será copiado.  Podem ser especificados mais de um arquivo para ser
+copiado usando "coringas" (veja <a class="xref" href="ch02s12.html" title="coringas">“coringas”</a>).
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>destino</em></span></span></dt><dd>
+<p>
+O caminho ou nome de arquivo onde será copiado.  Se o destino for um diretório,
+os arquivos de origem serão copiados para dentro do diretório.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">i, --interactive</span></dt><dd>
+<p>
+Pergunta antes de substituir um arquivo existente.
+</p>
+</dd><dt><span class="term">-f, --force</span></dt><dd>
+<p>
+Não pergunta, substitui todos os arquivos caso já exista.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Copia arquivos dos diretórios e subdiretórios da origem para o destino.  É
+recomendável usar -R ao invés de -r.
+</p>
+</dd><dt><span class="term">-R, --recursive</span></dt><dd>
+<p>
+Copia arquivos e sub-diretórios (como a opção -r) e também os arquivos
+especiais FIFO e dispositivos.
+</p>
+</dd><dt><span class="term">-v, --verbose</span></dt><dd>
+<p>
+Mostra os arquivos enquanto estão sendo copiados.
+</p>
+</dd><dt><span class="term">-s, --simbolic-link</span></dt><dd>
+<p>
+Cria link simbólico ao invés de copiar.
+</p>
+</dd><dt><span class="term">-l, --link</span></dt><dd>
+<p>
+Faz o link no destino ao invés de copiar os arquivos.
+</p>
+</dd><dt><span class="term">-p, --preserve</span></dt><dd>
+<p>
+Preserva atributos do arquivo, se for possível.
+</p>
+</dd><dt><span class="term">-u, --update</span></dt><dd>
+<p>
+Copia somente se o arquivo de origem é mais novo que o arquivo de destino ou
+quando o arquivo de destino não existe.
+</p>
+</dd><dt><span class="term">-x</span></dt><dd>
+<p>
+Não copia arquivos que estão localizados em um sistema de arquivos diferente de
+onde a cópia iniciou.
+</p>
+</dd></dl></div>
+
+<p>
+O comando <span class="command"><strong>cp</strong></span> copia arquivos da ORIGEM para o DESTINO.  Ambos
+origem e destino terão o mesmo conteúdo após a cópia.
+</p>
+
+
+<p>
+Exemplos:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">cp teste.txt teste1.txt</code></span></dt><dd>
+<p>
+Copia o arquivo <code class="filename">teste.txt</code> para
+<code class="filename">teste1.txt</code>.
+</p>
+</dd><dt><span class="term"><code class="literal">cp teste.txt /tmp</code></span></dt><dd>
+<p>
+Copia o arquivo <code class="filename">teste.txt</code> para dentro do diretório
+<code class="filename">/tmp</code>.
+</p>
+</dd><dt><span class="term"><code class="literal">cp * /tmp</code></span></dt><dd>
+<p>
+Copia todos os arquivos do diretório atual para <code class="filename">/tmp</code>.
+</p>
+</dd><dt><span class="term"><code class="literal">cp /bin/* .</code></span></dt><dd>
+<p>
+Copia todos os arquivos do diretório <code class="filename">/bin</code> para o diretório
+em que nos encontramos no momento.
+</p>
+</dd><dt><span class="term"><code class="literal">cp -R /bin /tmp</code></span></dt><dd>
+<p>
+Copia o diretório <code class="filename">/bin</code> e todos os arquivos/sub-diretórios
+existentes para o diretório <code class="filename">/tmp</code>.
+</p>
+</dd><dt><span class="term"><code class="literal">cp -R /bin/* /tmp</code></span></dt><dd>
+<p>
+Copia todos os arquivos do diretório <code class="filename">/bin</code> (exceto o
+diretório <code class="filename">/bin</code>) e todos os arquivos/sub-diretórios
+existentes dentro dele para <code class="filename">/tmp</code>.
+</p>
+</dd><dt><span class="term"><code class="literal">cp -R /bin /tmp</code></span></dt><dd>
+<p>
+Copia todos os arquivos e o diretório <code class="filename">/bin</code> para
+<code class="filename">/tmp</code>.
+</p>
+</dd></dl></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s03.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s05.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">rm </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> mv</td></tr></table></div></body></html>

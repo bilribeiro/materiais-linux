@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>patch</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s34.html" title="pr" /><link rel="next" href="ch08s36.html" title="whereis" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">patch</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s34.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s36.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">patch</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-patch"></a>patch</h2></div></div></div>
+<p>
+Atualiza arquivos texto através das diferenças geradas pelo comando
+<span class="command"><strong>diff</strong></span>.
+</p>
+<p>
+<span class="command"><strong>patch</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>arquivo.diff</em></span>] ou 
+<span class="command"><strong>patch</strong></span> [<span class="emphasis"><em>opções</em></span>] &lt; [<span class="emphasis"><em>arquivo.diff</em></span>]
+</p>
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>arquivo.diff</em></span></span></dt><dd>
+<p>
+Arquivo contendo as diferenças geradas pelo comando <span class="command"><strong>diff</strong></span>.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-p [num]</span></dt><dd>
+<p>
+Nível do diretório onde o <span class="command"><strong>patch</strong></span> será aplicado, se igual a 0,
+o <span class="command"><strong>patch</strong></span> assume que os arquivos que serão atualizados estão
+no diretório atual, se 1, assume que os arquivos que serão atualizado estão no
+diretório acima (..), se 2, 2 diretórios acima ...
+</p>
+</dd><dt><span class="term">-b</span></dt><dd>
+<p>
+Cria cópias de segurança dos arquivos originais ao aplica o patch.
+</p>
+</dd><dt><span class="term">-binary</span></dt><dd>
+<p>
+Lê e grava arquivo usando modo binário.
+</p>
+</dd><dt><span class="term">-d [dir]</span></dt><dd>
+<p>
+Muda para o diretório [dir] antes de aplica o patch.
+</p>
+</dd><dt><span class="term">-E</span></dt><dd>
+<p>
+Remove arquivos vazios após a aplicação do patch.
+</p>
+</dd><dt><span class="term">-n</span></dt><dd>
+<p>
+Interpreta o arquivo de patch como um <code class="filename">.diff</code> normal.
+</p>
+</dd><dt><span class="term">-N</span></dt><dd>
+<p>
+Não desfaz patches já aplicados.
+</p>
+</dd><dt><span class="term">-s</span></dt><dd>
+<p>
+Não mostra mensagens de erro.
+</p>
+</dd><dt><span class="term">-u</span></dt><dd>
+<p>
+Interpreta o patch em formato unificado.
+</p>
+</dd></dl></div>
+<p>
+As diferenças são aplicadas em arquivos originais gerados pelo comando
+<span class="command"><strong>diff</strong></span>.  É importante entender os comandos
+<span class="command"><strong>patch</strong></span> e <span class="command"><strong>diff</strong></span> pois são comandos muito
+utilizados para desenvolvimento feito por equipes de pessoas.
+</p>
+
+<p>
+Exemplo:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">patch -p0&lt;texto.diff</code> - Aplica as diferenças contidas no
+arquivo <code class="filename">texto.diff</code> nos arquivos originais.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">patch -p0 texto.txt texto.diff</code> - Aplica as diferenças
+contidas no arquivo <code class="filename">texto.diff</code> nos arquivos originais.
+Faz a mesma coisa que o comando anterior.
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s34.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s36.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">pr </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> whereis</td></tr></table></div></body></html>

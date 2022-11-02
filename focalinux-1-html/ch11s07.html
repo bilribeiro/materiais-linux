@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>chmod</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="prev" href="ch11s06.html" title="A conta root" /><link rel="next" href="ch11s08.html" title="chgrp" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">chmod</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s06.html">Anterior</a> </td><th width="60%" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th><td width="20%" align="right"> <a accesskey="n" href="ch11s08.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch11.html">Permissões de acesso a arquivos e diretórios</a></span> &gt; <span class="breadcrumb-node">chmod</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-chmod"></a>chmod</h2></div></div></div>
+<p>
+Muda a permissão de acesso a um arquivo ou diretório.  Com este comando você
+pode escolher se usuário ou grupo terá permissões para ler, gravar, executar um
+arquivo ou arquivos.  
+ Sempre que um arquivo é criado, seu dono é o usuário que
+o criou e seu grupo é o grupo do usuário (exceto para diretórios configurados
+com a permissão de grupo <code class="literal">"s"</code>, será visto adiante). 
+</p>
+<p>
+<span class="command"><strong>chmod</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>permissões</em></span>]
+[<span class="emphasis"><em>diretório/arquivo</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>diretório/arquivo</em></span></span></dt><dd>
+<p>
+Diretório ou arquivo que terá sua permissão mudada.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-v, --verbose</span></dt><dd>
+<p>
+Mostra todos os arquivos que estão sendo processados.
+</p>
+</dd><dt><span class="term">-f, --silent</span></dt><dd>
+<p>
+Não mostra a maior parte das mensagens de erro.
+</p>
+</dd><dt><span class="term">-c, --change</span></dt><dd>
+<p>
+Semelhante a opção -v, mas só mostra os arquivos que tiveram as permissões
+alteradas.
+</p>
+</dd><dt><span class="term">-R, --recursive</span></dt><dd>
+<p>
+Muda permissões de acesso do <span class="emphasis"><em>diretório/arquivo</em></span> no
+diretório atual e sub-diretórios.
+</p>
+</dd><dt><span class="term">ugoa+-=rwxXst</span></dt><dd>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<span class="emphasis"><em>ugoa</em></span> - Controla que nível de acesso será mudado.
+Especificam, em ordem, usuário (u), grupo (g), outros (o), todos (a).
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>+-=</em></span> - <span class="emphasis"><em>+</em></span> coloca a permissão,
+<span class="emphasis"><em>-</em></span> retira a permissão do arquivo e <span class="emphasis"><em>=</em></span>
+define a permissão exatamente como especificado.
+</p>
+</li><li class="listitem">
+<p>
+rwx - <span class="emphasis"><em>r</em></span> permissão de leitura do arquivo.
+<span class="emphasis"><em>w</em></span> permissão de gravação.  <span class="emphasis"><em>x</em></span> permissão
+de execução (ou acesso a diretórios).
+</p>
+</li></ul></div>
+</dd></dl></div>
+
+<p>
+<span class="command"><strong>chmod</strong></span> não muda permissões de links simbólicos, as permissões
+devem ser mudadas no arquivo alvo do link.  Também podem ser usados códigos
+numéricos octais para a mudança das permissões de acesso a arquivos/diretórios.
+Para detalhes veja <a class="xref" href="ch11s10.html" title="Modo de permissão octal">“Modo de permissão octal”</a>.
+</p>
+
+<p>
+DICA: É possível copiar permissões de acesso do arquivo/diretório, por exemplo,
+se o arquivo <code class="filename">teste.txt</code> tiver a permissão de acesso
+<code class="literal">r-xr-----</code> e você digitar <code class="literal">chmod o=u</code>, as
+permissões de acesso dos outros usuários (o) serão idênticas ao do dono (u).
+Então a nova permissão de acesso do arquivo <code class="filename">teste.txt</code> será
+<code class="literal">r-xr--r-x</code> 
+</p>
+
+
+<p>
+Exemplos de permissões de acesso:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">chmod g+r *</code></span></dt><dd>
+<p>
+Permite que todos os usuários que pertençam ao grupo dos arquivos (g) tenham
+(+) permissões de leitura (r) em todos os arquivos do diretório atual.
+</p>
+</dd><dt><span class="term"><code class="literal">chmod o-r teste.txt</code></span></dt><dd>
+<p>
+Retira (-) a permissão de leitura (r) do arquivo <code class="filename">teste.txt</code>
+para os outros usuários (usuários que não são donos e não pertencem ao grupo do
+arquivo <code class="filename">teste.txt</code>).
+</p>
+</dd><dt><span class="term"><code class="literal">chmod uo+x teste.txt</code></span></dt><dd>
+<p>
+Inclui (+) a permissão de execução do arquivo <code class="filename">teste.txt</code>
+para o dono e outros usuários do arquivo.
+</p>
+</dd><dt><span class="term"><code class="literal">chmod a+x teste.txt</code></span></dt><dd>
+<p>
+Inclui (+) a permissão de execução do arquivo <code class="filename">teste.txt</code>
+para o dono, grupo e outros usuários.
+</p>
+</dd><dt><span class="term"><code class="literal">chmod a=rw teste.txt</code></span></dt><dd>
+<p>
+Define a permissão de todos os usuários exatamente (=) para leitura e gravação
+do arquivo <code class="filename">teste.txt</code>.
+</p>
+</dd></dl></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s06.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s08.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">A conta root </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> chgrp</td></tr></table></div></body></html>

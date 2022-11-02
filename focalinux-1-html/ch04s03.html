@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Pontos de Montagem</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch04.html" title="Capítulo 4. Discos e Partições" /><link rel="prev" href="ch04s02.html" title="Formatando Pen-drives/Disquetes" /><link rel="next" href="ch04s04.html" title="Identificação de discos e partições em sistemas Linux" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Pontos de Montagem</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Anterior</a> </td><th width="60%" align="center">Capítulo 4. Discos e Partições</th><td width="20%" align="right"> <a accesskey="n" href="ch04s04.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch04.html">Discos e Partições</a></span> &gt; <span class="breadcrumb-node">Pontos de Montagem</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="disc-pontomontagem"></a>Pontos de Montagem</h2></div></div></div>
+<p>
+O <span class="command"><strong>GNU/Linux</strong></span> acessa as partições existente em seus discos
+rígidos e disquetes através de diretórios.  Os diretórios que são usados para
+acessar (montar) partições são chamados de <span class="emphasis"><em>Pontos de
+Montagem</em></span>.  Para detalhes sobre montagem de partições, veja <a class="xref" href="ch04s05.html" title="Montando (acessando) uma partição de disco">“Montando (acessando) uma partição de disco”</a>.
+</p>
+<p>
+No <span class="command"><strong>DOS</strong></span> cada letra de unidade (C:, D:, E:) identifica uma
+partição de disco, no <span class="command"><strong>GNU/Linux</strong></span> os pontos de montagem fazem
+parte da grande estrutura do sistema de arquivos raiz.
+</p>
+
+<p>
+Existem muitas vantagens de se usar <span class="emphasis"><em>pontos de montagem</em></span> ao
+invés de unidade de disco para identificar partições (método usado no
+<span class="command"><strong>Windows</strong></span>):
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Você pode montar a partição no diretório que quiser.
+</p>
+</li><li class="listitem">
+<p>
+Em caso de um sistema de arquivos cheio, você pode copiar o conteúdo de um
+grande diretório para outro sistema de arquivos, apagar o conteúdo do diretório
+original e montar o disco onde foram copiados os arquivos naquele local (caso
+não use um sistema de LVM).
+</p>
+</li><li class="listitem">
+<p>
+Reduz riscos de corrompimento do sistema operacional.  Caso isto aconteça, será
+necessário apenas restaurar o backup do sistema de arquivos afetado.
+</p>
+</li><li class="listitem">
+<p>
+Tempo de boot reduzido quando um sistema de arquivos for verificado por
+ferramentas como o <span class="command"><strong>fsck</strong></span>.
+</p>
+</li><li class="listitem">
+<p>
+O uso de <span class="emphasis"><em>pontos de montagem</em></span> torna o gerenciamento mais
+flexível.
+</p>
+</li><li class="listitem">
+<p>
+A adição de novas partições ou substituição de discos rígidos não afeta a ordem
+de identificação dos discos e pontos de montagem (como não acontece no
+<span class="command"><strong>DOS</strong></span>).
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s04.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Formatando Pen-drives/Disquetes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Identificação de discos e partições em sistemas Linux</td></tr></table></div></body></html>

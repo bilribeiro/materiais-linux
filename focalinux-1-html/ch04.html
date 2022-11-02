@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Capítulo 4. Discos e Partições</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="index.html" title="Guia Foca Linux" /><link rel="prev" href="ch03s04.html" title="Programas equivalentes entre Windows/DOS e o Linux" /><link rel="next" href="ch04s02.html" title="Formatando Pen-drives/Disquetes" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Capítulo 4. Discos e Partições</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s04.html">Anterior</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch04s02.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-node">Discos e Partições</span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="disc"></a>Capítulo 4. Discos e Partições</h1></div></div></div><div class="toc"><p><strong>Índice</strong></p><dl class="toc"><dt><span class="section"><a href="ch04.html#disc-particoes">Partições</a></span></dt><dt><span class="section"><a href="ch04s02.html">Formatando Pen-drives/Disquetes</a></span></dt><dd><dl><dt><span class="section"><a href="ch04s02.html#disc-formatando-l">Formatando pen-drives para serem usados no Linux</a></span></dt><dt><span class="section"><a href="ch04s02.html#disc-formatando-d">Formatando pen-drives compatíveis com o Windows</a></span></dt><dt><span class="section"><a href="ch04s02.html#disc-formatando-g">Programas de Formatação Gráficos</a></span></dt></dl></dd><dt><span class="section"><a href="ch04s03.html">Pontos de Montagem</a></span></dt><dt><span class="section"><a href="ch04s04.html">Identificação de discos e partições em sistemas Linux</a></span></dt><dt><span class="section"><a href="ch04s05.html">Montando (acessando) uma partição de disco</a></span></dt><dd><dl><dt><span class="section"><a href="ch04s05.html#disc-fstab">fstab</a></span></dt></dl></dd><dt><span class="section"><a href="ch04s06.html">Desmontando uma partição de disco</a></span></dt></dl></div>
+<p>
+Este capítulo traz explicações de como manipular discos rígidos e partições no
+sistema <span class="command"><strong>GNU/Linux</strong></span> e como acessar seus discos de CD-ROM e
+partições <span class="command"><strong>DOS</strong></span>, <span class="command"><strong>Windows 9X/XP/Vista/Seven/Oito/10</strong></span>
+no <span class="command"><strong>GNU/Linux</strong></span>.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="disc-particoes"></a>Partições</h2></div></div></div>
+<p>
+São divisões existentes no disco rígido que marcam onde começa onde termina um
+sistema de arquivos.  As partições nos permitem usar mais de um sistema
+operacional no mesmo computador (como o <span class="command"><strong>GNU/Linux</strong></span>,
+<span class="command"><strong>Windows</strong></span> e <span class="command"><strong>DOS</strong></span>), ou dividir o disco rígido
+em uma ou mais partes para ser usado por um único sistema operacional ou até
+mesmo por diferentes arquiteturas (32 e 64 bits).
+</p>
+
+
+
+
+<p>
+Uma partição de disco não interfere em outras partições existentes, por este
+motivo é possível usar o <span class="command"><strong>Windows</strong></span>,
+<span class="command"><strong>GNU/Linux</strong></span> e qualquer outro sistema operacional no mesmo
+disco.  Para escolher qual deles será inicializado, veja <a class="xref" href="">???</a>.
+</p>
+<p>
+Para particionar (dividir) o disco rígido em uma ou mais partes é necessário o
+uso de um programa de particionamento.  Os programas mais conhecidos para
+particionamento de discos no <span class="command"><strong>GNU/Linux</strong></span> são
+<span class="command"><strong>fdisk</strong></span>, <span class="command"><strong>cfdisk</strong></span> e o <span class="command"><strong>Disk
+Druid</strong></span>.
+</p>
+
+<p>
+Lembre-se:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Quando se apaga uma partição, você estará apagando TODOS os arquivos existentes
+nela!
+</p>
+</li><li class="listitem">
+<p>
+A partição do tipo <span class="emphasis"><em>Linux Native</em></span> (Tipo 83) é a usada para
+armazenar arquivos no <span class="command"><strong>GNU/Linux</strong></span>, tanto ext2, ext3, ext4,
+reiserfs, xfs, etc.  Para detalhes veja <a class="xref" href="">???</a>.
+</p>
+</li><li class="listitem">
+<p>
+A partição do tipo <span class="emphasis"><em>Linux Swap</em></span> (Tipo 82) é usada como
+memória virtual.  Para detalhes veja <a class="xref" href="">???</a>.
+</p>
+</li><li class="listitem">
+<p>
+Em sistemas novos, é comum encontrar o <span class="command"><strong>Windows</strong></span> instalado em
+uma partição que consome TODO o espaço do disco rígido.  Uma solução para
+instalar o <span class="command"><strong>GNU/Linux</strong></span> é apagar a partição
+<span class="command"><strong>Windows</strong></span> e criar três com tamanhos menores (uma para o
+<span class="command"><strong>Windows</strong></span>, uma para o <span class="command"><strong>GNU/Linux</strong></span> e outra
+para a <span class="emphasis"><em>Memória Virtual do Linux (SWAP)</em></span>.  Ou criar apenas 2
+se você não quiser mais saber mais do <span class="command"><strong>Windows</strong></span> ;-)
+</p>
+<p>
+A outra solução é usar o <span class="command"><strong>parted</strong></span> (e
+<span class="command"><strong>gparted</strong></span> sua versão gráfica), que trabalha com
+<code class="literal">FAT16</code>, <code class="literal">FAT32</code>, <code class="literal">NTFS</code>.
+Esta técnica também é chamada de <code class="literal">Reparticionamento não
+destrutivo</code> (e o outro obviamente <code class="literal">Reparticionamento
+destrutivo</code>).  Para sistemas que foram formatados em <span class="command"><strong>Windows
+XP</strong></span> e superiores, é possível que o <span class="command"><strong>parted</strong></span> não
+consiga redimensionar o sistema, neste caso você pode reparticionar usando
+ferramentas como o <span class="command"><strong>ntfsresize</strong></span> ou <code class="literal">Partition
+Magic</code> (para <span class="command"><strong>Windows</strong></span>).
+</p>
+</li></ul></div>
+
+<p>
+Para mais detalhes sobre discos, partições ou como particionar seu disco, veja
+algum bom documento sobre particionamento (como a página de manual e
+documentação do <span class="command"><strong>fdisk</strong></span>, <span class="command"><strong>cfdisk</strong></span>,
+<span class="command"><strong>parted</strong></span> ou <span class="command"><strong>Disk Druid</strong></span>).
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s04.html">Anterior</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch04s02.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Programas equivalentes entre Windows/DOS e o Linux </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Formatando Pen-drives/Disquetes</td></tr></table></div></body></html>

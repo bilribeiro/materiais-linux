@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Magic Filter</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch13.html" title="Capítulo 13. Impressão" /><link rel="prev" href="ch13s04.html" title="Impressão em modo gráfico" /><link rel="next" href="ch14.html" title="Capítulo 14. Configuração do sistema" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Magic Filter</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch13s04.html">Anterior</a> </td><th width="60%" align="center">Capítulo 13. Impressão</th><td width="20%" align="right"> <a accesskey="n" href="ch14.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch13.html">Impressão</a></span> &gt; <span class="breadcrumb-node">Magic Filter</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="impr-magicfilter"></a>Magic Filter</h2></div></div></div>
+<p>
+O <span class="emphasis"><em>Magic Filter</em></span> é um filtro de impressão inteligente.  Ele
+funciona acionado pelo spool de impressão (mais especificamente o arquivo
+<code class="filename">/etc/printcap</code>) e permite identificar e imprimir arquivos
+de diversos tipos diretamente através do comando <code class="literal">lpr
+arquivo</code>.
+</p>
+<p>
+É um ótimo programa e <span class="strong"><strong>ALTAMENTE RECOMENDADO</strong></span>
+se você deseja apenas clicar no botão imprimir e deixar os programas fazerem o
+resto :-) A intenção do programa é justamente automatizar os trabalhos de
+impressão e spool.
+</p>
+<p>
+A maioria dos programas para ambiente gráfico X11, incluindo o Netscape, Word
+Perfect, Gimp e Star Office trabalham nativamente com o
+<span class="command"><strong>magicfilter</strong></span>.
+</p>
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="impr-magicfilter-i"></a>Instalação e configuração do Magic Filter</h3></div></div></div>
+<p>
+O Magic Filter é encontrado no pacote  da distribuição
+<span class="command"><strong>Debian</strong></span> e baseadas.
+</p>
+<p>
+Sua configuração pode ser feita com o programa
+<span class="command"><strong>magicfilterconfig</strong></span> que torna o processo de configuração
+rápido e fácil para quem não conhece a sintaxe do arquivo
+<code class="filename">/etc/printcap</code> ou não tem muitas exigências sobre a
+configuração detalhada da impressora.
+</p>
+<p>
+Após instalar o <span class="command"><strong>magicfilter</strong></span> reinicie o daemon de impressão
+(se estiver usando a <span class="command"><strong>Debian</strong></span>, entre no diretório
+<code class="filename">/etc/init.d</code> e como usuário <code class="literal">root</code> digite
+<code class="literal">./lpr restart</code> ou <code class="literal">./lprng restart</code>).
+</p>
+<p>
+Para testar o funcionamento do <span class="command"><strong>magicfilter</strong></span>, digite
+<code class="literal">lpr alphabet.ps</code> e <code class="literal">lpr tiger.ps</code>, os
+arquivos serão enviados para o <span class="command"><strong>magicfilter</strong></span> que identificará
+o arquivo como <span class="emphasis"><em>Pos Script</em></span>, executará o Ghost Script e
+retornará o resultado do processamento para o daemon de impressão.  O resultado
+será visto na impressora.
+</p>
+<p>
+Se tiver problemas, verifique se a configuração feita com o
+<span class="command"><strong>magicfilterconfig</strong></span> está correta.  Caso precise re-configurar
+o <span class="command"><strong>magicfilter</strong></span>, digite <code class="literal">magicfilterconfig
+--force</code> (lembre-se que a opção --force substitui qualquer
+configuração personalizada que tenha adicionado ao arquivo
+<code class="filename">/etc/printcap</code>).
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="impr-magicfilter-c"></a>Outros detalhes técnicos sobre o Magic Filter</h3></div></div></div>
+<p>
+Durante a configuração do <span class="command"><strong>magicfilter</strong></span>, a seguinte linha é
+adicionada ao arquivo <code class="filename">/etc/printcap</code>:
+</p>
+<pre class="screen">
+:if=/etc/magicfilter/epson9-filter
+</pre>
+<p>
+Não tenho nenhum contrato de divulgação com a <span class="emphasis"><em>epson</em></span> :-)
+estou usando esta marca de impressora porque é a mais tradicional e facilmente
+encontrada.  A linha que começa com <code class="literal">:if</code> no
+<span class="command"><strong>magicfilter</strong></span> identifica um arquivo de filtro de impressão.
+</p>
+<p>
+O arquivo <code class="filename">/etc/magicfilter/epson9-filter</code> é criado usando o
+formato do magicfilter, e não é difícil entender seu conteúdo e fazer algumas
+modificações:
+</p>
+<pre class="screen">
+#! /usr/sbin/magicfilter
+#
+# Magic filter setup file for 9-pin Epson (or compatible) printers
+#
+# This file is in the public domain.
+#
+# This file has been automatically adapted to your system.
+#
+# wild guess: native control codes start with ESC
+0       \033            cat
+
+# PostScript
+0 %! filter /usr/bin/gs -q -dSAFER -dNOPAUSE -r120x72 -sDEVICE=epson -sOutputFile=- - -c quit 
+0 \004%! filter	/usr/bin/gs -q -dSAFER -dNOPAUSE -r120x72 -sDEVICE=epson -sOutputFile=- - -c quit 
+
+# PDF
+0 %PDF fpipe /usr/bin/gs -q -dSAFER -dNOPAUSE -r120x72 -sDEVICE=epson -sOutputFile=- $FILE -c quit 
+
+# TeX DVI
+0 \367\002 fpipe /usr/bin/dvips -X 120  -Y 72  -R -q -f 
+
+# compress'd data
+0 \037\235 pipe	/bin/gzip  -cdq 
+
+# packed, gzipped, frozen and SCO LZH data
+0 \037\036 pipe	/bin/gzip  -cdq 
+0 \037\213 pipe	/bin/gzip  -cdq 
+0 \037\236 pipe	/bin/gzip  -cdq 
+0 \037\240 pipe	/bin/gzip  -cdq 
+
+0 BZh	pipe	/usr/bin/bzip2  -cdq 
+
+# troff documents
+0 .\?\?\040	fpipe 	`/usr/bin/grog  -Tps $FILE` 
+0 .\\\"		fpipe 	`/usr/bin/grog  -Tps $FILE` 
+0 '\\\"		fpipe 	`/usr/bin/grog  -Tps $FILE` 
+0 '.\\\"		fpipe 	`/usr/bin/grog  -Tps $FILE` 
+0  \\\"		fpipe 	`/usr/bin/grog  -Tps $FILE`
+</pre>
+<p>
+Você deve ter notado que para cada tipo de arquivo existe o respectivo programa
+que é executado, basta você modificar as opções usadas nos programas neste
+arquivo (como faria na linha de comando) para afetar o comportamento da
+impressão.
+</p>
+<p>
+Por exemplo, modificando a resolução para -r240x72 no processamento de arquivos
+Pos Script (gs), a impressora passará a usar esta resolução.
+</p>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch13s04.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch13.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch14.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Impressão em modo gráfico </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Capítulo 14. Configuração do sistema</td></tr></table></div></body></html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ln</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s03.html" title="df" /><link rel="next" href="ch08s05.html" title="du" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">ln</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s03.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s05.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">ln</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-ln"></a>ln</h2></div></div></div>
+<p>
+Cria links para arquivos e diretórios no sistema.  
+ O link é um mecanismo que faz referência a outro arquivo ou 
+diretório em outra localização.  O link em sistemas <span class="command"><strong>GNU/Linux</strong></span> 
+faz referência reais ao arquivo/diretório podendo ser feita cópia do link (será 
+copiado o arquivo alvo), entrar no diretório (caso o link faça referência a um 
+diretório), etc. 
+</p>
+<p>
+<span class="command"><strong>ln</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>origem</em></span>]
+[<span class="emphasis"><em>link</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>origem</em></span></span></dt><dd>
+<p>
+Diretório ou arquivo de onde será feito o link.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>link</em></span></span></dt><dd>
+<p>
+Nome do link que será criado.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-s</span></dt><dd>
+<p>
+Cria um link simbólico.  Usado para criar ligações com o arquivo/diretório de
+destino.
+</p>
+</dd><dt><span class="term">-v</span></dt><dd>
+<p>
+Mostra o nome de cada arquivo antes de fazer o link.
+</p>
+</dd><dt><span class="term">-d</span></dt><dd>
+<p>
+Cria um hard link para diretórios.  Somente o root pode usar esta opção.
+</p>
+</dd></dl></div>
+
+<p>
+Existem 2 tipos de links: <span class="emphasis"><em>simbólicos</em></span> e
+<span class="emphasis"><em>hardlinks</em></span>.
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+O <span class="emphasis"><em>link simbólico</em></span> cria um arquivo especial no disco (do
+tipo link) que tem como conteúdo o caminho para chegar até o arquivo alvo (isto
+pode ser verificado pelo tamanho do arquivo do link).  Use a opção
+<code class="literal">-s</code> para criar links simbólicos.
+</p>
+</li><li class="listitem">
+<p>
+O <span class="emphasis"><em>hardlink</em></span> faz referência ao mesmo inodo do arquivo
+original, desta forma ele será perfeitamente idêntico, inclusive nas permissões
+de acesso, ao arquivo original.
+</p>
+<p>
+Ao contrário dos links simbólicos, não é possível fazer um hardlink para um
+diretório ou fazer referência a arquivos que estejam em partições diferentes.
+</p>
+</li></ul></div>
+
+
+<p>
+Observações:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Se for usado o comando <span class="command"><strong>rm</strong></span> com um link, somente o link será
+removido.
+</p>
+</li><li class="listitem">
+<p>
+Se for usado o comando <span class="command"><strong>cp</strong></span> com um link, o arquivo original
+será copiado ao invés do link.
+</p>
+</li><li class="listitem">
+<p>
+Se for usado o comando <span class="command"><strong>mv</strong></span> com um link, a modificação será
+feita no link.
+</p>
+</li><li class="listitem">
+<p>
+Se for usado um comando de visualização (como o <span class="command"><strong>cat</strong></span>), o
+arquivo original será visualizado.
+</p>
+</li></ul></div>
+
+
+
+<p>
+Exemplos:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">ln -s /dev/ttyS1 /dev/modem</code> - Cria o link
+<code class="filename">/dev/modem</code> para o arquivo <code class="filename">/dev/ttyS1</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">ln -s /tmp ~/tmp</code> - Cria um link <code class="filename">~/tmp</code>
+para o diretório <code class="filename">/tmp</code>.
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s03.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s05.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">df </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> du</td></tr></table></div></body></html>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>coringas</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch02.html" title="Capítulo 2. Explicações Básicas" /><link rel="prev" href="ch02s11.html" title="Logout" /><link rel="next" href="ch03.html" title="Capítulo 3. Para quem esta migrando (ou pensando em migrar) do DOS/Windows para o Linux" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">coringas</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s11.html">Anterior</a> </td><th width="60%" align="center">Capítulo 2. Explicações Básicas</th><td width="20%" align="right"> <a accesskey="n" href="ch03.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Explicações Básicas</a></span> &gt; <span class="breadcrumb-node">coringas</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basico-coringas"></a>coringas</h2></div></div></div>
+<p>
+coringas (ou referência global) é um recurso usado para especificar um ou mais
+arquivos ou diretórios do sistema de uma só vez.  Este é um recurso permite que
+você faça a filtragem do que será listado, copiado, apagado, etc.  São usados 4
+tipos de coringas no <span class="command"><strong>GNU/Linux</strong></span>:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+"*" - Faz referência a um nome completo/restante de um arquivo/diretório.
+</p>
+</li><li class="listitem">
+<p>
+"?"  - Faz referência a uma letra naquela posição.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">[padrão]</code> - Faz referência a uma faixa de caracteres de um
+arquivo/diretório.  Padrão pode ser:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+<p>
+<code class="literal">[a-z][0-9]</code> - Faz referência a caracteres de
+<code class="literal">a</code> até <code class="literal">z</code> seguido de um caracter de
+<code class="literal">0</code> até <code class="literal">9</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">[a,z][1,0]</code> - Faz a referência aos caracteres
+<code class="literal">a</code> e <code class="literal">z</code> seguido de um caracter
+<code class="literal">1</code> ou <code class="literal">0</code> naquela posição.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">[a-z,1,0]</code> - Faz referência a intervalo de caracteres de
+<code class="literal">a</code> até <code class="literal">z</code> ou <code class="literal">1</code> ou
+<code class="literal">0</code> naquela posição.
+</p>
+</li></ul></div>
+<p>
+A procura de caracteres é "Case Sensitive" assim se você deseja que sejam
+localizados todos os caracteres alfabéticos você deve usar
+<code class="literal">[a-zA-Z]</code>.
+</p>
+<p>
+Caso a expressão seja precedida por um <code class="literal">^</code>, faz referência a
+qualquer caracter exceto o da expressão.  Por exemplo <code class="literal">[^abc]</code>
+faz referência a qualquer caracter exceto <code class="literal">a</code>,
+<code class="literal">b</code> e <code class="literal">c</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">{padrões}</code> - Expande e gera strings para pesquisa de padrões
+de um arquivo/diretório.
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+<p>
+<code class="literal">X{ab,01}</code> - Faz referência a seqüencia de caracteres
+<code class="literal">Xab</code> ou <code class="literal">X01</code>
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">X{a-z,10}</code> Faz referencia a seqüencia de caracteres
+X<code class="literal">a-z</code> e <code class="literal">X10</code>.
+</p>
+</li></ul></div>
+</li></ul></div>
+<p>
+O que diferencia este método de expansão dos demais é que a existência do
+arquivo/diretório é opcional para geração do resultado.  Isto é útil para a
+criação de diretórios.  Lembrando que os 4 tipos de coringas ("*", "?", "[]",
+"{}") podem ser usados juntos.  
+</p>
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-coringas-ex"></a>Exemplo de coringas</h3></div></div></div>
+<p>
+Para entender melhor vamos a prática:
+</p>
+<p>
+Vamos dizer que tenha 5 arquivo no diretório <code class="filename">/usr/teste</code>:
+<code class="filename">teste1.txt, teste2.txt, teste3.txt, teste4.new,
+teste5.new</code>.
+</p>
+<p>
+Caso deseje listar <span class="strong"><strong>todos</strong></span> os arquivos do
+diretório <code class="filename">/usr/teste</code> você pode usar o coringa "*" para
+especificar todos os arquivos do diretório:
+</p>
+<p>
+<code class="literal">cd /usr/teste</code> e <code class="literal">ls *</code> ou <code class="literal">ls
+/usr/teste/*</code>.
+</p>
+<p>
+Não tem muito sentido usar o comando <span class="command"><strong>ls</strong></span> com "*" porque todos
+os arquivos serão listados se o <span class="command"><strong>ls</strong></span> for usado sem nenhum
+Coringa.
+</p>
+<p>
+Agora para listar todos os arquivos <code class="filename">teste1.txt, teste2.txt,
+teste3.txt</code> com excessão de <code class="filename">teste4.new</code>,
+<code class="filename">teste5.new</code>, podemos usar inicialmente 3 métodos:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+Usando o comando <code class="literal">ls *.txt</code> que pega todos os arquivos que
+começam com qualquer nome e terminam com <code class="filename">.txt</code>.
+</p>
+</li><li class="listitem">
+<p>
+Usando o comando <code class="literal">ls teste?.txt</code>, que pega todos os arquivos
+que começam com o nome <code class="filename">teste</code>, tenham qualquer caracter no
+lugar do coringa <code class="literal">?</code> e terminem com <code class="filename">.txt</code>.
+Com o exemplo acima <code class="literal">teste*.txt</code> também faria a mesma coisa,
+mas se também tivéssemos um arquivo chamado <code class="filename">teste10.txt</code>
+este também seria listado.
+</p>
+</li><li class="listitem">
+<p>
+Usando o comando <code class="literal">ls teste[1-3].txt</code>, que pega todos os
+arquivos que começam com o nome <code class="filename">teste</code>, tenham qualquer
+caracter entre o número 1-3 no lugar da 6a letra e terminem com
+<code class="filename">.txt</code>.  Neste caso se obtém uma filtragem mais exata, pois
+o coringa <span class="emphasis"><em>?</em></span> especifica qualquer caracter naquela posição e
+[] especifica números, letras ou intervalo que será usado.
+</p>
+</li></ol></div>
+<p>
+Agora para listar somente <code class="filename">teste4.new</code> e
+<code class="filename">teste5.new</code> podemos usar os seguintes métodos:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+<code class="literal">ls *.new</code> que lista todos os arquivos que terminam com
+<code class="filename">.new</code>
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">ls teste?.new</code> que lista todos os arquivos que começam com
+<code class="filename">teste</code>, contenham qualquer caracter na posição do coringa
+<span class="emphasis"><em>?</em></span> e terminem com <code class="filename">.new</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">ls teste[4,5].*</code> que lista todos os arquivos que começam com
+<code class="filename">teste</code> contenham números de 4 e 5 naquela posição e
+terminem com qualquer extensão.
+</p>
+</li></ol></div>
+<p>
+Existem muitas outras formas de se fazer a mesma coisa, isto depende do gosto
+de cada um.  O que pretendi fazer aqui foi mostrar como especificar mais de um
+arquivo de uma só vez.  O uso de coringas será útil ao copiar arquivos, apagar,
+mover, renomear, e nas mais diversas partes do sistema.  Alias esta é uma
+característica do <span class="command"><strong>GNU/Linux</strong></span>: permitir que a mesma coisa
+possa ser feita com liberdade de várias maneiras diferentes.
+</p>
+</div>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s11.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Logout </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Capítulo 3. Para quem esta migrando (ou pensando em migrar) do DOS/Windows para o Linux</td></tr></table></div></body></html>

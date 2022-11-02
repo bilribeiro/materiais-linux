@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>shutdown</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s24.html" title="reboot" /><link rel="next" href="ch08s26.html" title="wc" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">shutdown</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s24.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s26.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">shutdown</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-shutdown"></a>shutdown</h2></div></div></div>
+<p>
+Desliga/reinicia o computador imediatamente ou após determinado tempo
+(programável) de forma segura.  
+ Todos os usuários do sistema são avisados que o
+computador será desligado .  Este comando somente pode ser executado pelo
+usuário root ou quando é usada a opção <code class="literal">-a</code> pelos usuários
+cadastrados no arquivo <code class="filename">/etc/shutdown.allow</code> que estejam
+logados no console virtual do sistema. 
+</p>
+<p>
+<span class="command"><strong>shutdown</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>hora</em></span>]
+[<span class="emphasis"><em>mensagem</em></span>]
+</p>
+
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>hora</em></span></span></dt><dd>
+<p>
+Momento que o computador será desligado.  Você pode usar
+<code class="literal">HH:MM</code> para definir a hora e minuto, <code class="literal">MM</code>
+para definir minutos, <code class="literal">+SS</code> para definir após quantos
+segundos, ou <code class="literal">now</code> para imediatamente (equivalente a +0).
+</p>
+<p>
+O <span class="command"><strong>shutdown</strong></span> criará o arquivo
+<code class="filename">/etc/nologin</code> para não permitir que novos usuários façam
+login no sistema (com excessão do root).  Este arquivo é removido caso a
+execução do <span class="command"><strong>shutdown</strong></span> seja cancelada (opção -c) ou após o
+sistema ser reiniciado.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>mensagem</em></span></span></dt><dd>
+<p>
+Mensagem que será mostrada a todos os usuários alertando sobre o
+reinicio/desligamento do sistema.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-h</span></dt><dd>
+<p>
+Inicia o processo para desligamento do computador.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Reinicia o sistema
+</p>
+</dd><dt><span class="term">-c</span></dt><dd>
+<p>
+Cancela a execução do <span class="command"><strong>shutdown</strong></span>.  Você pode acrescentar uma
+mensagem avisando aos usuários sobre o fato.
+</p>
+</dd><dt><span class="term">-a</span></dt><dd>
+<p>
+Permite que os nomes de usuários contidos no arquivo
+<code class="filename">/etc/shutdown.allow</code> possam utilizar o
+<span class="command"><strong>shutdown</strong></span> para reinicializar/desligar o sistema.  Deve ser
+colocado um nome de usuário por linha.  O limite máximo de usuários neste
+arquivo é de 32.
+</p>
+<p>
+Este arquivo é útil quando o <span class="command"><strong>shutdown</strong></span> é usado para controlar
+o pressionamento das teclas <code class="literal">CTRL+ALT+DEL</code> no
+<code class="filename">/etc/inittab</code>.
+</p>
+</dd><dt><span class="term">-k</span></dt><dd>
+<p>
+Simula o desligamento/reinicio do sistema, enviando mensagem aos usuários.
+</p>
+</dd><dt><span class="term">-f</span></dt><dd>
+<p>
+Não executa a checagem do sistema de arquivos durante a inicialização do
+sistema.  Este processo é feito gravando-se um arquivo
+<code class="filename">/fastboot</code> que é interpretado pelos scripts responsáveis
+pela execução do <span class="command"><strong>fsck</strong></span> durante a inicialização do sistema.
+</p>
+</dd><dt><span class="term">-F</span></dt><dd>
+<p>
+Força a checagem do sistema de arquivos durante a inicialização.  É gravado um
+arquivo chamado <code class="filename">/forcefsck</code> que é interpretado pelos
+scripts responsáveis pela execução do <span class="command"><strong>fsck</strong></span> durante a
+inicialização do sistema.
+</p>
+</dd><dt><span class="term">-n</span></dt><dd>
+<p>
+Faz com que o <span class="command"><strong>shutdown</strong></span> ignore a execução do
+<span class="command"><strong>init</strong></span> fechando todos os processos.
+</p>
+</dd><dt><span class="term">-t [num]</span></dt><dd>
+<p>
+Faz com que o <span class="command"><strong>shutdown</strong></span> envie um sinal de término aos
+processos e aguarde [num] segundos antes de enviar o sinal KILL.
+</p>
+</dd></dl></div>
+
+
+<p>
+O <span class="command"><strong>shutdown</strong></span> envia uma mensagem a todos os usuários do sistema
+alertando sobre o desligamento durante os 15 minutos restantes e assim permite
+que finalizem suas tarefas.  Após isto, o <span class="command"><strong>shutdown</strong></span> muda o
+nível de execução através do comando <span class="command"><strong>init</strong></span> para 0
+(desligamento), 1 (modo monousuário), 6 (reinicialização).  É recomendado
+utilizar o símbolo "&amp;" no final da linha de comando para que o
+<span class="command"><strong>shutdown</strong></span> seja executado em segundo plano.
+</p>
+
+<p>
+Quando restarem apenas 5 minutos para o reinicio/desligamento do sistema, o
+programa <span class="command"><strong>login</strong></span> será desativado, impedindo a entrada de novos
+usuários no sistema.
+</p>
+<p>
+O programa <span class="command"><strong>shutdown</strong></span> pode ser chamado pelo
+<span class="command"><strong>init</strong></span> através do pressionamento da combinação das teclas de
+reinicialização <code class="literal">CTRL+ALT+DEL</code> alterando-se o arquivo
+<code class="filename">/etc/inittab</code>.  Isto permite que somente os usuários
+autorizados (ou o root) possam reinicializar o sistema.
+</p>
+
+
+<p>
+Exemplos:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">"shutdown -h now"</code> - Desligar o computador imediatamente.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">"shutdown -r now"</code> - Reinicia o computador imediatamente.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">"shutdown 19:00 A manutenção do servidor será iniciada às
+19:00"</code> - Faz o computador entrar em modo monousuário (init 1) às
+19:00 enviando a mensagem <span class="emphasis"><em>A manutenção do servidor será iniciada às
+19:00</em></span> a todos os usuários conectados ao sistema.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">"shutdown -r 15:00 O sistema será reiniciado às 15:00 horas"</code>
+- Faz o computador ser reiniciado (init 6) às 15:00 horas enviando a mensagem
+<span class="emphasis"><em>O sistema será reiniciado às 15:00 horas</em></span> a todos os
+usuários conectados ao sistema.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">shutdown -r 20</code> - Faz o sistema ser reiniciado após 20
+minutos.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">shutdown -c</code> - Cancela a execução do
+<span class="command"><strong>shutdown</strong></span>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">shutdown -t 30 -r 20</code> - Reinicia o sistema após 20 minutos,
+espera 30 segundos após o sinal de término para enviar o sinal KILL a todos os
+programas abertos.
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s24.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s26.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">reboot </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> wc</td></tr></table></div></body></html>

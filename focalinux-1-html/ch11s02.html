@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tipos de Permissões de Acesso</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="prev" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="next" href="ch11s03.html" title="Etapas para acesso a um arquivo/diretório" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Tipos de Permissões de Acesso</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11.html">Anterior</a> </td><th width="60%" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th><td width="20%" align="right"> <a accesskey="n" href="ch11s03.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch11.html">Permissões de acesso a arquivos e diretórios</a></span> &gt; <span class="breadcrumb-node">Tipos de Permissões de Acesso</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-tipos"></a>Tipos de Permissões de Acesso</h2></div></div></div>
+<p>
+Quanto aos tipos de permissões que se aplicam ao <span class="emphasis"><em>dono</em></span>,
+<span class="emphasis"><em>grupo</em></span> e <span class="emphasis"><em>outros usuários</em></span>, temos 3
+permissões básicas:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">r</code> - Permissão de leitura para arquivos.  Caso for um
+diretório, permite listar seu conteúdo (através do comando
+<span class="command"><strong>ls</strong></span>, por exemplo).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">w</code> - Permissão de gravação para arquivos.  Caso for um
+diretório, permite a gravação de arquivos ou outros diretórios dentro dele.
+</p>
+<p>
+Para que um arquivo/diretório possa ser apagado, é necessário o acesso a
+gravação.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">x</code> - Permite executar um arquivo (caso seja um programa
+executável).  Caso seja um diretório, permite que seja acessado através do
+comando <span class="command"><strong>cd</strong></span> 
+(veja <a class="xref" href="ch06s02.html" title="cd">“cd”</a> para detalhes).
+</p>
+</li></ul></div>
+<p>
+As permissões de acesso a um arquivo/diretório podem ser visualizadas com o uso
+do comando <code class="literal">ls -la</code>.  
+Para maiores detalhes veja <a class="xref" href="ch06.html#comando-ls" title="ls">“ls”</a>.
+As 3 letras (rwx) são agrupadas da seguinte forma:
+</p>
+<pre class="screen">
+-rwxr-xr--   gleydson   users  teste
+</pre>
+<p>
+Virou uma bagunça não?  Vou explicar cada parte para entender o que quer dizer
+as 10 letras acima (da esquerda para a direita):
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+A primeira letra diz qual é o tipo do arquivo.  Caso tiver um "d" é um
+diretório, um "l" um link a um arquivo no sistema 
+ (veja <a class="xref" href="ch08s04.html" title="ln">“ln”</a> para detalhes) , 
+um "-" quer dizer que é um arquivo comum,
+etc.
+</p>
+</li><li class="listitem">
+<p>
+Da segunda a quarta letra (rwx) dizem qual é a permissão de acesso ao
+<span class="emphasis"><em>dono</em></span> do arquivo.  Neste caso <span class="emphasis"><em>gleydson</em></span>
+ele tem a permissão de ler (r - read), gravar (w - write) e executar (x -
+execute) o arquivo <code class="filename">teste</code>.
+</p>
+</li><li class="listitem">
+<p>
+Da quinta a sétima letra (r-x) diz qual é a permissão de acesso ao
+<span class="emphasis"><em>grupo</em></span> do arquivo.  Neste caso todos os usuários que
+pertencem ao grupo <span class="emphasis"><em>users</em></span> tem a permissão de ler (r), e
+também executar (x) o arquivo <code class="filename">teste</code>.
+</p>
+</li><li class="listitem">
+<p>
+Da oitava a décima letra (r--) diz qual é a permissão de acesso para os
+<span class="emphasis"><em>outros usuários</em></span>.  Neste caso todos os usuários que não são
+donos do arquivo <code class="filename">teste</code> tem a permissão somente para ler o
+programa.
+</p>
+</li></ul></div>
+<p>
+Veja o comando <a class="xref" href="ch11s07.html" title="chmod">“chmod”</a> para detalhes sobre a mudança das
+permissões de acesso de arquivos/diretórios.
+</p>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s03.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Capítulo 11. Permissões de acesso a arquivos e diretórios </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Etapas para acesso a um arquivo/diretório</td></tr></table></div></body></html>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Diretório</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch02.html" title="Capítulo 2. Explicações Básicas" /><link rel="prev" href="ch02s02.html" title="Arquivos" /><link rel="next" href="ch02s04.html" title="Nomeando Arquivos e Diretórios" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Diretório</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s02.html">Anterior</a> </td><th width="60%" align="center">Capítulo 2. Explicações Básicas</th><td width="20%" align="right"> <a accesskey="n" href="ch02s04.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Explicações Básicas</a></span> &gt; <span class="breadcrumb-node">Diretório</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basico-diretorio"></a>Diretório</h2></div></div></div>
+<p>
+Diretório é o local utilizado para armazenar conjuntos arquivos para melhor
+organização e localização.  O diretório, como o arquivo, também é
+"<span class="emphasis"><em>Case Sensitive</em></span>" (diretório <code class="filename">/teste</code> é
+completamente diferente do diretório <code class="filename">/Teste</code>).
+</p>
+
+<p>
+Não podem existir dois arquivos com o <code class="literal">mesmo</code> nome em um
+diretório, ou um sub-diretório com um mesmo nome de um arquivo em um mesmo
+diretório.
+</p>
+
+<p>
+Um diretório nos sistemas <span class="command"><strong>Linux/UNIX</strong></span> são especificados por
+uma "<span class="emphasis"><em>/</em></span>" e não uma "<span class="emphasis"><em>\</em></span>" como é feito no
+<span class="command"><strong>DOS</strong></span>.  Para detalhes sobre como criar um diretório, veja o
+comando <span class="command"><strong>mkdir</strong></span> (<a class="xref" href="ch06s04.html" title="mkdir">“mkdir”</a>).
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-raiz"></a>Diretório Raíz</h3></div></div></div>
+<p>
+Este é o diretório principal do sistema.  Dentro dele estão todos os diretórios
+do sistema.  O diretório Raíz é representado por uma "<span class="emphasis"><em>/</em></span>",
+assim se você digitar o comando <code class="literal">cd /</code> você estará acessando
+este diretório.
+</p>
+<p>
+Nele estão localizados outros diretórios como o <code class="filename">/bin, /sbin, /usr,
+/usr/local, /mnt, /tmp, /var, /home,</code> etc.  Estes são chamados de
+<span class="emphasis"><em>sub-diretórios</em></span> pois estão dentro do diretório
+"<code class="filename">/</code>".  A estrutura de <span class="emphasis"><em>diretórios</em></span> e
+<span class="emphasis"><em>sub-diretórios</em></span> pode ser identificada da seguinte maneira:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+/
+</p>
+</li><li class="listitem">
+<p>
+/bin
+</p>
+</li><li class="listitem">
+<p>
+/sbin
+</p>
+</li><li class="listitem">
+<p>
+/usr
+</p>
+</li><li class="listitem">
+<p>
+/usr/local
+</p>
+</li><li class="listitem">
+<p>
+/mnt
+</p>
+</li><li class="listitem">
+<p>
+/tmp
+</p>
+</li><li class="listitem">
+<p>
+/var
+</p>
+</li><li class="listitem">
+<p>
+/home
+</p>
+</li></ul></div>
+<p>
+A estrutura de diretórios também é chamada de <code class="literal">Árvore de
+Diretórios</code> porque é parecida com uma <span class="emphasis"><em>árvore</em></span> de
+cabeça para baixo.  
+
+
+Cada diretório do sistema tem seus respectivos arquivos que
+são armazenados conforme regras definidas pela <span class="emphasis"><em>FHS</em></span>
+(<span class="emphasis"><em>FileSystem Hierarchy Standard - Hierarquia Padrão do Sistema de
+Arquivos</em></span>) versão 2.0, definindo que tipo de arquivo deve ser
+armazenado em cada diretório.
+</p>
+
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-atual"></a>Diretório atual</h3></div></div></div>
+<p>
+É o diretório em que nos encontramos no momento.  Você pode digitar
+<code class="literal">pwd</code> (veja <a class="xref" href="ch06s03.html" title="pwd">“pwd”</a>) para verificar qual
+é seu diretório atual.
+</p>
+<p>
+O diretório atual também é identificado por um "."  (ponto).  O comando comando
+<code class="literal">ls .</code> pode ser usado para listar seus arquivos (é claro que
+isto é desnecessário porque se não digitar nenhum diretório, o comando
+<span class="command"><strong>ls</strong></span> listará o conteúdo do diretório atual).
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-home"></a>Diretório home</h3></div></div></div>
+<p>
+Também chamado de diretório de usuário.  Em sistemas
+<span class="command"><strong>GNU/Linux</strong></span> cada usuário (inclusive o root) possui seu próprio
+diretório onde poderá armazenar seus programas e arquivos pessoais.
+</p>
+<p>
+Este diretório está localizado em <code class="filename">/home/[login]</code>, neste
+caso se o seu login for "joao" o seu diretório home será
+<code class="filename">/home/joao</code>.  O diretório home também é identificado por um
+<code class="literal">~</code>(til), você pode digitar tanto o comando <code class="literal">ls
+/home/joao</code> como <code class="literal">ls ~</code> para listar os arquivos de
+seu diretório home.
+</p>
+<p>
+O diretório home do usuário root (na maioria das distribuições
+<span class="command"><strong>GNU/Linux</strong></span>) está localizado em <code class="filename">/root</code>.
+</p>
+<p>
+Dependendo de sua configuração e do número de usuários em seu sistema, o
+diretório de usuário pode ter a seguinte forma:
+<code class="filename">/home/[1letra_do_nome]/[login]</code>, neste caso se o seu login
+for "joao" o seu diretório home será <code class="filename">/home/j/joao</code>.
+</p>
+</div>
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-superior"></a>Diretório Superior</h3></div></div></div>
+<p>
+O diretório superior (Upper Directory) é identificado por <code class="literal">..</code>
+(2 pontos).
+</p>
+<p>
+Caso estiver no diretório <code class="filename">/usr/local</code> e quiser listar os
+arquivos do diretório <code class="filename">/usr</code> você pode digitar, <code class="literal">ls
+..</code> Este recurso também pode ser usado para copiar, mover
+arquivos/diretórios, etc.
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-anterior"></a>Diretório Anterior</h3></div></div></div>
+<p>
+O diretório anterior é identificado por "-".  É útil para retornar ao último
+diretório usado.
+</p>
+<p>
+Se estive no diretório <code class="filename">/usr/local</code> e digitar <code class="literal">cd
+/lib</code>, você pode retornar facilmente para o diretório
+<code class="filename">/usr/local</code> usando <code class="literal">cd -</code>.
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-caminho"></a>Caminho na estrutura de diretórios</h3></div></div></div>
+<p>
+São os diretórios que teremos que percorrer até chegar no arquivo ou diretório
+que que procuramos.  Se desejar ver o arquivo <code class="filename">/etc/hosts</code>
+você tem duas opções:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+Mudar o diretório padrão para <code class="filename">/etc</code> com o comando
+<code class="literal">cd /etc</code> e usar o comando <code class="literal">cat hosts</code>
+</p>
+</li><li class="listitem">
+<p>
+Usar o comando <span class="command"><strong>"cat"</strong></span> especificando o caminho completo na
+estrutura de diretórios e o nome de arquivo: <code class="literal">cat /etc/hosts</code>.
+</p>
+</li></ol></div>
+<p>
+As duas soluções acima permitem que você veja o arquivo
+<code class="filename">GPL</code>.  A diferença entre as duas é a seguinte:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Na primeira, você muda o diretório padrão para
+<code class="filename">/usr/doc/copyright</code> (confira digitando
+<code class="literal">pwd</code>) e depois o comando <code class="literal">cat GPL</code>.  Você
+pode ver os arquivos de <code class="filename">/usr/doc/copyright</code> com o comando
+<span class="command"><strong>"ls"</strong></span>.
+</p>
+<p>
+<code class="filename">/usr/doc/copyright</code> é o caminho de diretório que devemos
+percorrer para chegar até o arquivo <code class="filename">GPL</code>.
+</p>
+</li><li class="listitem">
+<p>
+Na segunda, é digitado o caminho completo para o <span class="command"><strong>"cat"</strong></span>
+localizar o arquivo <code class="filename">GPL</code>: <code class="literal">cat
+/usr/doc/copyright/GPL</code>.  Neste caso, você continuará no diretório
+padrão (confira digitando <code class="literal">pwd</code>).  Digitando
+<code class="literal">ls</code>, os arquivos do diretório atual serão listados.
+</p>
+</li></ul></div>
+<p>
+O <span class="emphasis"><em>caminho de diretórios</em></span> é necessário para dizer ao sistema
+operacional onde encontrar um arquivo na "árvore" de diretórios.
+</p>
+</div>
+
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-exemplo"></a>Exemplo de diretório</h3></div></div></div>
+<p>
+Um exemplo de diretório é o seu diretório de usuário, todos seus arquivos
+essenciais devem ser colocadas neste diretório.  Um diretório pode conter outro
+diretório, isto é útil quando temos muitos arquivos e queremos melhorar sua
+organização.  Abaixo um exemplo de uma empresa que precisa controlar os
+arquivos de Pedidos que emite para as fábricas:
+</p>
+<p>
+/pub/vendas - diretório principal de vendas /pub/vendas/mes01-1999 - diretório
+contendo vendas do mês 01/1999 /pub/vendas/mes02-2009 - diretório contendo
+vendas do mês 02/2009 /pub/vendas/mes01-2010 - diretório contendo vendas do mês
+03/2010
+</p>
+<p>
+<code class="filename">mes01-99, mes02-2009, mes01-2010</code> são diretórios usados
+para armazenar os arquivos de pedidos do mês e ano correspondente.  Isto é
+essencial para organização, pois se todos os pedidos fossem colocados
+diretamente no diretório vendas, seria muito difícil encontrar o arquivo do
+cliente "João" do mês 01/2009.
+</p>
+<p>
+Você deve ter reparado que usei a palavra <span class="emphasis"><em>sub-diretório</em></span>
+para mes01-1999, mes02-2009 e mes01-2010, porque que eles estão dentro do
+diretório vendas.  Da mesma forma, <code class="filename">vendas</code> é um
+sub-diretório de <code class="filename">pub</code>.
+</p>
+</div>
+
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-diretorio-estrutura"></a>Estrutura básica de diretórios do Sistema Linux</h3></div></div></div>
+<p>
+O sistema <span class="command"><strong>GNU/Linux</strong></span> possui a seguinte estrutura básica de
+diretórios organizados segundo o FHS (Filesystem Hierarchy Standard):
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">/bin</code></span></dt><dd>
+<p>
+Contém arquivos programas do sistema que são usados com freqüência pelos
+usuários.
+</p>
+</dd><dt><span class="term"><code class="filename">/boot</code></span></dt><dd>
+<p>
+Contém arquivos necessários para a inicialização do sistema.
+</p>
+</dd><dt><span class="term"><code class="filename">/cdrom</code></span></dt><dd>
+<p>
+Ponto de montagem da unidade de CD-ROM.
+</p>
+</dd><dt><span class="term"><code class="filename">/media</code></span></dt><dd>
+<p>
+Ponto de montagem de dispositivos diversos do sistema (rede, pen-drives, CD-ROM
+em distribuições mais novas).
+</p>
+</dd><dt><span class="term"><code class="filename">/dev</code></span></dt><dd>
+<p>
+Contém arquivos usados para acessar dispositivos (periféricos) existentes no
+computador.
+</p>
+</dd><dt><span class="term"><code class="filename">/etc</code></span></dt><dd>
+<p>
+Arquivos de configuração de seu computador local.
+</p>
+</dd><dt><span class="term"><code class="filename">/floppy</code></span></dt><dd>
+<p>
+Ponto de montagem de unidade de disquetes
+</p>
+</dd><dt><span class="term"><code class="filename">/home</code></span></dt><dd>
+<p>
+Diretórios contendo os arquivos dos usuários.
+</p>
+</dd><dt><span class="term"><code class="filename">/lib</code></span></dt><dd>
+<p>
+Bibliotecas compartilhadas pelos programas do sistema e módulos do kernel.
+</p>
+</dd><dt><span class="term"><code class="filename">/lost+found</code></span></dt><dd>
+<p>
+Local para a gravação de arquivos/diretórios recuperados pelo utilitário
+<span class="command"><strong>fsck.ext2</strong></span>.  Cada partição possui seu próprio diretório
+<code class="filename">lost+found</code>.
+</p>
+</dd><dt><span class="term"><code class="filename">/mnt</code></span></dt><dd>
+<p>
+Ponto de montagem temporário.
+</p>
+</dd><dt><span class="term"><code class="filename">/proc</code></span></dt><dd>
+<p>
+Sistema de arquivos do kernel.  Este diretório não existe em seu disco rígido,
+ele é colocado lá pelo kernel e usado por diversos programas que fazem sua
+leitura, verificam configurações do sistema ou modificar o funcionamento de
+dispositivos do sistema através da alteração em seus arquivos.
+</p>
+</dd><dt><span class="term"><code class="filename">/sys</code></span></dt><dd>
+<p>
+Sistema de arquivos do kernel.  Este diretório não existe em seu disco rígido,
+ele é colocado lá pelo kernel e usado por diversos programas que fazem sua
+leitura, verificam configurações do sistema ou modificar o funcionamento de
+dispositivos do sistema através da alteração em seus arquivos.
+</p>
+</dd><dt><span class="term"><code class="filename">/root</code></span></dt><dd>
+<p>
+Diretório do usuário <code class="literal">root</code>.
+</p>
+</dd><dt><span class="term"><code class="filename">/sbin</code></span></dt><dd>
+<p>
+Diretório de programas usados pelo superusuário (root) para administração e
+controle do funcionamento do sistema.
+</p>
+</dd><dt><span class="term"><code class="filename">/tmp</code></span></dt><dd>
+<p>
+Diretório para armazenamento de arquivos temporários criados por programas.
+</p>
+</dd><dt><span class="term"><code class="filename">/usr</code></span></dt><dd>
+<p>
+Contém maior parte de seus programas.  Normalmente acessível somente como
+leitura.
+</p>
+</dd><dt><span class="term"><code class="filename">/var</code></span></dt><dd>
+<p>
+Contém maior parte dos arquivos que são gravados com freqüência pelos programas
+do sistema, e-mails, spool de impressora, cache, etc.
+</p>
+</dd></dl></div>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s04.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Arquivos </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Nomeando Arquivos e Diretórios</td></tr></table></div></body></html>

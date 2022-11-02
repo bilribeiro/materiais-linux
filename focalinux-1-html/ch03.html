@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Capítulo 3. Para quem esta migrando (ou pensando em migrar) do DOS/Windows para o Linux</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="index.html" title="Guia Foca Linux" /><link rel="prev" href="ch02s12.html" title="coringas" /><link rel="next" href="ch03s02.html" title="Comandos equivalentes entre DOS/CMD do Windows e o Linux" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Capítulo 3. Para quem esta migrando (ou pensando em migrar) do DOS/Windows para o Linux</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s12.html">Anterior</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch03s02.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-node">Para quem esta migrando (ou pensando em migrar) do DOS/Windows para o Linux</span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="d-l"></a>Capítulo 3. Para quem esta migrando (ou pensando em migrar) do DOS/Windows para o Linux</h1></div></div></div><div class="toc"><p><strong>Índice</strong></p><dl class="toc"><dt><span class="section"><a href="ch03.html#d-l-compar">Quais as diferenças iniciais</a></span></dt><dt><span class="section"><a href="ch03s02.html">Comandos equivalentes entre DOS/CMD do Windows e o Linux</a></span></dt><dd><dl><dt><span class="section"><a href="ch03s02.html#s4.2.1">Arquivos de configuração</a></span></dt></dl></dd><dt><span class="section"><a href="ch03s03.html">Usando a sintaxe de comandos DOS no Linux</a></span></dt><dt><span class="section"><a href="ch03s04.html">Programas equivalentes entre Windows/DOS e o Linux</a></span></dt></dl></div>
+<p>
+Este capítulo explica as diferenças e particularidades do sistema
+<span class="command"><strong>GNU/Linux</strong></span> comparado ao <span class="command"><strong>Windows</strong></span>,
+<span class="command"><strong>DOS</strong></span> e uma lista de equivalência entre comandos e programas
+executados no <span class="command"><strong>CMD</strong></span> do
+<span class="command"><strong>Windows</strong></span>/<span class="command"><strong>DOS</strong></span> e
+<span class="command"><strong>GNU/Linux</strong></span>, que pode servir de comparação para que o usuário
+possa conhecer e utilizar os comandos/programas <span class="command"><strong>GNU/Linux</strong></span>
+que tem a mesma função no ambiente <span class="command"><strong>DOS/Windows</strong></span>.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="d-l-compar"></a>Quais as diferenças iniciais</h2></div></div></div>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Quando entrar pela primeira vez no <span class="command"><strong>GNU/Linux</strong></span> (ou qualquer
+outro <span class="command"><strong>UNIX</strong></span>, a primeira coisa que verá será a palavra
+<code class="literal">login:</code> escrita na tela.
+</p>
+<p>
+A sua aventura começa aqui, você deve ser uma pessoa cadastrada no sistema (ter
+uma conta) para que poder entrar.  No <code class="literal">login</code> você digita seu
+nome (por exemplo, gleydson) e pressiona Enter.  Agora será lhe pedida a senha,
+repare que a senha não é mostrada enquanto é digitada, isto serve de segurança
+e para enganar pessoas que estão próximas de você "tocando" algumas teclas a
+mais enquanto digita a senha e fazendo-as pensar que você usa uma grande senha
+;-) (com os asteriscos aparecendo isto não seria possível).
+</p>
+<p>
+Caso cometa erros durante a digitação da senha, basta pressionar a tecla
+<code class="literal">Back Space</code> para apagar o último caracter digitado e terminar
+a entrada da senha.
+</p>
+<p>
+Pressione Enter, se tudo ocorrer bem você estará dentro do sistema e será
+presenteado com o símbolo # (caso tenha entrado como usuário
+<code class="literal">root</code>) ou $ (caso tenha entrado como um usuário normal).
+</p>
+<p>
+Existe um mecanismo de segurança que te alerta sobre eventuais tentativas de
+entrada no sistema por intrusos usando seu <code class="literal">login</code>, faça um
+teste: entre com seu login e digite a senha errada, na segunda vez entre com a
+senha correta no sistema.  Na penúltima linha das mensagens aparece uma
+mensagem "1 failure since last login", o que quer dizer "1 falha desde o último
+login".  Isto significa que alguém tentou entrar 1 vez com seu nome e senha no
+sistema, sem sucesso.
+</p>
+</li><li class="listitem">
+<p>
+A conta <code class="literal">root</code> não tem restrições de acesso ao sistema e pode
+fazer tudo o que quiser, é equivalente ao usuário normal do
+<span class="command"><strong>DOS</strong></span> e <span class="command"><strong>Windows</strong></span>.  Use a conta
+<code class="literal">root</code> somente para manutenções no sistema e instalação de
+programas, qualquer movimento errado pode comprometer todo o sistema.  Para
+detalhes veja <a class="xref" href="ch11s06.html" title="A conta root">“A conta root”</a>.
+</p>
+</li><li class="listitem">
+<p>
+No <span class="command"><strong>GNU/Linux</strong></span> os diretório são identificados por uma
+<code class="filename">/</code> e não por uma <code class="filename">\</code> como acontece no
+<span class="command"><strong>DOS</strong></span>.  Para entrar no diretório <code class="filename">/bin</code>,
+você deve usar <code class="literal">cd /bin</code>.
+</p>
+</li><li class="listitem">
+<p>
+Os comandos são <code class="literal">case-sensitive</code>, o que significa que ele
+diferencia as letras maiúsculas de minúsculas em arquivos e diretórios.  O
+comando <code class="literal">ls</code> e <code class="literal">LS</code> são completamente
+diferentes.
+</p>
+</li><li class="listitem">
+<p>
+A multitarefa lhe permite usar vários programas simultaneamente (não pense que
+multitarefa somente funciona em ambientes gráficos, pois isto é errado!).  Para
+detalhes veja <a class="xref" href="ch05.html" title="Capítulo 5. Execução de programas">Capítulo 5, <em>Execução de programas</em></a>.
+</p>
+</li><li class="listitem">
+<p>
+Os dispositivos também são identificados e uma forma diferente que no
+<span class="command"><strong>DOS</strong></span> por exemplo:
+</p>
+<pre class="screen">
+ DOS/Windows        Linux
+-------------  --------------- 
+A:             /dev/fd0
+B:             /dev/fd1
+C:             /dev/hda1 ou /dev/sda1
+LPT1           /dev/lp0
+LPT2           /dev/lp1
+LPT3           /dev/lp2
+COM1           /dev/ttyS0
+COM2           /dev/ttyS1
+COM3           /dev/ttyS2
+COM4           /dev/ttyS3
+</pre>
+</li><li class="listitem">
+<p>
+Os recursos multiusuário lhe permitem acessar o sistema de qualquer lugar sem
+instalar nenhum driver, ou programa gigante, apenas através de conexões TCP/IP,
+como a Internet.  Também é possível acessar o sistema localmente com vários
+usuários (cada um executando tarefas completamente independente dos outros)
+através dos Terminais Virtuais.  Faça um teste: pressione ao mesmo tempo a
+tecla <code class="literal">ALT</code> e <code class="literal">F2</code> e você será levado para o
+segundo Terminal Virtual, pressione novamente <code class="literal">ALT</code> e
+<code class="literal">F1</code> para retornar ao anterior.
+</p>
+</li><li class="listitem">
+<p>
+Para reiniciar o computador, você pode pressionar CTRL+ALT+DEL (como usuário
+<code class="literal">root</code>) ou digitar <code class="literal">shutdown -r now</code>.  Veja
+ <a class="xref" href="ch01s17.html" title="Reiniciando o computador">“Reiniciando o computador”</a> para detalhes. 
+</p>
+</li><li class="listitem">
+<p>
+Para desligar o computador, digite <code class="literal">shutdown -h now</code> e espere
+o aparecimento da mensagem <code class="literal">Power Down</code> para apertar o botão
+LIGA/DESLIGA do computador.  
+ Veja <a class="xref" href="ch01s16.html" title="Desligando o computador">“Desligando o computador”</a> para detalhes. 
+</p>
+</li></ul></div>
+</div>
+
+
+
+
+
+
+
+
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s12.html">Anterior</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch03s02.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">coringas </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Comandos equivalentes entre DOS/CMD do Windows e o Linux</td></tr></table></div></body></html>

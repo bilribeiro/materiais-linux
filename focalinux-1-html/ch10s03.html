@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>passwd</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch10.html" title="Capítulo 10. Comandos para manipulação de contas" /><link rel="prev" href="ch10s02.html" title="addgroup" /><link rel="next" href="ch10s04.html" title="gpasswd" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">passwd</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch10s02.html">Anterior</a> </td><th width="60%" align="center">Capítulo 10. Comandos para manipulação de contas</th><td width="20%" align="right"> <a accesskey="n" href="ch10s04.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch10.html">Comandos para manipulação de contas</a></span> &gt; <span class="breadcrumb-node">passwd</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdc-passwd"></a>passwd</h2></div></div></div>
+<p>
+Modifica a parametros e senha de usuário.  
+ Um usuário somente pode alterar a
+senha de sua conta, mas o superusuário (<code class="literal">root</code>) pode alterar a
+senha de qualquer conta de usuário, inclusive a data de validade da conta, etc.
+Os donos de grupos também podem alterar a senha do grupo com este comando.
+</p>
+<p>
+Os dados da conta do usuário como nome, endereço, telefone, também podem ser
+alterados com este comando.
+</p>
+
+<p>
+<span class="command"><strong>passwd</strong></span> [<span class="emphasis"><em>usuário</em></span>]
+[<span class="emphasis"><em>opções</em></span>]
+</p>
+ 
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>usuário</em></span></span></dt><dd>
+<p>
+Nome do usuário que terá sua senha alterada.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-e</span></dt><dd>
+<p>
+Força a expiração de senha para a conta especificada.
+</p>
+</dd><dt><span class="term">-k</span></dt><dd>
+<p>
+Somente altera a senha se a conta estiver expirada.
+</p>
+</dd><dt><span class="term">-x [dias]</span></dt><dd>
+<p>
+Especifica o número máximo de dias que a senha poderá ser usada.  Após terminar
+o prazo, a senha deverá ser modificada.
+</p>
+</dd><dt><span class="term">-i</span></dt><dd>
+<p>
+Desativa a conta caso o usuário não tenha alterado sua senha após o tempo
+especificado por -x.
+</p>
+</dd><dt><span class="term">-n [dias]</span></dt><dd>
+<p>
+Especifica o número mínimo de dias para a senha ser alterada.  O usuário não
+poderá mudar sua senha até que [dias] sejam atingidos desde a última alteração
+de senha.
+</p>
+</dd><dt><span class="term">-w [num]</span></dt><dd>
+<p>
+Número de dias antecedentes que o usuário receberá o alerta para mudar sua
+senha.  O alerta ocorre [num] dias antes do limite da opção -x, avisando ao
+usuários quantos dias restam para a troca de sua senha.
+</p>
+</dd><dt><span class="term">-l [nome]</span></dt><dd>
+<p>
+Bloqueia a conta do usuário [nome].  Deve ser usada pelo root.  O bloqueio da
+conta é feito acrescentando um caracter a senha para que não confira com a
+senha original.
+</p>
+</dd><dt><span class="term">-u [nome]</span></dt><dd>
+<p>
+Desbloqueia a conta de um usuário bloqueada com a opção -l.
+</p>
+</dd><dt><span class="term">-S [nome]</span></dt><dd>
+<p>
+Mostra o status da conta do usuário [nome].  A primeira parte é o nome do
+usuário seguido de L(conta bloqueada), NP(sem senha), ou P (com senha), a
+terceira parte é a data da última modificação da senha, a quarta parte é a
+período mínimo, máximo, alerta e o período de inatividade para a senha.
+</p>
+</dd></dl></div>
+
+<p>
+Procure sempre combinar letras maiúsculas, minúsculas, e números ao escolher
+suas senhas.  Não é recomendado escolher palavras normais como sua senha pois
+podem ser vulneráveis a ataques de dicionários cracker.  Outra recomendação é
+utilizar <span class="emphasis"><em>senhas ocultas</em></span> em seu sistema (<span class="emphasis"><em>shadow
+password</em></span>).
+</p>
+ 
+<p>
+Você deve ser o dono da conta para poder modificar a senhas.  O usuário root
+pode modificar/apagar a senha de qualquer usuário.
+</p>
+
+
+<p>
+Exemplo: <code class="literal">passwd root</code>.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch10s02.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch10.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch10s04.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">addgroup </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> gpasswd</td></tr></table></div></body></html>

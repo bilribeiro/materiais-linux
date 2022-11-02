@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Etapas para acesso a um arquivo/diretório</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="prev" href="ch11s02.html" title="Tipos de Permissões de Acesso" /><link rel="next" href="ch11s04.html" title="Exemplos práticos de permissões de acesso" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Etapas para acesso a um arquivo/diretório</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s02.html">Anterior</a> </td><th width="60%" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th><td width="20%" align="right"> <a accesskey="n" href="ch11s04.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch11.html">Permissões de acesso a arquivos e diretórios</a></span> &gt; <span class="breadcrumb-node">Etapas para acesso a um arquivo/diretório</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-acessando"></a>Etapas para acesso a um arquivo/diretório</h2></div></div></div>
+<p>
+O acesso a um arquivo/diretório é feito verificando primeiro se o usuário que
+acessará o arquivo é o seu <span class="emphasis"><em>dono</em></span>, caso seja, as permissões
+de dono do arquivo são aplicadas.  Caso não seja o <span class="emphasis"><em>dono</em></span> do
+arquivo/diretório, é verificado se ele pertence ao grupo correspondente, caso
+pertença, as permissões do <span class="emphasis"><em>grupo</em></span> são aplicadas.  Caso não
+pertença ao <span class="emphasis"><em>grupo</em></span>, são verificadas as permissões de acesso
+para os outros usuários que não são <span class="emphasis"><em>donos</em></span> e não pertencem
+ao <span class="emphasis"><em>grupo</em></span> correspondente ao arquivo/diretório.
+</p>
+<p>
+Após verificar aonde o usuário se encaixa nas permissões de acesso do arquivo
+(se ele é o <span class="emphasis"><em>dono</em></span>, pertence ao <span class="emphasis"><em>grupo</em></span>,
+ou <span class="emphasis"><em>outros usuários</em></span>), é verificado se ele terá permissão
+acesso para o que deseja fazer (ler, gravar ou executar o arquivo), caso não
+tenha, o acesso é negado, mostrando uma mensagem do tipo: "Permission denied"
+(permissão negada).
+</p>
+<p>
+O que isto que dizer é que mesmo que você seja o dono do arquivo e definir o
+acesso do <span class="emphasis"><em>dono</em></span> (através do comando
+<span class="command"><strong>chmod</strong></span>) como somente leitura (r) mas o acesso dos
+<span class="emphasis"><em>outros usuários</em></span> como leitura e gravação, você somente
+poderá ler este arquivo mas os outros usuários poderão ler/grava-lo.
+</p>
+<p>
+As permissões de acesso (leitura, gravação, execução) para donos, grupos e
+outros usuários são independentes, permitindo assim um nível de acesso
+diferenciado.  Para maiores detalhes veja <a class="xref" href="ch11s02.html" title="Tipos de Permissões de Acesso">“Tipos de Permissões de Acesso”</a>.
+</p>
+
+<p>
+Lembre-se: Somente o dono pode modificar as permissões de um arquivo/diretório!
+</p>
+
+<p>
+Para mais detalhes veja os comandos <a class="xref" href="ch11s09.html" title="chown">“chown”</a> e <a class="xref" href="ch11s08.html" title="chgrp">“chgrp”</a>.
+</p>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s02.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s04.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Tipos de Permissões de Acesso </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Exemplos práticos de permissões de acesso</td></tr></table></div></body></html>

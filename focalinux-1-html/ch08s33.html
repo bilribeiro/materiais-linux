@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>diff</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s32.html" title="dirname" /><link rel="next" href="ch08s34.html" title="pr" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">diff</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s32.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s34.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">diff</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-diff"></a>diff</h2></div></div></div>
+<p>
+Compara dois arquivos e mostra as diferenças entre eles.  O comando
+<span class="command"><strong>diff</strong></span> é usado somente para a comparação de arquivos em
+formato texto.  
+ As diferenças encontradas podem ser redirecionadas para um
+arquivo que poderá ser usado pelo comando <span class="command"><strong>patch</strong></span> para aplicar
+as alterações em um arquivo que não contém as diferenças.  Isto é útil para
+grandes textos porque é possível copiar somente as modificações (geradas
+através do diff, que são muito pequenas) e aplicar no arquivo para atualiza-lo
+(através do <span class="command"><strong>patch</strong></span>) ao invés de copiar a nova versão.  Este é
+um sistema de atualização muito usado na atualização dos código fonte do kernel
+do <span class="command"><strong>Linux</strong></span>. 
+</p>
+<p>
+<span class="command"><strong>diff</strong></span> [<span class="emphasis"><em>diretório1/arquivo1</em></span>] [<span class="emphasis"><em>diretório2/arquivo2</em></span>] 
+[<span class="emphasis"><em>opções</em></span>]
+</p>
+
+<p>
+Opções:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>diretório1/arquivo1 diretório2/arquivo2</em></span></span></dt><dd>
+<p>
+Arquivos /diretórios que serão comparados.  Normalmente é usado como primeiro
+arquivo/diretório o mais antigo e o mais novo como segundo.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-lines [num]</span></dt><dd>
+<p>
+Gera a diferença com [num] linhas de contexto.  Por padrão o
+<span class="command"><strong>diff</strong></span> gera um arquivo com 2 linhas que é o mínimo necessário
+para o correto funcionamento do <span class="command"><strong>patch</strong></span>.
+</p>
+</dd><dt><span class="term">-a</span></dt><dd>
+<p>
+Compara os dois arquivos como arquivos texto.
+</p>
+</dd><dt><span class="term">-b</span></dt><dd>
+<p>
+Ignora espaços em branco como diferenças.
+</p>
+</dd><dt><span class="term">-B</span></dt><dd>
+<p>
+Ignora linhas em branco inseridas ou apagadas nos arquivos.
+</p>
+</dd><dt><span class="term">-i</span></dt><dd>
+<p>
+Ignora diferenças entre maiúsculas e minúsculas nos arquivos.
+</p>
+</dd><dt><span class="term">-H</span></dt><dd>
+<p>
+Usa análise heurística para verificar os arquivos.
+</p>
+</dd><dt><span class="term">-N</span></dt><dd>
+<p>
+Em uma comparação de diretórios, se o arquivo apenas existe em um diretório,
+trata-o como presente mas vazio no outro diretório.
+</p>
+</dd><dt><span class="term">-P</span></dt><dd>
+<p>
+Em uma comparação de diretórios, se o arquivos apenas existe no segundo
+diretório, trata-o como presente mas vazio no primeiro diretório.
+</p>
+</dd><dt><span class="term">-q</span></dt><dd>
+<p>
+Mostra somente se os dois arquivos possuem diferenças.  Não mostra as
+diferenças entre eles.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Compara diretórios e sub-diretórios existentes.
+</p>
+</dd><dt><span class="term">-S [nome]</span></dt><dd>
+<p>
+Inicia a comparação de diretórios pelo arquivo [nome].  É útil quando
+cancelamos uma comparação.
+</p>
+</dd><dt><span class="term">-t</span></dt><dd>
+<p>
+Aumenta a tabulação das diferenças encontradas.
+</p>
+</dd><dt><span class="term">-u</span></dt><dd>
+<p>
+Usa o formato de comparação unificado.
+</p>
+</dd></dl></div>
+
+<p>
+Use o comando <span class="command"><strong>zdiff</strong></span> para comparar diretamente arquivos
+compactados pelo utilitário <span class="command"><strong>gzip</strong></span>
+</p>
+<p>
+Use o comando <span class="command"><strong>sdiff</strong></span> para visualizar as linhas diferentes
+entre os dois arquivos em formato texto simples.
+</p>
+
+<p>
+Exemplo:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">diff texto.txt texto1.txt</code> - Compara o arquivo
+<code class="filename">texto.txt</code> com <code class="filename">texto1.txt</code> e exibe suas
+diferenças na tela.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">diff -Bu texto.txt texto1.txt</code> - Compara o arquivo
+<code class="filename">texto.txt</code> com <code class="filename">texto1.txt</code> ignorando
+linhas em branco diferentes entre os dois arquivos e usando o formato
+unificado.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">diff texto.txt texto1.txt &gt;texto.diff</code> - Compara o arquivo
+<code class="filename">texto.txt</code> com <code class="filename">texto1.txt</code> e gera um
+arquivo chamado <code class="filename">texto.diff</code> contendo a diferença entre
+eles.  Este arquivo poderá ser usado pelo <span class="command"><strong>patch</strong></span> para aplicar
+as diferenças existente entre os dois no arquivo
+<code class="filename">texto.txt</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">diff -r /usr/src/linux-2.2.13 /usr/src/linux-2.2.14
+&gt;patch-2.2.14.diff</code> - Compara o diretório e sub-diretórios
+<code class="filename">linux-2.2.13</code> e <code class="filename">linux-2.2.14</code> e grava
+as diferenças entre eles no arquivo <code class="filename">patch-2.2.14.diff</code>.
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s32.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s34.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">dirname </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> pr</td></tr></table></div></body></html>

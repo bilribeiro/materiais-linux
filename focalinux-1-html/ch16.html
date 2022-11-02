@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Capítulo 16. Como obter ajuda</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="index.html" title="Guia Foca Linux" /><link rel="prev" href="ch15s04.html" title="Servidor X" /><link rel="next" href="ch16s02.html" title="Info Pages" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Capítulo 16. Como obter ajuda</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch15s04.html">Anterior</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch16s02.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-node">Como obter ajuda</span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="ajuda"></a>Capítulo 16. Como obter ajuda</h1></div></div></div><div class="toc"><p><strong>Índice</strong></p><dl class="toc"><dt><span class="section"><a href="ch16.html#ajuda-man">Páginas de Manual</a></span></dt><dt><span class="section"><a href="ch16s02.html">Info Pages</a></span></dt><dt><span class="section"><a href="ch16s03.html">Ajuda na própria linha de comandos</a></span></dt><dt><span class="section"><a href="ch16s04.html">help</a></span></dt><dt><span class="section"><a href="ch16s05.html">apropos</a></span></dt><dt><span class="section"><a href="ch16s06.html">whatis</a></span></dt><dt><span class="section"><a href="ch16s07.html">locate</a></span></dt><dt><span class="section"><a href="ch16s08.html">which</a></span></dt><dt><span class="section"><a href="ch16s09.html">Documentos HOWTO's</a></span></dt><dt><span class="section"><a href="ch16s10.html">Documentação de Programas</a></span></dt><dt><span class="section"><a href="ch16s11.html">FAQ</a></span></dt><dt><span class="section"><a href="ch16s12.html">Internet</a></span></dt><dd><dl><dt><span class="section"><a href="ch16s12.html#ajuda-paginas">Páginas Internet de Referência</a></span></dt><dt><span class="section"><a href="ch16s12.html#ajuda-listas">Listas de discussão</a></span></dt></dl></dd><dt><span class="section"><a href="ch16s13.html">Netiqueta</a></span></dt><dd><dl><dt><span class="section"><a href="ch16s13.html#ajuda-netiqueta-geral">Recomendações Gerais sobre a Comunicação Eletrônica</a></span></dt><dt><span class="section"><a href="ch16s13.html#ajuda-netiqueta-email">Email</a></span></dt><dt><span class="section"><a href="ch16s13.html#ajuda-netiqueta-rtmsg">Telegram/Whatsapp/Messenger/Gtalk/Skype</a></span></dt><dt><span class="section"><a href="ch16s13.html#ajuda-netiqueta-talk">Talk</a></span></dt><dt><span class="section"><a href="ch16s13.html#ajuda-netiqueta-listas">Listas de Discussão via Email</a></span></dt></dl></dd></dl></div>
+<p>
+Dúvidas são comuns durante o aprendizado e uso do <span class="command"><strong>Linux</strong></span> e existem
+várias maneiras de se obter ajuda e encontrar a resposta para algum problema.
+O <span class="command"><strong>GNU/Linux</strong></span> é um sistema bem documentado, e ter um programa
+bem documentado é o princípio para seu sucesso junto a utilizadores e desenvolvedores,
+pois demonstra a dedicação de seu desenvolvedor em garantir boa usabilidade.
+Abaixo segue algumas formas úteis para encontrar a solução de sua dúvida, vale
+a pena conhece-las.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ajuda-man"></a>Páginas de Manual</h2></div></div></div>
+<p>
+As <span class="emphasis"><em>páginas de manual</em></span> acompanham quase todos os programas
+<span class="command"><strong>GNU/Linux</strong></span>. Elas trazem uma descrição básica do
+comando/programa e detalhes sobre o funcionamento de opção.  
+</p>
+<p>
+É mais comum fazer a visualização de uma página de manual em modo texto, com 
+rolagem vertical, em geral com a aparência de arquivos
+visualizados com os comandos <span class="command"><strong>less</strong></span> e <span class="command"><strong>more</strong></span>.  
+Também documenta parâmetros usados em alguns arquivos de configuração. 
+</p>
+<p>
+A utilização da página de manual é simples, digite:
+</p>
+<p>
+<span class="command"><strong>man</strong></span> [<span class="emphasis"><em>seção</em></span>]
+[<span class="emphasis"><em>comando/arquivo</em></span>]
+</p>
+ 
+<p>
+<span class="emphasis"><em>onde:</em></span>
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>seção</em></span></span></dt><dd>
+<p>
+É a seção de manual que será aberta, se omitido, mostra a
+<span class="emphasis"><em>primeira</em></span> seção sobre o comando encontrada (em ordem
+crescente).
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>comando/arquivo</em></span></span></dt><dd>
+<p>
+Comando/arquivo que deseja pesquisar.
+</p>
+</dd></dl></div>
+
+<p>
+A navegação dentro das páginas de manual é feita usando-se as teclas abaixo:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+q - Sai da página de manual
+</p>
+</li><li class="listitem">
+<p>
+PageDown ou f - Rola uma página abaixo (25 linhas em consoles tradicionais 80x25)
+</p>
+</li><li class="listitem">
+<p>
+PageUP ou w - Rola uma página acima (25 linhas em consoles tradicionais 80x25)
+</p>
+</li><li class="listitem">
+<p>
+SetaAcima ou k - Rola 1 linha acima
+</p>
+</li><li class="listitem">
+<p>
+SetaAbaixo ou e - Rola 1 linha abaixo
+</p>
+</li><li class="listitem">
+<p>
+r - Redesenha a tela (refresh)
+</p>
+</li><li class="listitem">
+<p>
+p ou g - Inicio da página
+</p>
+</li><li class="listitem">
+<p>
+h - Ajuda sobre as teclas e atalhes da página de manual
+</p>
+</li><li class="listitem">
+<p>
+s - Salva a página de manual em formato texto no arquivo especificado (por
+exemplo: <code class="filename">/tmp/ls</code>).
+</p>
+</li></ul></div>
+<p>
+Cada seção da página de manual contém explicações sobre uma determinada parte
+do sistema.  As seções são organizadas em diretórios separados e localizadas no
+diretório 
+ <code class="filename">/usr/man</code> .  Os programas/arquivos são
+classificados nas seguintes seções:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+Programas executáveis ou comandos internos
+</p>
+</li><li class="listitem">
+<p>
+Chamadas do sistema (funções oferecidas pelo kernel)
+</p>
+</li><li class="listitem">
+<p>
+Chamadas de Bibliotecas (funções dentro de bibliotecas do sistema)
+</p>
+</li><li class="listitem">
+<p>
+Arquivos especiais (normalmente encontrados no diretório
+<code class="filename">/dev</code>)
+</p>
+</li><li class="listitem">
+<p>
+Formatos de arquivos e convenções (<code class="filename">/etc/inittab</code> por
+exemplo).
+</p>
+</li><li class="listitem">
+<p>
+Jogos
+</p>
+</li><li class="listitem">
+<p>
+Pacotes de macros e convenções (por exemplo <span class="command"><strong>man</strong></span>)
+</p>
+</li><li class="listitem">
+<p>
+Comandos de Administração do sistema (normalmente usados pelo root)
+</p>
+</li><li class="listitem">
+<p>
+Rotinas do kernel (não padrões)
+</p>
+</li></ol></div>
+<p>
+A documentação de um programa também pode ser encontrada em 2 ou mais
+categorias, como é o caso do arquivo <code class="filename">host_access</code> que é
+documentado na seção 3 (bibliotecas) e 5 (formatos de arquivo e convenções).  Por 
+este motivo é necessário digitar <code class="literal">man 5 hosts_access</code> para ler a
+página sobre o formato do arquivo, porque o comando <span class="command"><strong>man</strong></span>
+procura a página de manual nas seções em ordem crescente e a digitação do
+comando <span class="command"><strong>man hosts_access</strong></span> abriria a seção 3.
+</p>
+<p>
+As páginas de manual contém algumas regras para facilitar a compreensão do
+comando:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Texto Negrito - Deve ser digitado exatamente como é mostrado
+</p>
+</li><li class="listitem">
+<p>
+[bla bla bla] - Qualquer coisa dentro de <code class="literal">[]</code> são opcionais
+</p>
+</li></ul></div>
+ 
+<p>
+Exemplo, <code class="literal">man ls</code>, <code class="literal">man 5 hosts_access</code>.
+</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch15s04.html">Anterior</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch16s02.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Servidor X </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Info Pages</td></tr></table></div></body></html>

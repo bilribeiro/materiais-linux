@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>top</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch05.html" title="Capítulo 5. Execução de programas" /><link rel="prev" href="ch05s05.html" title="ps" /><link rel="next" href="ch05s07.html" title="Controle de execução de processos" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">top</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s05.html">Anterior</a> </td><th width="60%" align="center">Capítulo 5. Execução de programas</th><td width="20%" align="right"> <a accesskey="n" href="ch05s07.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch05.html">Execução de programas</a></span> &gt; <span class="breadcrumb-node">top</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="run-top"></a>top</h2></div></div></div>
+<p>
+Mostra os programas em execução ativos, parados, tempo usado na CPU, detalhes
+sobre o uso da memória RAM, Swap, disponibilidade para execução de programas no
+sistema, etc.
+</p>
+
+<p>
+<span class="command"><strong>top</strong></span> é um programa que continua em execução mostrando
+continuamente os processos que estão rodando em seu computador e os recursos
+utilizados por eles.  Para sair do <span class="command"><strong>top</strong></span>, pressione a tecla
+<code class="literal">q</code>. 
+</p>
+<p>
+<span class="command"><strong>top</strong></span> [<span class="emphasis"><em>opções</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">-d [tempo]</span></dt><dd>
+<p>
+Atualiza a tela após o [tempo] (em segundos).
+</p>
+</dd><dt><span class="term">-s</span></dt><dd>
+<p>
+Diz ao <span class="command"><strong>top</strong></span> para ser executado em modo seguro.
+</p>
+</dd><dt><span class="term">-i</span></dt><dd>
+<p>
+Inicia o <span class="command"><strong>top</strong></span> ignorando o tempo de processos zumbis.
+</p>
+</dd><dt><span class="term">-c</span></dt><dd>
+<p>
+Mostra a linha de comando ao invés do nome do programa.
+</p>
+</dd></dl></div>
+
+<p>
+A ajuda sobre o <span class="command"><strong>top</strong></span> pode ser obtida dentro do programa
+pressionando a tecla <code class="literal">h</code> ou pela página de manual
+(<code class="literal">man top</code>).
+</p>
+<p>
+Abaixo algumas teclas úteis:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">espaço</code> - Atualiza imediatamente a tela.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">CTRL</code>+<code class="literal">L</code> - Apaga e atualiza a tela.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">h</code> - Mostra a tela de ajuda do programa.  É mostrado todas as
+teclas que podem ser usadas com o <span class="command"><strong>top</strong></span>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">i</code> - Ignora o tempo ocioso de processos zumbis.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">q</code> - Sai do programa.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">k</code> - Finaliza um processo - semelhante ao comando
+<span class="command"><strong>kill</strong></span>.  Você será perguntado pelo número de identificação do
+processo (PID).  Este comando não estará disponível caso esteja usando o
+<span class="command"><strong>top</strong></span> com a opção <code class="literal">-s</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">n</code> - Muda o número de linhas mostradas na tela.  Se 0 for
+especificado, será usada toda a tela para listagem de processos.
+</p>
+</li></ul></div>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s05.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s07.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">ps </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Controle de execução de processos</td></tr></table></div></body></html>

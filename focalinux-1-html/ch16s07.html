@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>locate</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch16.html" title="Capítulo 16. Como obter ajuda" /><link rel="prev" href="ch16s06.html" title="whatis" /><link rel="next" href="ch16s08.html" title="which" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">locate</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch16s06.html">Anterior</a> </td><th width="60%" align="center">Capítulo 16. Como obter ajuda</th><td width="20%" align="right"> <a accesskey="n" href="ch16s08.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch16.html">Como obter ajuda</a></span> &gt; <span class="breadcrumb-node">locate</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ajuda-locate"></a>locate</h2></div></div></div>
+<p>
+Localiza uma palavra na estrutura de arquivos/diretórios do sistema.  
+ É útil quando queremos localizar onde um comando ou programa se encontra (para
+copia-lo, curiosidade, etc).  A pesquisa é feita em um banco de dados
+construído com o comando <span class="command"><strong>updatedb</strong></span> sendo feita a partir do
+diretório raíz <code class="literal">/</code> e sub-diretórios.  Para fazer uma consulta
+com o <span class="command"><strong>locate</strong></span> usamos:
+</p>
+<p>
+<span class="command"><strong>locate</strong></span> [<span class="emphasis"><em>expressão</em></span>]
+</p>
+<p>
+A <span class="emphasis"><em>expressão</em></span> deve ser o nome de um arquivo diretório ou
+ambos que serão procurados na estrutura de diretórios do sistema.  Como a
+consulta por um programa costuma localizar também sua página de manual, é
+recomendável usar <span class="emphasis"><em>"pipes"</em></span> para filtrar a saída do comando
+ (para detalhes veja <a class="xref" href="ch12s05.html" title="| (pipe)">“| (pipe)”</a> .
+</p>
+
+<p>
+Por exemplo, para listar os diretórios que contém o nome
+"<span class="emphasis"><em>cp</em></span>": <code class="literal">locate cp</code>.  Agora mostrar somente
+arquivos binários, usamos: <code class="literal">locate cp|grep bin/</code>
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch16s06.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch16.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch16s08.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">whatis </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> which</td></tr></table></div></body></html>

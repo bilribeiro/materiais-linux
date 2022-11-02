@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>seq</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s26.html" title="wc" /><link rel="next" href="ch08s28.html" title="chattr" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">seq</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s26.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s28.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">seq</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-seq"></a>seq</h2></div></div></div>
+<p>
+Imprime uma seqüência de números começando em [primeiro] e terminando em
+[último], utilizando [incremento] para avançar.
+</p>
+<p>
+<span class="command"><strong>seq</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>primeiro</em></span>]
+[<span class="emphasis"><em>incremento</em></span>] [<span class="emphasis"><em>último</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>primeiro</em></span></span></dt><dd>
+<p>
+Número inicial da seqüência.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>incremento</em></span></span></dt><dd>
+<p>
+Número utilizado para avançar na seqüência.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>último</em></span></span></dt><dd>
+<p>
+Número final da seqüência.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-f, --format=[formato]</span></dt><dd>
+<p>
+Formato de saída dos números da seqüência.  Utilize o estilo do printf para
+ponto flutuante (valor padrão: %g).
+</p>
+</dd><dt><span class="term">-s, --separator=[string]</span></dt><dd>
+<p>
+Usa [string] para separar a seqüência de números (valor padrão: \n).
+</p>
+</dd><dt><span class="term">-w, --equal-width</span></dt><dd>
+<p>
+Insere zeros na frente dos números mantendo a seqüência alinhada.
+</p>
+</dd></dl></div>
+
+
+<p>
+Observações:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Se [primeiro] ou [incremento] forem omitidos, o valor padrão 1 será utilizado.
+</p>
+</li><li class="listitem">
+<p>
+Os números recebidos são interpretados como números em ponto flutuante.
+</p>
+</li><li class="listitem">
+<p>
+[incremento] deve ser positivo se [primeiro] for menor do que o último, e
+negativo caso contrário.
+</p>
+</li><li class="listitem">
+<p>
+Quando utilizarmos a opção --format, o argumento deve ser exatamente %e, %f ou
+%g.
+</p>
+</li></ul></div>
+
+
+<p>
+Exemplos: <code class="literal">seq 0 2 10</code>, <code class="literal">seq -w 0 10</code>,
+<code class="literal">seq -f%f 0 10</code>, <code class="literal">seq -s", " 0 10</code>
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s26.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s28.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">wc </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> chattr</td></tr></table></div></body></html>

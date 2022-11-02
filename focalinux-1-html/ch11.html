@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Capítulo 11. Permissões de acesso a arquivos e diretórios</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="index.html" title="Guia Foca Linux" /><link rel="prev" href="ch10s16.html" title="groups" /><link rel="next" href="ch11s02.html" title="Tipos de Permissões de Acesso" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch10s16.html">Anterior</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch11s02.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-node">Permissões de acesso a arquivos e diretórios</span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="perm"></a>Capítulo 11. Permissões de acesso a arquivos e diretórios</h1></div></div></div><div class="toc"><p><strong>Índice</strong></p><dl class="toc"><dt><span class="section"><a href="ch11.html#perm-user-group">Donos, Grupos e outros usuários</a></span></dt><dt><span class="section"><a href="ch11s02.html">Tipos de Permissões de Acesso</a></span></dt><dt><span class="section"><a href="ch11s03.html">Etapas para acesso a um arquivo/diretório</a></span></dt><dt><span class="section"><a href="ch11s04.html">Exemplos práticos de permissões de acesso</a></span></dt><dd><dl><dt><span class="section"><a href="ch11s04.html#perm-exemplo-a">Exemplo de acesso a um arquivo</a></span></dt><dt><span class="section"><a href="ch11s04.html#perm-exemplo-d">Exemplo de acesso a um diretório</a></span></dt></dl></dd><dt><span class="section"><a href="ch11s05.html">Permissões de Acesso Especiais</a></span></dt><dt><span class="section"><a href="ch11s06.html">A conta root</a></span></dt><dt><span class="section"><a href="ch11s07.html">chmod</a></span></dt><dt><span class="section"><a href="ch11s08.html">chgrp</a></span></dt><dt><span class="section"><a href="ch11s09.html">chown</a></span></dt><dt><span class="section"><a href="ch11s10.html">Modo de permissão octal</a></span></dt><dt><span class="section"><a href="ch11s11.html">umask</a></span></dt></dl></div>
+<p>
+As permissões de acesso protegem o sistema de arquivos Linux do acesso indevido
+de pessoas ou programas não autorizados.
+</p>
+<p>
+A permissão de acesso do <span class="command"><strong>GNU/Linux</strong></span> também impede que um
+programa mal intencionado, por exemplo, apague um arquivo que não deve, envie
+arquivos especiais para outra pessoa ou forneça acesso da rede para que outros
+usuários invadam o sistema.  O sistema <span class="command"><strong>GNU/Linux</strong></span> é muito
+seguro e como qualquer outro sistema seguro e confiável impede que usuários mal
+intencionados (ou iniciantes que foram enganados) instalem programas enviados
+por terceiros sem saber para que eles realmente servem e causem danos
+irreversíveis em seus arquivos, seu micro ou sua empresa.
+</p>
+<p>
+Esta seção do guia, de inicio, pode ser um pouco dificil de se entender, então
+recomendo ler e ao mesmo tempo prática-la para uma ótima compreensão.  Não se
+preocupe, também coloquei exemplos para ajuda-lo a entender o sistema de
+permissões de acesso do ambiente <span class="command"><strong>GNU/Linux</strong></span>.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-user-group"></a>Donos, Grupos e outros usuários</h2></div></div></div>
+<p>
+A idéia básica da segurança no sistema <span class="command"><strong>GNU/Linux</strong></span> é definir o
+acesso aos arquivos por donos, grupos e outros usuários:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>dono</em></span></span></dt><dd>
+<p>
+É a pessoa que criou o arquivo ou o diretório.  O nome do dono do
+arquivo/diretório é o mesmo do usuário usado para entrar no sistema
+<span class="command"><strong>GNU/Linux</strong></span>.  Somente o dono pode modificar as permissões de
+acesso do arquivo.
+</p>
+<p>
+As permissões de acesso do dono de um arquivo somente se aplicam ao dono do
+arquivo/diretório.  A identificação do dono também é chamada de <code class="literal">user
+id</code> (UID).
+</p>
+<p>
+A identificação de usuário ao qual o arquivo pertence é armazenada no arquivo
+<code class="filename">/etc/passwd</code> e do grupo no arquivo
+<code class="filename">/etc/group</code>.  Estes são arquivos textos comuns e podem ser
+editados em qualquer editor de texto, mas utilize preferencialmente os comandos
+<span class="command"><strong>vipw</strong></span> e <span class="command"><strong>vigr</strong></span> que executa procedimentos
+adicionais de checagem de uids e grupos após a alteração.  Tenha cuidado para
+não modificar o campo que contém a senha do usuário encriptada (que pode estar
+armazenada no arquivo <code class="filename">/etc/passwd</code> caso não estiver usando
+senhas ocultas).
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>grupo</em></span></span></dt><dd>
+<p>
+Permite que vários usuários diferentes tenham acesso a um mesmo arquivo (já que
+somente o dono poderia ter acesso ao arquivo).  Cada usuário pode fazer parte
+de um ou mais grupos e então acessar arquivos que pertençam ao mesmo grupo que
+o seu (mesmo que estes arquivos tenham outro <span class="emphasis"><em>dono</em></span>).
+</p>
+<p>
+Por padrão, quando um novo usuário é criado e não especificar nenhum grupo, ele
+pertencerá ao grupo de mesmo nome do seu grupo primário (este comportamento é
+controlado pelo parametro <code class="literal">USERGROUPS=yes</code> do arquivo
+<code class="filename">/etc/adduser.conf</code>, veja <a class="xref" href="ch10s13.html" title="id">“id”</a>).  A
+identificação do grupo é chamada de <code class="literal">GID</code> (<span class="emphasis"><em>group
+id</em></span>).
+</p>
+<p>
+Um usuário pode pertencer a um ou mais grupos.  Para detalhes de como incluir o
+usuário em mais grupos veja <a class="xref" href="ch10s11.html" title="Adicionando o usuário a um grupo extra">“Adicionando o usuário a um grupo extra”</a>.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>outros</em></span></span></dt><dd>
+<p>
+É a categoria de usuários que não são donos ou não pertencem ao grupo do
+arquivo.
+</p>
+</dd></dl></div>
+<p>
+Cada um dos tipos acima possuem três tipos básicos de permissões de acesso que
+serão vistas na próxima seção.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch10s16.html">Anterior</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch11s02.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">groups </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Tipos de Permissões de Acesso</td></tr></table></div></body></html>

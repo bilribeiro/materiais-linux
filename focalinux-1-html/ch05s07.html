@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Controle de execução de processos</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch05.html" title="Capítulo 5. Execução de programas" /><link rel="prev" href="ch05s06.html" title="top" /><link rel="next" href="ch05s08.html" title="Fechando um programa quando não se sabe como sair" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Controle de execução de processos</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s06.html">Anterior</a> </td><th width="60%" align="center">Capítulo 5. Execução de programas</th><td width="20%" align="right"> <a accesskey="n" href="ch05s08.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch05.html">Execução de programas</a></span> &gt; <span class="breadcrumb-node">Controle de execução de processos</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="run-controle"></a>Controle de execução de processos</h2></div></div></div>
+<p>
+Abaixo algumas comandos e métodos úteis para o controle da execução de
+processos no <span class="command"><strong>Linux</strong></span>.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-break"></a>Interrompendo a execução de um processo</h3></div></div></div>
+<p>
+Para cancelar a execução de algum processo <code class="literal">rodando em primeiro
+plano</code>, basta pressionar as teclas
+<code class="literal">CTRL</code>+<code class="literal">C</code>.  A execução do programa será
+cancelada e será mostrado o aviso de comando.  Você também pode usar o comando
+<a class="xref" href="ch05s07.html#run-kill" title="kill">“kill”</a> para interromper um processo sendo executado.
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-pausa"></a>Parando momentaneamente a execução de um processo</h3></div></div></div>
+<p>
+Para parar a execução de um processo rodando em primeiro plano, basta
+pressionar as teclas <code class="literal">CTRL</code>+<code class="literal">Z</code>.  O programa
+em execução será pausado e será mostrado o número de seu job e o aviso de
+comando.
+</p>
+<p>
+Para retornar a execução de um comando pausado, use <a class="xref" href="ch05s07.html#run-fg" title="fg">“fg”</a> ou
+<a class="xref" href="ch05s07.html#run-bg" title="bg">“bg”</a>.
+</p>
+<p>
+O programa permanece na memória no ponto de processamento em que parou quando
+ele é interrompido.  Você pode usar outros comandos ou rodar outros programas
+enquanto o programa atual está interrompido.
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-ver-backgrounds"></a>jobs</h3></div></div></div>
+<p>
+O comando <span class="command"><strong>jobs</strong></span> mostra os processos que estão parados ou
+rodando em <span class="emphasis"><em>segundo plano</em></span>.  Processos em segundo plano são
+iniciados usando o símbolo <code class="literal">"&amp;"</code> no final da linha de comando
+ (veja <a class="xref" href="ch05s03.html" title="Tipos de Execução de comandos/programas">“Tipos de Execução de comandos/programas”</a>)  ou através do comando <span class="command"><strong>bg</strong></span>.
+</p>
+<p>
+<code class="literal">jobs</code>
+</p>
+<p>
+O número de identificação de cada processo parado ou em segundo plano (job), é
+usado com os comandos <a class="xref" href="ch05s07.html#run-fg" title="fg">“fg”</a> e <a class="xref" href="ch05s07.html#run-bg" title="bg">“bg”</a>.  Um
+processo interrompido pode ser finalizado usando-se o comando <code class="literal">kill
+%[num]</code>, onde <code class="literal">[num]</code> é o número do processo obtido
+pelo comando <span class="command"><strong>jobs</strong></span>.
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-fg"></a>fg</h3></div></div></div>
+<p>
+Permite fazer um programa rodando em segundo plano ou parado, rodar em primeiro
+plano.  Você deve usar o comando <span class="command"><strong>jobs</strong></span> para pegar o número do
+processo rodando em segundo plano ou interrompido, este número será passado ao
+comando <span class="command"><strong>fg</strong></span> para ativa-lo em primeiro plano.
+</p>
+<p>
+<span class="command"><strong>fg</strong></span> [<span class="emphasis"><em>número</em></span>]
+</p>
+<p>
+Onde <span class="emphasis"><em>número</em></span> é o número obtido através do comando
+<span class="command"><strong>jobs</strong></span>.
+</p>
+<p>
+Caso seja usado sem parâmetros, o <span class="command"><strong>fg</strong></span> utilizará o último
+programa interrompido (o maior número obtido com o comando
+<span class="command"><strong>jobs</strong></span>).
+</p>
+
+<p>
+Exemplo: <code class="literal">fg 1</code>.
+</p>
+
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-bg"></a>bg</h3></div></div></div>
+<p>
+Permite fazer um programa rodando em primeiro plano ou parado, rodar em segundo
+plano.  Para fazer um programa em primeiro plano rodar em segundo, é necessário
+primeiro interromper a execução do comando com <code class="literal">CTRL</code>+
+<code class="literal">Z</code>, será mostrado o número da tarefa interrompida, use este
+número com o comando <span class="command"><strong>bg</strong></span> para iniciar a execução do comando
+em segundo plano.
+</p>
+<p>
+<span class="command"><strong>bg</strong></span> [<span class="emphasis"><em>número</em></span>]
+</p>
+<p>
+Onde: <span class="emphasis"><em>número</em></span> número do programa obtido com o
+pressionamento das teclas <code class="literal">CTRL</code>+<code class="literal">Z</code> ou
+através do comando <span class="command"><strong>jobs</strong></span>.
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-kill"></a>kill</h3></div></div></div>
+<p>
+Permite enviar um sinal a um comando/programa. 
+ Caso seja usado sem parâmetros,
+o <span class="command"><strong>kill</strong></span> enviará um sinal de término ao processo sendo
+executado. 
+</p>
+<p>
+<span class="command"><strong>kill</strong></span> <span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>sinal</em></span>]
+[<span class="emphasis"><em>número</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>número</em></span></span></dt><dd>
+<p>
+É o número de identificação do processo obtido com o comando <a class="xref" href="ch05s05.html" title="ps">“ps”</a>.  Também pode ser o número após o sinal de
+<code class="literal">%</code> obtido pelo comando <span class="command"><strong>jobs</strong></span> para matar uma
+tarefa interrompida.  Veja <a class="xref" href="ch05s07.html#run-ver-backgrounds" title="jobs">“jobs”</a>.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>sinal</em></span></span></dt><dd>
+<p>
+Sinal que será enviado ao processo.  Se omitido usa <code class="literal">-15</code> como
+padrão.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-9</span></dt><dd>
+<p>
+Envia um sinal de destruição ao processo ou programa.  Ele é terminado
+imediatamente sem chances de salvar os dados ou apagar os arquivos temporários
+criados por ele.
+</p>
+</dd></dl></div>
+
+<p>
+Você precisa ser o dono do processo ou o usuário root para termina-lo ou
+destruí-lo.  Você pode verificar se o processo foi finalizado através do
+comando <span class="command"><strong>ps</strong></span>.  Os tipos de sinais aceitos pelo
+<span class="command"><strong>GNU/Linux</strong></span> são explicados em detalhes em <a class="xref" href="ch05s07.html#run-sinais" title="Sinais do Sistema">“Sinais do Sistema”</a>.
+</p>
+
+<p>
+Exemplo: <code class="literal">kill 500</code>, <code class="literal">kill -9 500</code>,
+<code class="literal">kill %1</code>.
+</p>
+
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-killall"></a>killall</h3></div></div></div>
+<p>
+Permite finalizar processos através do nome.
+</p>
+<p>
+<span class="command"><strong>killall</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>sinal</em></span>]
+[<span class="emphasis"><em>processo</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>processo</em></span></span></dt><dd>
+<p>
+Nome do processo que deseja finalizar
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>sinal</em></span></span></dt><dd>
+<p>
+Sinal que será enviado ao processo (pode ser obtido usando a opção
+<code class="literal">-i</code>).
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-i</span></dt><dd>
+<p>
+Pede confirmação sobre a finalização do processo.
+</p>
+</dd><dt><span class="term">-l</span></dt><dd>
+<p>
+Lista o nome de todos os sinais conhecidos.
+</p>
+</dd><dt><span class="term">-q</span></dt><dd>
+<p>
+Ignora a existência do processo.
+</p>
+</dd><dt><span class="term">-v</span></dt><dd>
+<p>
+Retorna se o sinal foi enviado com sucesso ao processo.
+</p>
+</dd><dt><span class="term">-w</span></dt><dd>
+<p>
+Finaliza a execução do <span class="command"><strong>killall</strong></span> somente após finalizar todos
+os processos.
+</p>
+</dd></dl></div>
+
+<p>
+Os tipos de sinais aceitos pelo <span class="command"><strong>GNU/Linux</strong></span> são explicados em
+detalhes na <a class="xref" href="ch05s07.html#run-sinais" title="Sinais do Sistema">“Sinais do Sistema”</a>.
+</p>
+
+<p>
+Exemplo: <code class="literal">killall -HUP inetd</code>
+</p>
+
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-killall5"></a>killall5</h3></div></div></div>
+<p>
+Envia um sinal de finalização para todos os processos sendo executados.
+</p>
+<p>
+<span class="command"><strong>killall5</strong></span> [<span class="emphasis"><em>sinal</em></span>]
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="run-sinais"></a>Sinais do Sistema</h3></div></div></div>
+<p>
+Retirado da página de manual <code class="literal">signal</code>.  O
+<span class="command"><strong>GNU/Linux</strong></span> suporta os sinais listados abaixo.  Alguns números
+de sinais são dependentes de arquitetura.
+</p>
+<p>
+Primeiro, os sinais descritos no <span class="emphasis"><em>POSIX 1</em></span>:
+</p>
+<pre class="screen">
+Sinal   Valor     Ação    Comentário
+---------------------------------------------------------------------------
+HUP        1        A      Travamento detectado no terminal de controle ou 
+                           finalização do processo controlado
+INT        2        A      Interrupção através do teclado
+QUIT       3        C      Sair através do teclado
+ILL        4        C      Instrução Ilegal
+ABRT       6        C      Sinal de abortar enviado pela função abort
+FPE        8        C      Exceção de ponto Flutuante
+KILL       9       AEF     Sinal de destruição do processo
+SEGV      11        C      Referência Inválida de memória
+PIPE      13        A      Pipe Quebrado: escreveu para o pipe sem leitores
+ALRM      14        A      Sinal do Temporizador da chamada do sistema alarm
+TERM      15        A      Sinal de Término
+USR1   30,10,16     A      Sinal definido pelo usuário 1
+USR2   31,12,17     A      Sinal definido pelo usuário 2
+CHLD   20,17,18     B      Processo filho parado ou terminado
+CONT   19,18,25            Continuar a execução, se interrompido
+STOP   17,19,23    DEF     Interromper processo
+TSTP   18,20,24     D      Interromper digitação no terminal
+TTIN   21,21,26     D      Entrada do terminal para o processo em segundo plano
+TTOU   22,22,27     D      Saída do terminal para o processo em segundo plano
+</pre>
+<p>
+As letras da coluna <code class="literal">Ação</code> tem o seguinte significado:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">A</code> - A ação padrão é terminar o processo.</p></li><li class="listitem"><p><code class="literal">B</code> - A ação padrão é ignorar o sinal.</p></li><li class="listitem"><p><code class="literal">C</code> - A ação padrão é terminar o processo e mostrar o core.</p></li><li class="listitem"><p><code class="literal">D</code> - A ação padrão é parar o processo.</p></li><li class="listitem"><p><code class="literal">E</code> - O sinal não pode ser pego.</p></li><li class="listitem"><p><code class="literal">F</code> - O sinal não pode ser ignorado.</p></li></ul></div>
+<p>
+Sinais não descritos no <span class="emphasis"><em>POSIX 1</em></span> mas descritos na
+<span class="emphasis"><em>SUSv2</em></span>:
+</p>
+<pre class="screen">
+Sinal     Valor     Ação     Comentário
+-------------------------------------------------------------------------
+BUS      10,7,10      C      Erro no Barramento (acesso incorreto da memória)
+POLL                  A      Evento executado em Pool (Sys V). Sinônimo de IO
+PROF     27,27,29     A      Tempo expirado do Profiling
+SYS      12,-,12      C      Argumento inválido para a rotina (SVID)
+TRAP        5         C      Captura do traço/ponto de interrupção
+URG      16,23,21     B      Condição Urgente no soquete (4.2 BSD)
+VTALRM   26,26,28     A      Alarme virtual do relógio (4.2 BSD)
+XCPU     24,24,30     C      Tempo limite da CPU excedido (4.2 BSD)
+XFSZ     25,25,31     C      Limite do tamanho de arquivo excedido (4.2 BSD)
+</pre>
+<p>
+(Para os casos SIGSYS, SIGXCPU, SIGXFSZ, e em algumas arquiteturas também o
+SIGGUS, a ação padrão do Linux para kernels 2.3.27 e superiores é A (terminar),
+enquanto SYSv2 descreve C (terminar e mostrar dump core).) Seguem vários outros
+sinais:
+</p>
+<pre class="screen">
+Sinal     Valor     Ação     Comentário
+--------------------------------------------------------------------
+IOT         6         C      Traço IOT. Um sinônimo para ABRT
+EMT       7,-,7
+STKFLT    -,16,-      A      Falha na pilha do processador
+IO       23,29,22     A      I/O agora possível (4.2 BSD)
+CLD       -,-,18             Um sinônimo para CHLD
+PWR      29,30,19     A      Falha de força (System V)
+INFO      29,-,-             Um sinônimo para SIGPWR
+LOST      -,-,-       A      Perda do bloqueio do arquivo
+WINCH    28,28,20     B      Sinal de redimensionamento da Janela (4.3 BSD, Sun)
+UNUSED    -,31,-      A      Sinal não usado (será SYS)
+</pre>
+<p>
+O "-" significa que o sinal não está presente.  Onde três valores são listados,
+o primeiro é normalmente válido para o Alpha e Sparc, o do meio para i386,
+PowerPc e sh, o último para o Mips.  O sinal 29 é SIGINFO/SIGPWR em um Alpha
+mas SIGLOST em um Sparc.
+</p>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s06.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s08.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">top </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Fechando um programa quando não se sabe como sair</td></tr></table></div></body></html>

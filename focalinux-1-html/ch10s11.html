@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Adicionando o usuário a um grupo extra</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch10.html" title="Capítulo 10. Comandos para manipulação de contas" /><link rel="prev" href="ch10s10.html" title="sg" /><link rel="next" href="ch10s12.html" title="chfn" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Adicionando o usuário a um grupo extra</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch10s10.html">Anterior</a> </td><th width="60%" align="center">Capítulo 10. Comandos para manipulação de contas</th><td width="20%" align="right"> <a accesskey="n" href="ch10s12.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch10.html">Comandos para manipulação de contas</a></span> &gt; <span class="breadcrumb-node">Adicionando o usuário a um grupo extra</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdc-incluirgrupo"></a>Adicionando o usuário a um grupo extra</h2></div></div></div>
+<p>
+Para adicionar um usuário em um novo grupo e assim permitir que ele acesse os
+arquivos/diretórios que pertencem àquele grupo, você deve estar como root e
+editar o arquivo <code class="filename">/etc/group</code> com o comando
+<span class="command"><strong>vigr</strong></span>.  Este arquivo possui o seguinte formato:
+</p>
+<p>
+NomedoGrupo:senha:GID:usuários
+</p>
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">NomedoGrupo</span></dt><dd>
+<p>
+É o nome daquele grupo de usuários.
+</p>
+</dd><dt><span class="term">senha</span></dt><dd>
+<p>
+Senha para ter acesso ao grupo.  Caso esteja utilizando senhas ocultas para
+grupos, as senhas estarão em <code class="filename">/etc/gshadow</code>.
+</p>
+</dd><dt><span class="term">GID</span></dt><dd>
+<p>
+Identificação numérica do grupo de usuário.
+</p>
+</dd><dt><span class="term">usuarios</span></dt><dd>
+<p>
+Lista de usuários que também fazem parte daquele grupo.  Caso exista mais de um
+nome de usuário, eles devem estar separados por vírgula.
+</p>
+</dd></dl></div>
+<p>
+Deste modo para acrescentar o usuário "joao" ao grupo <code class="literal">audio</code>
+para ter acesso aos dispositivos de som do Linux, acrescente o nome no final da
+linha: "audio:x:100:joao".  Pronto, basta digitar <code class="literal">logout</code> e
+entrar novamente com seu nome e senha, você estará fazendo parte do grupo
+<code class="literal">audio</code> (confira digitando <code class="literal">groups</code> ou
+<code class="literal">id</code>).
+</p>
+<p>
+Outros nomes de usuários podem ser acrescentados ao grupo
+<code class="literal">audio</code> bastando separar os nomes com vírgula.  Você também
+pode usar o comando <span class="command"><strong>adduser</strong></span> da seguinte forma para adicionar
+automaticamente um usuário a um grupo:
+</p>
+<pre class="screen">
+adduser joao audio
+</pre>
+<p>
+Isto adicionaria o usuário "joao" ao grupo <code class="literal">audio</code> da mesma
+forma que fazendo-se a edição manualmente.
+</p>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch10s10.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch10.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch10s12.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">sg </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> chfn</td></tr></table></div></body></html>

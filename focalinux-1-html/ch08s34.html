@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pr</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s33.html" title="diff" /><link rel="next" href="ch08s35.html" title="patch" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">pr</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s33.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s35.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">pr</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-pr"></a>pr</h2></div></div></div>
+<p>
+Página arquivos texto ou a entrada padrão para impressão.  
+ Este comando faz a
+paginação de um arquivo texto e opcionalmente ajusta o número de colunas e
+mostra o resultado na saída padrão. 
+</p>
+<p>
+<span class="command"><strong>pr</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>arquivo</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>arquivo</em></span></span></dt><dd>
+<p>
+Arquivo que será paginado para impressão.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">+[NUM]</span></dt><dd>
+<p>
+Inicia a numeração de páginas na página [PAGINA]
+</p>
+</dd><dt><span class="term">-[NUM]</span></dt><dd>
+<p>
+Mostra a saída com [NUM] colunas.
+</p>
+</dd><dt><span class="term">-c</span></dt><dd>
+<p>
+Imprime o caracter CTRL como <code class="literal">"^"</code> na saída padrão.
+</p>
+</dd><dt><span class="term">-F, -f</span></dt><dd>
+<p>
+Usa avanço de página ao invés de linhas em branco para separar páginas.
+</p>
+</dd><dt><span class="term">-e[caracter][tamanho]</span></dt><dd>
+<p>
+Usa o caracter [caracter] como tabulação (o padrão é tab) e o espaço da
+tabulação [tamanho].
+</p>
+</dd><dt><span class="term">-h [nome]</span></dt><dd>
+<p>
+Mostra [nome] ao invés do nome do arquivo no cabeçalho.
+</p>
+</dd><dt><span class="term">-l [num]</span></dt><dd>
+<p>
+Define o número máximo de linhas por página para [num].
+</p>
+</dd><dt><span class="term">-m</span></dt><dd>
+<p>
+Imprime vários arquivos em paralelo, um por coluna.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Oculta mensagens de erro de abertura de arquivos.
+</p>
+</dd><dt><span class="term">-w [num]</span></dt><dd>
+<p>
+Ajusta a largura da página para [num] colunas (o padrão é 72).
+</p>
+</dd></dl></div>
+
+
+<p>
+Exemplo: <code class="literal">pr -l 50 -h "Teste do comando pr" teste.txt</code>.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s33.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s35.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">diff </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> patch</td></tr></table></div></body></html>

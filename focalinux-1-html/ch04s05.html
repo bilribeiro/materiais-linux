@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Montando (acessando) uma partição de disco</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch04.html" title="Capítulo 4. Discos e Partições" /><link rel="prev" href="ch04s04.html" title="Identificação de discos e partições em sistemas Linux" /><link rel="next" href="ch04s06.html" title="Desmontando uma partição de disco" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Montando (acessando) uma partição de disco</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s04.html">Anterior</a> </td><th width="60%" align="center">Capítulo 4. Discos e Partições</th><td width="20%" align="right"> <a accesskey="n" href="ch04s06.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch04.html">Discos e Partições</a></span> &gt; <span class="breadcrumb-node">Montando (acessando) uma partição de disco</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="disc-montagem"></a>Montando (acessando) uma partição de disco</h2></div></div></div>
+<p>
+Você pode acessar uma partição de disco usando o comando
+<span class="command"><strong>mount</strong></span>.
+</p>
+<p>
+<span class="command"><strong>mount</strong></span> [<span class="emphasis"><em>dispositivo</em></span>] [<span class="emphasis"><em>ponto de
+montagem</em></span>] [<span class="emphasis"><em>opções</em></span>]
+</p>
+ 
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>dispositivo</em></span></span></dt><dd>
+<p>
+Identificação da unidade de disco/partição que deseja acessar (como
+<code class="literal">/dev/hda1</code> (disco rígido) ou <code class="literal">/dev/fd0</code>
+(primeira unidade de disquetes).
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>ponto de montagem</em></span></span></dt><dd>
+<p>
+Diretório de onde a <span class="emphasis"><em>unidade de disco/partição</em></span> será
+acessado.  O diretório deve estar vazio para montagem de um sistema de arquivo.
+Normalmente é usado o diretório <code class="filename">/mnt</code> para armazenamento de
+pontos de montagem temporários.
+</p>
+</dd><dt><span class="term">-t [tipo]</span></dt><dd>
+<p>
+Tipo do sistema de arquivos usado pelo <span class="emphasis"><em>dispositivo</em></span>.  São
+aceitos os sistemas de arquivos:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<span class="emphasis"><em>ext2</em></span> - Para partições <span class="command"><strong>GNU/Linux</strong></span> usando
+o Extended File System versão 2 (a mais comum).
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>ext3</em></span> - Para partições <span class="command"><strong>GNU/Linux</strong></span> usando
+o Extended File System versão 3, com suporte a journaling.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>ext4</em></span> - Para partições <span class="command"><strong>GNU/Linux</strong></span> usando
+o Extended File System versão 4, com suporte a journaling.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>reiserfs</em></span> - Para partições reiserfs, com suporte a
+journaling.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>xfs</em></span> - Para partições xfs, com suporte a journaling.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>vfat</em></span> - Para partições <span class="command"><strong>Windows 95</strong></span> que
+utilizam nomes extensos de arquivos e diretórios.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>msdos</em></span> - Para partições <span class="command"><strong>DOS</strong></span> normais.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>iso9660</em></span> - Para montar unidades de
+<span class="command"><strong>CD-ROM</strong></span>.  É o padrão.
+</p>
+</li></ul></div>
+<p>
+Na maioria das vezes, caso o sistema de arquivos não seja especificado, o
+<span class="command"><strong>mount</strong></span> utilizará a auto-detecção e montará a partição usando
+o sistema de arquivos correto.  Para mais detalhes sobre opções usadas com cada
+sistema de arquivos, veja a página de manual <span class="emphasis"><em>mount</em></span>.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Caso for especificada, monta a partição somente para leitura.
+</p>
+</dd><dt><span class="term">-w</span></dt><dd>
+<p>
+Caso for especificada, monta a partição como leitura/gravação.  É o padrão.
+</p>
+</dd></dl></div>
+
+<p>
+Existem muitas outras opções que podem ser usadas com o comando
+<span class="command"><strong>mount</strong></span>, mas aqui procurei somente mostrar o básico para
+"montar" seus discos e partições no <span class="command"><strong>GNU/Linux</strong></span> (para mais
+opções, veja a página de manual do <code class="literal">mount</code>).  Caso você
+digitar <code class="literal">mount</code> sem parâmetros, serão mostrados que sistemas de
+arquivos estão atualmente montados no sistema.  Esta mesma listagem pode ser vista em
+<code class="filename">/etc/mtab</code>.  
+
+ 
+A remontagem de partição também é muito útil,
+especialmente após reparos nos sistema de arquivos do disco rígido.  Veja
+alguns exemplos de remontagem abaixo.
+</p>
+<p>
+É necessário permissões de root para montar partições, a não ser que tenha
+especificado a opção <code class="literal">user</code> no arquivo
+<code class="filename">/etc/fstab</code> (veja <a class="xref" href="ch04s05.html#disc-fstab" title="fstab">“fstab”</a>).
+</p>
+<p>
+Exemplo de Montagem:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Montar uma partição Windows (vfat) de <code class="filename">/dev/sda1</code> em
+<code class="filename">/mnt</code> somente para leitura: <code class="literal">mount /dev/sda1 /mnt
+-r -t vfat</code>
+</p>
+</li><li class="listitem">
+<p>
+Montar um pen-drive detectado em <code class="filename">/dev/sdc1</code> em
+<code class="filename">/mnt</code>: <code class="literal">mount /dev/sdc1 /mnt -t vfat</code>
+</p>
+</li><li class="listitem">
+<p>
+Montar uma partição DOS localizada em um segundo disco rígido
+<code class="filename">/dev/hdb1</code> em <code class="filename">/mnt</code>: <code class="literal">mount
+/dev/hdb1 /mnt -t msdos</code>.
+</p>
+</li><li class="listitem">
+<p>
+Remontar a partição raíz como somente leitura: <code class="literal">mount -o remount,ro
+/</code>
+</p>
+</li><li class="listitem">
+<p>
+Remontar a partição raíz como <span class="emphasis"><em>leitura/gravação</em></span> (a opção -n
+é usada porque o <span class="command"><strong>mount</strong></span> não conseguirá atualizar o arquivo
+<code class="filename">/etc/mtab</code> devido ao sistema de arquivos
+<code class="filename">/</code> estar montado como somente leitura atualmente:
+<code class="literal">mount -n -o remount,rw /</code>.
+</p>
+</li></ul></div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="disc-fstab"></a>fstab</h3></div></div></div>
+<p>
+O arquivo <code class="filename">/etc/fstab</code> permite que as partições do sistema
+sejam montadas facilmente especificando somente o dispositivo ou o ponto de
+montagem.  Este arquivo contém parâmetros sobre as partições que são lidos pelo
+comando <span class="command"><strong>mount</strong></span>.  Cada linha deste arquivo contém a partição
+que desejamos montar, o ponto de montagem, o sistema de arquivos usado pela
+partição e outras opções.  <code class="filename">fstab</code> tem a seguinte forma:
+</p>
+<pre class="screen">
+Sistema_de_arquivos Ponto_de_Montagem Tipo    Opções           dump ordem
+/dev/sda1           /                 ext3    defaults           0    1
+/dev/sda2           /boot             ext3    defaults           0    2
+/dev/sda3           /dos              msdos   defaults,noauto,rw 0    0
+/dev/hdg            /cdrom            iso9660 defaults,noauto    0    0
+</pre>
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">Sistema de Arquivos</span></dt><dd>
+<p>
+Partição que deseja montar.
+</p>
+</dd><dt><span class="term">Ponto de montagem</span></dt><dd>
+<p>
+Diretório do <span class="command"><strong>GNU/Linux</strong></span> onde a partição montada será
+acessada.
+</p>
+</dd><dt><span class="term">Tipo</span></dt><dd>
+<p>
+Tipo de sistema de arquivos usado na partição que será montada.  Para partições
+<span class="command"><strong>GNU/Linux</strong></span> use <span class="emphasis"><em>ext3</em></span>,
+<span class="emphasis"><em>reiserfs</em></span>, <span class="emphasis"><em>xfs</em></span> (de acordo com o tipo
+de partição selecionada durante a formatação), para partições
+<span class="command"><strong>DOS</strong></span> (sem nomes extensos de arquivos) use
+<span class="emphasis"><em>msdos</em></span>, para partições <span class="command"><strong>Win 95</strong></span> (com
+suporte a nomes extensos de arquivos) use <span class="emphasis"><em>vfat</em></span>, para
+unidades de CD-ROM use <span class="emphasis"><em>iso9660</em></span>.
+</p>
+</dd><dt><span class="term">Opções</span></dt><dd>
+<p>
+Especifica as opções usadas com o sistema de arquivos.  Abaixo, algumas opções
+de montagem para ext2/3/4 (a lista completa pode ser encontrada na página de
+manual do <span class="command"><strong>mount</strong></span>):
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">defaults</code> - Utiliza valores padrões de montagem.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">noauto</code> - Não monta os sistemas de arquivos durante a
+inicialização (útil para CD-ROMS e disquetes).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">ro</code> - Monta como somente leitura.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">user</code> - Permite que usuários montem o sistema de arquivos
+(não recomendado por motivos de segurança).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">sync</code> é recomendado para uso com discos removíveis
+(disquetes, zip drives, nfs, etc) para que os dados sejam gravados
+imediatamente na unidade (caso não seja usada, você deve usar o comando <a class="xref" href="ch08s22.html" title="sync">“sync”</a> antes de retirar o disquete da unidade.
+</p>
+</li></ul></div>
+</dd><dt><span class="term">dump</span></dt><dd>
+<p>
+Especifica a frequência de backup feita com o programa <span class="command"><strong>dump</strong></span>
+no sistema de arquivos.  0 desativa o backup.
+</p>
+</dd><dt><span class="term">Ordem</span></dt><dd>
+<p>
+Define a ordem que os sistemas de arquivos serão verificados na inicialização
+do sistema.  Se usar 0, o sistema de arquivos não é verificado.  O sistema de
+arquivos raíz que deverá ser verificado primeiro é o raíz "/" 
+ (a não ser quevocê tenha um sistema de arquivos de outro 
+tipo que não é montado dentro do diretório raíz e possui seu suporte embutido 
+no kernel). 
+</p>
+</dd></dl></div>
+<p>
+Após configurar o <code class="filename">/etc/fstab</code>, basta digitar o comando
+<code class="literal">mount /dev/hdg</code> ou <code class="literal">mount /cdrom</code> para que a
+unidade de CD-ROM seja montada.  Você deve ter notado que não é necessário
+especificar o sistema de arquivos da partição pois o <span class="command"><strong>mount</strong></span>
+verificará se ele já existe no <code class="filename">/etc/fstab</code> e caso existir,
+usará as opções especificadas neste arquivo.  Para maiores detalhes veja as
+páginas de manual <code class="filename">fstab</code> e <span class="command"><strong>mount</strong></span>.
+</p>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s04.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s06.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Identificação de discos e partições em sistemas Linux </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Desmontando uma partição de disco</td></tr></table></div></body></html>

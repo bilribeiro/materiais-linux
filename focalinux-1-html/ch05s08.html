@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Fechando um programa quando não se sabe como sair</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch05.html" title="Capítulo 5. Execução de programas" /><link rel="prev" href="ch05s07.html" title="Controle de execução de processos" /><link rel="next" href="ch05s09.html" title="Eliminando caracteres estranhos" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Fechando um programa quando não se sabe como sair</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s07.html">Anterior</a> </td><th width="60%" align="center">Capítulo 5. Execução de programas</th><td width="20%" align="right"> <a accesskey="n" href="ch05s09.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch05.html">Execução de programas</a></span> &gt; <span class="breadcrumb-node">Fechando um programa quando não se sabe como sair</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="run-fechando"></a>Fechando um programa quando não se sabe como sair</h2></div></div></div>
+<p>
+Muitas vezes quando se esta iniciando no <span class="command"><strong>GNU/Linux</strong></span> você pode
+executar um programa e talvez não saiba como fecha-lo.  Este capítulo do guia
+pretende ajuda-lo a resolver este tipo de problema.
+</p>
+<p>
+Isto pode também ocorrer com programadores que estão construindo seus programas
+e por algum motivo não implementam uma opção de saída, ou ela não funciona!
+</p>
+<p>
+Em nosso exemplo vou supor que executamos um programa em desenvolvimento com o
+nome <span class="command"><strong>contagem</strong></span> que conta o tempo em segundos a partir do
+momento que é executado, mas que o programador esqueceu de colocar uma opção de
+saída.  Siga estas dicas para finaliza-lo:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+Normalmente todos os programas <span class="command"><strong>UNIX</strong></span> (o
+<span class="command"><strong>GNU/Linux</strong></span> também é um Sistema Operacional baseado no
+<span class="command"><strong>UNIX</strong></span>) podem ser interrompidos com o pressionamento das
+teclas <code class="literal">&lt;CTRL&gt;</code> e <code class="literal">&lt;C&gt;</code>.  Tente
+isto primeiro para finalizar um programa.  Isto provavelmente não vai funcionar
+se estiver usando um Editor de Texto (ele vai entender como um comando de
+menu).  Isto normalmente funciona para comandos que são executados e terminados
+sem a intervenção do usuário.
+</p>
+<p>
+Caso isto não der certo, vamos partir para a força!  ;-)
+</p>
+</li><li class="listitem">
+<p>
+Mude para um novo console (pressionando <code class="literal">&lt;ALT&gt;</code> e
+<code class="literal">&lt;F2&gt;</code>), e faça o <span class="emphasis"><em>login</em></span> como
+usuário <span class="strong"><strong>root</strong></span>.
+</p>
+</li><li class="listitem">
+<p>
+Localize o PID (número de identificação do processo) usando o comando:
+<code class="literal">ps ax</code>, aparecerão várias linhas cada uma com o número do
+processo na primeira coluna, e a linha de comando do programa na última coluna.
+Caso aparecerem vários processos você pode usar <code class="literal">ps ax|grep
+contagem</code>, neste caso o <span class="command"><strong>grep</strong></span> fará uma filtragem da
+saída do comando <code class="literal">ps ax</code> mostrando somente as linhas que tem a
+palavra "contagem".  Para maiores detalhes, veja o comando <a class="xref" href="ch08s08.html" title="grep">“grep”</a>.
+</p>
+</li><li class="listitem">
+<p>
+Feche o processo usando o comando <span class="command"><strong>kill</strong></span>
+<span class="emphasis"><em>PID</em></span>, lembre-se de substituir PID pelo número
+encontrado pelo comando <span class="command"><strong>ps ax</strong></span> acima.
+</p>
+<p>
+O comando acima envia um sinal de término de execução para o processo (neste
+caso o programa <span class="command"><strong>contagem</strong></span>).  O sinal de término mantém a
+chance do programa salvar seus dados ou apagar os arquivos temporários que
+criou e então ser finalizado, isto depende do programa.
+</p>
+</li><li class="listitem">
+<p>
+Alterne para o console onde estava executando o programa
+<span class="command"><strong>contagem</strong></span> e verifique se ele ainda está em execução.  Se ele
+estiver parado mas o aviso de comando não está disponível, pressione a tecla
+&lt;ENTER&gt;.  Freqüentemente acontece isto com o comando
+<span class="command"><strong>kill</strong></span>, você finaliza um programa mas o aviso de comando não é
+mostrado até que se pressione &lt;ENTER&gt;.
+</p>
+</li><li class="listitem">
+<p>
+Caso o programa ainda não foi finalizado, repita o comando
+<span class="command"><strong>kill</strong></span> usando a opção -9: <code class="literal">kill -9 PID</code>.
+Este comando envia um sinal de DESTRUIÇÃO do processo, fazendo ele terminar "na
+marra"!
+</p>
+</li></ol></div>
+<p>
+Uma última dica: todos os programas estáveis (todos que acompanham as boas
+distribuições <span class="command"><strong>GNU/Linux</strong></span>) tem sua opção de saída.  Lembre-se
+que quando finaliza um processo todos os dados do programa em execução podem
+ser perdidos (principalmente se estiver em um editor de textos), mesmo usando o
+<span class="command"><strong>kill</strong></span> sem o parâmetro <code class="literal">-9</code>.
+</p>
+<p>
+Procure a opção de saída de um programa consultando o help on line, as páginas
+de manual, a documentação que acompanha o programa, info pages.  Para detalhes
+de como encontrar a ajuda dos programas, veja o <a class="xref" href="ch16.html" title="Capítulo 16. Como obter ajuda">Capítulo 16, <em>Como obter ajuda</em></a>
+</p>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s07.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s09.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Controle de execução de processos </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Eliminando caracteres estranhos</td></tr></table></div></body></html>

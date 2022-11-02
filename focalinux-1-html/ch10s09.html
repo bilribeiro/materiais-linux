@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>last</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch10.html" title="Capítulo 10. Comandos para manipulação de contas" /><link rel="prev" href="ch10s08.html" title="lastlog" /><link rel="next" href="ch10s10.html" title="sg" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">last</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch10s08.html">Anterior</a> </td><th width="60%" align="center">Capítulo 10. Comandos para manipulação de contas</th><td width="20%" align="right"> <a accesskey="n" href="ch10s10.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch10.html">Comandos para manipulação de contas</a></span> &gt; <span class="breadcrumb-node">last</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdc-last"></a>last</h2></div></div></div>
+<p>
+Mostra uma listagem de entrada e saída de usuários no sistema.  
+ São mostrados os seguintes campos na listagem:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Nome do usuário
+</p>
+</li><li class="listitem">
+<p>
+Terminal onde ocorreu a conexão/desconexão
+</p>
+</li><li class="listitem">
+<p>
+O hostname (caso a conexão tenha ocorrido remotamente) ou console (caso tenha
+ocorrido localmente).
+</p>
+</li><li class="listitem">
+<p>
+A data do login/logout, a hora do login/down se estiver fora do sistema/ still
+logged in se ainda estiver usando o sistema
+</p>
+</li><li class="listitem">
+<p>
+Tempo (em Horas:Minutos) que esteve conectado ao sistema.
+</p>
+</li></ul></div>
+
+<p>
+A listagem é mostrada em ordem inversa, ou seja, da data mais atual para a mais
+antiga.  A listagem feita pelo <span class="command"><strong>last</strong></span> é obtida de
+<code class="filename">/var/log/wtmp</code>.
+</p>
+<p>
+<span class="command"><strong>last</strong></span> [<span class="emphasis"><em>opções</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-n [num]</span></dt><dd>
+<p>
+Mostra [num] linhas.  Caso não seja usada, todas as linhas são mostradas.
+</p>
+</dd><dt><span class="term">-R</span></dt><dd>
+<p>
+Não mostra o campo HostName.
+</p>
+</dd><dt><span class="term">-a</span></dt><dd>
+<p>
+Mostra o hostname na última coluna.  Será muito útil se combinada com a opção
+-d.
+</p>
+</dd><dt><span class="term">-d</span></dt><dd>
+<p>
+Usa o DNS para resolver o IP de sistemas remotos para nomes DNS.
+</p>
+</dd><dt><span class="term">-x</span></dt><dd>
+<p>
+Mostra as entradas de desligamento do sistema e alterações do nível de execução
+do sistema.
+</p>
+</dd></dl></div>
+
+<p>
+O comando <span class="command"><strong>last</strong></span> pode ser seguido de um argumento que será
+pesquisado como uma expressão regular durante a listagem.
+</p>
+
+<p>
+O comando <span class="command"><strong>last</strong></span> usa o arquivo
+<code class="filename">/var/log/wtmp</code> para gerar sua listagem, mas alguns sistemas
+podem não possuir este arquivo.  O arquivo <code class="filename">/var/log/wtmp</code>
+somente é usado caso existir.  Você pode cria-lo com o comando <code class="literal">"echo
+-n &gt;/var/log/wtmp"</code> ou <code class="literal">touch /var/log/wtmp</code>. 
+</p>
+
+
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">last</code> - Mostra a listagem geral
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">last -a</code> - Mostra a listagem geral incluindo o nome da
+máquina
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">last gleydson</code> - Mostra somente atividades do usuário
+gleydson
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">last reboot</code> - Mostra as reinicializações do sistema
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">last tty1</code> - Mostra todas as atividades no tty1
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch10s08.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch10.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch10s10.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">lastlog </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> sg</td></tr></table></div></body></html>

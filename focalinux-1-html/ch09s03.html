@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>finger</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch09.html" title="Capítulo 9. Comandos de rede" /><link rel="prev" href="ch09s02.html" title="telnet" /><link rel="next" href="ch09s04.html" title="ftp" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">finger</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09s02.html">Anterior</a> </td><th width="60%" align="center">Capítulo 9. Comandos de rede</th><td width="20%" align="right"> <a accesskey="n" href="ch09s04.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch09.html">Comandos de rede</a></span> &gt; <span class="breadcrumb-node">finger</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdn-finger"></a>finger</h2></div></div></div>
+<p>
+Mostra detalhes sobre os usuários de um sistema.  
+ Algumas versões do <span class="command"><strong>finger</strong></span> possuem 
+bugs e podem significar um risco para a segurança do sistema.  É 
+recomendado desativar este serviço na máquina local. 
+</p>
+<p>
+<span class="command"><strong>finger</strong></span> [<span class="emphasis"><em>usuário</em></span>]
+[<span class="emphasis"><em>usuário@host</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>usuário</em></span></span></dt><dd>
+<p>
+Nome do usuário que deseja obter detalhes do sistema.  Se não for digitado o
+nome de usuário, o sistema mostra detalhes de todos os usuários conectados no
+momento.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>usuário@host</em></span></span></dt><dd>
+<p>
+Nome do usuário e endereço do computador que deseja obter detalhes.
+</p>
+</dd><dt><span class="term">-l</span></dt><dd>
+<p>
+Mostra os detalhes de todos os usuários conectados no momento.  Entre os
+detalhes, estão incluídos o <span class="emphasis"><em>nome do interpretador de
+comandos</em></span> (shell) do usuário, <span class="emphasis"><em>diretório home</em></span>,
+<span class="emphasis"><em>nome do usuário</em></span>, <span class="emphasis"><em>endereço</em></span>, etc.
+Estes dados são lidos de <code class="filename">/etc/passwd</code>.
+</p>
+</dd><dt><span class="term">-p</span></dt><dd>
+<p>
+Não exibe o conteúdo dos arquivos <code class="filename">.plan</code> e
+<code class="filename">.project</code>
+</p>
+</dd></dl></div>
+
+<p>
+Se for usado sem parâmetros, mostra os dados de todos os usuários conectados
+atualmente ao seu sistema.
+</p>
+
+<p>
+Exemplo: <code class="literal">finger</code>, <code class="literal">finger root</code>.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09s02.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch09.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch09s04.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">telnet </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> ftp</td></tr></table></div></body></html>

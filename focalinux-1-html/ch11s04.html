@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Exemplos práticos de permissões de acesso</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="prev" href="ch11s03.html" title="Etapas para acesso a um arquivo/diretório" /><link rel="next" href="ch11s05.html" title="Permissões de Acesso Especiais" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Exemplos práticos de permissões de acesso</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s03.html">Anterior</a> </td><th width="60%" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th><td width="20%" align="right"> <a accesskey="n" href="ch11s05.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch11.html">Permissões de acesso a arquivos e diretórios</a></span> &gt; <span class="breadcrumb-node">Exemplos práticos de permissões de acesso</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-exemplo"></a>Exemplos práticos de permissões de acesso</h2></div></div></div>
+<p>
+Abaixo dois exemplos práticos de permissão de acesso: <a class="xref" href="ch11s04.html#perm-exemplo-a" title="Exemplo de acesso a um arquivo">“Exemplo de acesso a um arquivo”</a> e a <a class="xref" href="ch11s04.html#perm-exemplo-d" title="Exemplo de acesso a um diretório">“Exemplo de acesso a um diretório”</a>.  Os dois
+exemplos são explicados passo a passo para uma perfeita compreensão do assunto.
+Vamos a prática!
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="perm-exemplo-a"></a>Exemplo de acesso a um arquivo</h3></div></div></div>
+<p>
+Abaixo um exemplo e explicação das permissões de acesso a um arquivo no
+<span class="command"><strong>GNU/Linux</strong></span> (obtido com o comando <code class="literal">ls -la</code>,
+explicarei passo a passo cada parte:
+</p>
+<p>
+-rwxr-xr-- 1 gleydson user 8192 nov 4 16:00 teste
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">-rwxr-xr--</code></span></dt><dd>
+<p>
+Estas são as permissões de acesso ao arquivo <code class="filename">teste</code>.  Um
+conjunto de 10 letras que especificam o tipo do arquivo, permissão do dono do
+arquivo, grupo do arquivo e outros usuários.  Veja a explicação detalhada sobre
+cada uma abaixo:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="strong"><strong>-</strong></span>rwxr-xr--</span></dt><dd>
+<p>
+A primeira letra (do conjunto das 10 letras) determina o tipo do arquivos.  Se
+a letra for um <span class="strong"><strong>d</strong></span> é um diretório, e você
+poderá acessa-lo usando o comando <span class="command"><strong>cd</strong></span>.  Caso for um <span class="strong"><strong>l</strong></span> é um link simbólico para algum arquivo ou diretório
+no sistema 
+ (para detalhes veja o comando <a class="xref" href="ch08s04.html" title="ln">“ln”</a> .  
+Um <span class="strong"><strong>-</strong></span> significa que é um arquivo normal.
+</p>
+</dd><dt><span class="term">-<span class="strong"><strong>rwx</strong></span>r-xr--</span></dt><dd>
+<p>
+Estas 3 letras (da segunda a quarta do conjunto das 10 letras) são as
+permissões de acesso do <span class="emphasis"><em>dono</em></span> do arquivo
+<code class="filename">teste</code>.  O dono (neste caso <span class="emphasis"><em>gleydson</em></span>)
+tem a permissão para ler (r), gravar (w) e executar (x) o arquivo
+<code class="filename">teste</code>.
+</p>
+</dd><dt><span class="term">-rwx<span class="strong"><strong>r-x</strong></span>r--</span></dt><dd>
+<p>
+Estes 3 simbolos (do quinto ao sétimo do conjunto de 10) são as permissões de
+acesso dos usuários que pertencem ao <span class="emphasis"><em>grupo user</em></span> do arquivo
+<code class="filename">teste</code>.  Os usuários que pertencem ao grupo
+<span class="emphasis"><em>user</em></span> tem a permissão somente para ler (r) e executar (x) o
+arquivo <code class="filename">teste</code> não podendo modifica-lo ou apaga-lo.
+</p>
+</dd><dt><span class="term">-rwxr-x<span class="strong"><strong>r--</strong></span></span></dt><dd>
+<p>
+Estes 3 simbolos (do oitavo ao décimo) são as permissões de acesso para
+usuários que <span class="strong"><strong>não</strong></span> são
+<span class="emphasis"><em>donos</em></span> do arquivo <code class="filename">teste</code> e que
+<span class="strong"><strong>não</strong></span> pertencem ao grupo
+<span class="emphasis"><em>user</em></span>.  Neste caso, estas pessoas somente terão a permissão
+para ver o conteúdo do arquivo <code class="filename">teste</code>.
+</p>
+</dd></dl></div>
+</dd><dt><span class="term"><span class="emphasis"><em>gleydson</em></span></span></dt><dd>
+<p>
+Nome do dono do arquivo <code class="filename">teste</code>.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>user</em></span></span></dt><dd>
+<p>
+Nome do grupo que o arquivo <code class="filename">teste</code> pertence.
+</p>
+</dd><dt><span class="term"><code class="filename">teste</code></span></dt><dd>
+<p>
+Nome do arquivo.
+</p>
+</dd></dl></div>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="perm-exemplo-d"></a>Exemplo de acesso a um diretório</h3></div></div></div>
+<p>
+Abaixo um exemplo com explicações das permissões de acesso a um diretório no
+<span class="command"><strong>GNU/Linux</strong></span>:
+</p>
+<p>
+drwxr-x--- 2 gleydson user 1024 nov 4 17:55 exemplo
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">drwxr-x---</code></span></dt><dd>
+<p>
+Permissões de acesso ao diretório <code class="filename">exemplo</code>.  É um conjunto
+de 10 letras que especificam o tipo de arquivo, permissão do dono do diretório,
+grupo que o diretório pertence e permissão de acesso a outros usuários.  Veja
+as explicações abaixo:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="strong"><strong>d</strong></span>rwxr-x---</span></dt><dd>
+<p>
+A primeira letra (do conjunto das 10) determina o tipo do arquivo.  Neste caso
+é um diretório porque tem a letra <span class="strong"><strong>d</strong></span>.
+</p>
+</dd><dt><span class="term">d<span class="strong"><strong>rwx</strong></span>r-x---</span></dt><dd>
+<p>
+Estas 3 letras (da segunda a quarta) são as permissões de acesso do
+<span class="emphasis"><em>dono</em></span> do diretório <code class="filename">exemplo</code>.  O dono do
+diretório (neste caso <span class="emphasis"><em>gleydson</em></span>) tem a permissão para
+listar arquivos do diretório (r), gravar arquivos no diretório (w) e entrar no
+diretório (x).
+</p>
+</dd><dt><span class="term">drwx<span class="strong"><strong>r-x</strong></span>---</span></dt><dd>
+<p>
+Estas 3 letras (da quinta a sétima) são as permissões de acesso dos usuários
+que pertencem ao <span class="emphasis"><em>grupo user</em></span>.  Os usuários que pertencem ao
+grupo <span class="emphasis"><em>user</em></span> tem a permissão somente para listar arquivos do
+diretório (r) e entrar no diretório (x) <code class="filename">exemplo</code>.
+</p>
+</dd><dt><span class="term">drwxr-x<span class="strong"><strong>---</strong></span></span></dt><dd>
+<p>
+Estes 3 simbolos (do oitavo ao décimo) são as permissões de acesso para
+usuários que <span class="strong"><strong>não</strong></span> são
+<span class="emphasis"><em>donos</em></span> do diretório <code class="filename">exemplo</code> e que
+<span class="strong"><strong>não</strong></span> pertencem ao grupo
+<span class="emphasis"><em>user</em></span>.  Com as permissões acima, nenhum usuário que se
+encaixe nas condições de <span class="emphasis"><em>dono</em></span> e <span class="emphasis"><em>grupo</em></span>
+do diretório tem a permissão de acessa-lo.
+</p>
+</dd></dl></div>
+</dd><dt><span class="term"><span class="emphasis"><em>gleydson</em></span></span></dt><dd>
+<p>
+Nome do dono do diretório <code class="filename">exemplo</code>.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>user</em></span></span></dt><dd>
+<p>
+Nome do grupo que diretório <code class="filename">exemplo</code> pertence.
+</p>
+</dd><dt><span class="term"><code class="filename">exemplo</code></span></dt><dd>
+<p>
+Nome do diretório.
+</p>
+</dd></dl></div>
+<p>
+Para detalhes de como alterar o dono/grupo de um arquivo/diretório, veja os
+comandos <a class="xref" href="ch11s07.html" title="chmod">“chmod”</a>, <a class="xref" href="ch11s08.html" title="chgrp">“chgrp”</a> e <a class="xref" href="ch11s09.html" title="chown">“chown”</a>.
+</p>
+
+<p>
+<span class="strong"><strong>OBSERVAÇÕES</strong></span>:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+O usuário <code class="literal">root</code> não tem nenhuma restrição de acesso ao
+sistema.
+</p>
+</li><li class="listitem">
+<p>
+Se você tem permissões de gravação no diretório e tentar apagar um arquivo que
+você não tem permissão de gravação, o sistema perguntará se você confirma a
+exclusão do arquivo apesar do modo leitura.  Caso você tenha permissões de
+gravação no arquivo, o arquivo será apagado por padrão sem mostrar nenhuma
+mensagem de erro (a não ser que seja especificada a opção -i com o comando
+<span class="command"><strong>rm</strong></span>).
+</p>
+</li><li class="listitem">
+<p>
+Por outro lado, mesmo que você tenha permissões de gravação em um arquivo mas
+não tenha permissões de gravação em um diretório, a exclusão do arquivo será
+negada.
+</p>
+</li></ul></div>
+
+<p>
+Isto mostra que é levado mais em consideração a permissão de acesso do
+diretório do que as permissões dos arquivos e sub-diretórios que ele contém.
+Este ponto é muitas vezes ignorado por muitas pessoas e expõem seu sistema a
+riscos de segurança.  Imagine o problema que algum usuário que não tenha
+permissão de gravação em um arquivo mas que a tenha no diretório pode causar em
+um sistema mal administrado.
+</p>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s03.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s05.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Etapas para acesso a um arquivo/diretório </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Permissões de Acesso Especiais</td></tr></table></div></body></html>

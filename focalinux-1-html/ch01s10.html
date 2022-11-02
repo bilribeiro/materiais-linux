@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Placa Mãe</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch01.html" title="Capítulo 1. Introdução" /><link rel="prev" href="ch01s09.html" title="Conhecendo o Computador" /><link rel="next" href="ch01s11.html" title="Memória do Computador" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Placa Mãe</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01s09.html">Anterior</a> </td><th width="60%" align="center">Capítulo 1. Introdução</th><td width="20%" align="right"> <a accesskey="n" href="ch01s11.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch01.html">Introdução</a></span> &gt; <span class="breadcrumb-node">Placa Mãe</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="introducao-placamae"></a>Placa Mãe</h2></div></div></div>
+<p>
+É a placa principal do sistema onde estão localizados o Processador, Memória
+RAM, Memória Cache, BIOS, CMOS, RTC, etc.  A placa mãe possui encaixes onde são
+inseridas placas de extensão (para aumentar as funções do computador).  Estes
+encaixes são chamados de "<code class="literal">SLOTS</code>".
+</p>
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="introducao-placamae-outros"></a>Alguns componentes da placa mãe</h3></div></div></div>
+<p>
+Abaixo a descrição de alguns tipos de componentes eletrônicos que estão
+presentes na placa mãe.  Não se preocupe se não entender o que eles significam
+agora:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">RAM</code> - Memória de Acesso Aleatório (Randomic Access Memory).
+É uma memória de armazenamento temporário dos programas e depende de uma fonte
+de energia para o armazenamento dos programas.  É uma memória eletrônica muito
+rápida assim os programas de computador são executados nesta memória.  Seu
+tamanho é medido em Kilobytes, Megabytes ou Gigabytes.
+</p>
+<p>
+Os chips de memória <span class="emphasis"><em>RAM</em></span> podem ser independentes (usando
+circuitos integrados encaixados em soquetes na placa mãe) ou agrupados placas
+de 30 pinos, 72 pinos e 168 pinos.
+</p>
+<p>
+Quanto maior o tamanho da memória, mais espaço o programa terá ao ser
+executado.  O tamanho de memória RAM pedido por cada programa varia, o
+<span class="command"><strong>GNU/Linux</strong></span> precisa de no mínimo 8 MB de memória RAM para ser
+executado pelo processador.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">PROCESSADOR</code> - É a parte do computador responsável pelo
+processamentos das instruções matemáticas/lógicas e programas carregados na
+memória <span class="emphasis"><em>RAM</em></span>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">CO-PROCESSADOR</code> - Ajuda o Processador principal a processar
+as instruções matemáticas.  É normalmente embutido no Processador principal em
+computadores a partir do <span class="emphasis"><em>486 DX2-66</em></span>.  Em processadores
+Pentium e superiores, o co-processador é sempre embutido no processador.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">CACHE</code> - Memória de Armazenamento Auxiliar do Processador.
+Possui alta velocidade de funcionamento, normalmente a mesma que o processador.
+Serve para aumentar o desempenho de processamento.  A memória Cache pode ser
+embutida na placa mãe ou encaixada externamente através de módulos L2.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">BIOS</code> - É a memória <span class="emphasis"><em>ROM</em></span> que contém as
+instruções básicas para a inicialização do computador, reconhecimento e
+ativação dos periféricos conectados a placa mãe.  As <span class="emphasis"><em>BIOS</em></span>
+mais modernas (a partir do 286) também trazem um programa que é usado para
+configurar o computador modificando os valores localizados na
+<span class="emphasis"><em>CMOS</em></span>.
+</p>
+<p>
+As placas controladoras SCSI possuem sua própria <span class="emphasis"><em>BIOS</em></span> que
+identificam automaticamente os periféricos conectados a ela.  Os seguintes
+tipos de chips podem ser usados para gravar a <span class="emphasis"><em>BIOS</em></span>:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+<p>
+<code class="literal">ROM</code> - Memória Somente para Leitura (Read Only Memory).
+Somente pode ser lida.  É programada de fábrica através de programação elétrica
+ou química.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">PROM</code> - Memória Somente para Leitura Programável (Programable
+Read Only Memory) idêntica a <span class="emphasis"><em>ROM</em></span> mas que pode ser
+programada apenas uma vez por máquinas "Programadoras PROM".  É também chamada
+de <code class="literal">MASK ROM</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">EPROM</code> - Memória semelhante a <span class="emphasis"><em>PROM</em></span>, mas
+seu conteúdo pode ser apagado através raios ultra-violeta.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">EEPROM</code> - Memória semelhante a <span class="emphasis"><em>PROM</em></span>, mas
+seu conteúdo pode ser apagado e regravado.  Também é chamada de
+<span class="emphasis"><em>Flash</em></span>.
+</p>
+</li></ul></div>
+</li><li class="listitem">
+<p>
+<code class="literal">CMOS</code> - É uma memória temporária alimentada por uma Bateria
+onde são lidas/armazenadas as configurações do computador feitas pelo programa
+residente na BIOS.
+</p>
+</li></ul></div>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s09.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s11.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Conhecendo o Computador </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Memória do Computador</td></tr></table></div></body></html>

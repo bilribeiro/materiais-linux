@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>grep</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s07.html" title="free" /><link rel="next" href="ch08s09.html" title="head" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">grep</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s07.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s09.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">grep</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-grep"></a>grep</h2></div></div></div>
+<p>
+Procura por um texto dentro de um arquivo(s) ou no dispositivo de entrada
+padrão.
+</p>
+<p>
+<span class="command"><strong>grep</strong></span> [<span class="emphasis"><em>expressão</em></span>] [<span class="emphasis"><em>arquivo</em></span>]
+[<span class="emphasis"><em>opções</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>expressão</em></span></span></dt><dd>
+<p>
+palavra ou frase que será procurada no texto.  Se tiver mais de 2 palavras você
+deve identifica-la com aspas "" caso contrário o <span class="command"><strong>grep</strong></span>
+assumirá que a segunda palavra é o arquivo!
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>arquivo</em></span></span></dt><dd>
+<p>
+Arquivo onde será feita a procura.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-A [número]</span></dt><dd>
+<p>
+Mostra o [número] de linhas após a linha encontrada pelo
+<span class="command"><strong>grep</strong></span>.
+</p>
+</dd><dt><span class="term">-B [número]</span></dt><dd>
+<p>
+Mostra o [número] de linhas antes da linha encontrada pelo
+<span class="command"><strong>grep</strong></span>.
+</p>
+</dd><dt><span class="term">-f [arquivo]</span></dt><dd>
+<p>
+Especifica que o texto que será localizado, esta no arquivo [arquivo].
+</p>
+</dd><dt><span class="term">-h, --no-filename</span></dt><dd>
+<p>
+Não mostra os nomes dos arquivos durante a procura.
+</p>
+</dd><dt><span class="term">-i, --ignore-case</span></dt><dd>
+<p>
+Ignora diferença entre maiúsculas e minúsculas no texto procurado e arquivo.
+</p>
+</dd><dt><span class="term">-n, --line-number</span></dt><dd>
+<p>
+Mostra o nome de cada linha encontrada pelo <span class="command"><strong>grep</strong></span>.
+</p>
+</dd><dt><span class="term">-E</span></dt><dd>
+<p>
+Ativa o uso de expressões regulares.
+</p>
+</dd><dt><span class="term">-U, --binary</span></dt><dd>
+<p>
+Trata o arquivo que será procurado como binário.
+</p>
+</dd></dl></div>
+
+<p>
+Se não for especificado o nome de um arquivo ou se for usado um hífen "-",
+<span class="command"><strong>grep</strong></span> procurará a string no dispositivo de entrada padrão.  O
+<span class="command"><strong>grep</strong></span> faz sua pesquisa em arquivos texto.  Use o comando
+<span class="command"><strong>zgrep</strong></span> para pesquisar diretamente em arquivos compactados com
+<span class="command"><strong>gzip</strong></span>, os comandos e opções são as mesmas.
+</p>
+
+<p>
+Exemplos: <code class="literal">grep "capitulo" texto.txt</code>, <code class="literal">ps ax|grep
+inetd</code>, <code class="literal">grep "capitulo" texto.txt -A 2 -B 2</code>.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s07.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s09.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">free </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> head</td></tr></table></div></body></html>

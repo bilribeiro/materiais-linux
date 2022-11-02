@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>umask</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="prev" href="ch11s10.html" title="Modo de permissão octal" /><link rel="next" href="ch12.html" title="Capítulo 12. Redirecionamentos e Pipe" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">umask</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s10.html">Anterior</a> </td><th width="60%" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th><td width="20%" align="right"> <a accesskey="n" href="ch12.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch11.html">Permissões de acesso a arquivos e diretórios</a></span> &gt; <span class="breadcrumb-node">umask</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-umask"></a>umask</h2></div></div></div>
+<p>
+A umask (<span class="emphasis"><em>user mask</em></span>) são 3 números que definem as
+permissões iniciais do <code class="literal">dono</code>, <code class="literal">grupo</code> e
+<code class="literal">outros usuários</code> que o arquivo/diretório receberá quando for
+criado ou copiado para um novo local.  Digite <code class="literal">umask</code> sem
+parâmetros para retornar o valor de sua umask atual.
+</p>
+<p>
+A umask tem efeitos diferentes caso o arquivo que estiver sendo criado for
+<span class="emphasis"><em>binário</em></span> (um programa executável) ou
+<span class="emphasis"><em>texto</em></span> 
+ (<a class="xref" href="ch02s02.html#basico-arquivo-bintext" title="Arquivo texto e binário">“Arquivo texto e binário”</a>) .  Veja a
+tabela a seguir para ver qual é a mais adequada a sua situação:
+</p>
+<pre class="screen">
+---------------------------------------------
+|       |        ARQUIVO       | DIRETÓRIO  |
+| UMASK |----------------------|            |
+|       |   Binário  |  Texto  |            |
+|------------------------------|------------|
+|   0   |    r-x     |   rw-   |    rwx     |
+|   1   |    r--     |   rw-   |    rw-     |
+|   2   |    r-x     |   r--   |    r-x     |
+|   3   |    r--     |   r--   |    r--     |
+|   4   |    --x     |   -w-   |    -wx     |
+|   5   |    ---     |   -w-   |    -w-     |
+|   6   |    --x     |   ---   |    --x     |
+|   7   |    ---     |   ---   |    ---     |
+---------------------------------------------
+</pre>
+<p>
+Um <span class="emphasis"><em>arquivo texto</em></span> criado com o comando <code class="literal">umask
+012;touch texto.txt</code> receberá as permissões
+<code class="literal">-rw-rw-r--</code>, pois 0 (dono) terá permissões
+<code class="literal">rw-</code>, 1 (grupo), terá permissões <code class="literal">rw-</code> e 2
+(outros usuários) terão permissões <code class="literal">r--</code>.  Um
+<span class="emphasis"><em>arquivo binário</em></span> copiado com o comando <code class="literal">umask
+012;cp /bin/ls /tmp/ls</code> receberá as permissões
+<code class="literal">-r-xr--r-x</code> (confira com a tabela acima).
+</p>
+<p>
+Por este motivo é preciso atenção antes de escolher a umask, um valor mal
+escolhido poderia causar problemas de acesso a arquivos, diretórios ou
+programas não sendo executados.  O valor padrão da umask na maioria das
+distribuições atuais é 022.  
+A umask padrão no sistema Debian é a  022.
+</p>
+<p>
+A umask é de grande utilidade para programas que criam arquivos/diretórios
+temporários, desta forma pode-se bloquear o acesso de outros usuários desde a
+criação do arquivo, evitando recorrer ao <span class="command"><strong>chmod</strong></span>.
+</p>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s10.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch12.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Modo de permissão octal </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Capítulo 12. Redirecionamentos e Pipe</td></tr></table></div></body></html>

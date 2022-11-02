@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>mv</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch07.html" title="Capítulo 7. Comandos para manipulação de Arquivos" /><link rel="prev" href="ch07s04.html" title="cp" /><link rel="next" href="ch08.html" title="Capítulo 8. Comandos Diversos" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">mv</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s04.html">Anterior</a> </td><th width="60%" align="center">Capítulo 7. Comandos para manipulação de Arquivos</th><td width="20%" align="right"> <a accesskey="n" href="ch08.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch07.html">Comandos para manipulação de Arquivos</a></span> &gt; <span class="breadcrumb-node">mv</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="comando-mv"></a>mv</h2></div></div></div>
+<p>
+Move ou renomeia arquivos e diretórios.  
+ O processo é semelhante ao do comando 
+<span class="command"><strong>cp</strong></span> mas o arquivo de origem é apagado após o término da
+cópia. 
+</p>
+<p>
+<span class="command"><strong>mv</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>origem</em></span>]
+[<span class="emphasis"><em>destino</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>origem</em></span></span></dt><dd>
+<p>
+Arquivo/diretório de origem.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>destino</em></span></span></dt><dd>
+<p>
+Local onde será movido ou novo nome do arquivo/diretório.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-f, --force</span></dt><dd>
+<p>
+Substitui o arquivo de destino sem perguntar.
+</p>
+</dd><dt><span class="term">-i, --interactive</span></dt><dd>
+<p>
+Pergunta antes de substituir.  É o padrão.
+</p>
+</dd><dt><span class="term">-v, --verbose</span></dt><dd>
+<p>
+Mostra os arquivos que estão sendo movidos.
+</p>
+</dd><dt><span class="term">-u, --update</span></dt><dd>
+<p>
+Move somente arquivos antigos, ou novos arquivos.
+</p>
+</dd></dl></div>
+
+<p>
+O comando <span class="command"><strong>mv</strong></span> copia um arquivo da <span class="emphasis"><em>ORIGEM</em></span>
+para o <span class="emphasis"><em>DESTINO</em></span> (semelhante ao <span class="command"><strong>cp</strong></span>), mas
+após a cópia, o arquivo de <span class="emphasis"><em>ORIGEM</em></span> é apagado.
+</p>
+
+<p>
+Exemplos:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">mv teste.txt teste1.txt</code></span></dt><dd>
+<p>
+Muda o nome do arquivo <code class="filename">teste.txt</code> para
+<code class="filename">teste1.txt</code>.
+</p>
+</dd><dt><span class="term"><code class="literal">mv teste.txt /tmp</code></span></dt><dd>
+<p>
+Move o arquivo teste.txt para <code class="filename">/tmp</code>.  Lembre-se que o
+arquivo de origem é apagado após ser movido.
+</p>
+</dd><dt><span class="term"><code class="literal">mv teste.txt teste.new</code> (supondo que <code class="filename">teste.new</code> já exista)</span></dt><dd>
+<p>
+Copia o arquivo <code class="filename">teste.txt</code> por cima de
+<code class="filename">teste.new</code> e apaga <code class="filename">teste.txt</code> após
+terminar a cópia.
+</p>
+</dd></dl></div>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s04.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">cp </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Capítulo 8. Comandos Diversos</td></tr></table></div></body></html>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Capítulo 14. Configuração do sistema</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="index.html" title="Guia Foca Linux" /><link rel="prev" href="ch13s05.html" title="Magic Filter" /><link rel="next" href="ch14s02.html" title="Número de Cores do ambiente gráfico" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Capítulo 14. Configuração do sistema</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch13s05.html">Anterior</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch14s02.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-node">Configuração do sistema</span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="cfg"></a>Capítulo 14. Configuração do sistema</h1></div></div></div><div class="toc"><p><strong>Índice</strong></p><dl class="toc"><dt><span class="section"><a href="ch14.html#cfg-acentuacao">Acentuação</a></span></dt><dd><dl><dt><span class="section"><a href="ch14.html#cfg-acentuacao-t">Acentuação em modo Texto</a></span></dt><dt><span class="section"><a href="ch14.html#cfg-acentuacao-g">Acentuação em modo gráfico</a></span></dt></dl></dd><dt><span class="section"><a href="ch14s02.html">Número de Cores do ambiente gráfico</a></span></dt><dd><dl><dt><span class="section"><a href="ch14s02.html#cfg-cores-t">Configurando o número de cores para quem inicia pelo prompt</a></span></dt><dt><span class="section"><a href="ch14s02.html#cfg-configurando-g">Configurando o número de cores para quem inicia pelo XDM</a></span></dt><dt><span class="section"><a href="ch14s02.html#s24.2.3">Ajustando o alinhamento da imagem no X e outras configurações</a></span></dt></dl></dd></dl></div>
+<p>
+Este capítulo traz explicações sobre algumas configurações úteis que podem ser
+feitas no sistema.  Neste documento assumimos que o kernel do seus sistema já
+possui suporte a página de código 860 (Portuguesa) e o conjunto de caracteres
+<code class="literal">ISO-8859-1</code>.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cfg-acentuacao"></a>Acentuação</h2></div></div></div>
+<p>
+Permite que o <span class="command"><strong>GNU/Linux</strong></span> use a acentuação.  A acentuação do
+modo texto é independente do modo gráfico; você pode configurar tanto um como o
+outro ou ambos.  Para maiores detalhes veja <a class="xref" href="ch14.html#cfg-acentuacao-t" title="Acentuação em modo Texto">“Acentuação em modo Texto”</a>
+e/ou <a class="xref" href="ch14.html#cfg-acentuacao-g" title="Acentuação em modo gráfico">“Acentuação em modo gráfico”</a>.
+</p>
+
+<p>
+Note que os mapas de teclado usados em modo texto são diferentes dos usados em
+modo gráfico.  Geralmente os mapas de teclados para o modo gráfico tem uma
+letra <code class="literal">X</code> no nome.
+</p>
+
+
+
+	
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="cfg-acentuacao-t"></a>Acentuação em modo Texto</h3></div></div></div>
+<p>
+Caso sua distribuição <span class="command"><strong>Debian</strong></span> esteja acentuando corretamente
+no modo texto você não precisará ler esta seção.  Antes de prosseguir,
+verifique se você possui o pacote  instalado em seu sistema com o
+comando: <code class="literal">dpkg -l console-data</code>.  Caso não existam, alguns
+programas de configuração e arquivos de fontes não estarão disponíveis.
+</p>
+<p>
+Siga os passos abaixo para colocar e acentuação em funcionamento para o modo
+Texto na <span class="command"><strong>Debian</strong></span>:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>Mapa de Teclados</em></span></span></dt><dd>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">Debian 4 ou 5</span></dt><dd>
+<p>
+Digite <code class="literal">dpkg-reconfigure console-data</code>.  Após a tela inicial,
+selecione a opção <code class="literal">Selecionar o mapa de teclados da lista de
+arquiteturas</code>, <code class="literal">qwerty</code> e selecione os passos
+seguintes de acordo com seu tipo de teclado:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">US american</code> - Selecione <code class="literal">US American</code> na
+lista de opções e em seguida <code class="literal">Standard</code> e <code class="literal">US
+International (ISO-8859-1)</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">ABNT2 (com cedilha)</code> - Selecione <code class="literal">Brazilian</code>
+na lista de opções.
+</p>
+</li></ul></div>
+</dd></dl></div>
+<p>
+Após isso, o mapa de teclados correto será carregado de
+<code class="filename">/usr/share/keymaps</code> e será ativado no sistema.
+</p>
+<p>
+Se desejar usar o comando <code class="literal">loadkeys</code> manualmente , você
+precisa copiar o mapa de teclados para um local conhecido no sistema, então
+copie o arquivo <code class="filename">arquivo.kmap</code> para
+<code class="filename">/usr/share/keymaps/i386/qwerty</code> (em sistemas Debian) ou
+algum outro local apropriado.  
+ Note que o arquivo pode ser compactado pelo
+<span class="command"><strong>gzip</strong></span> e copiado para
+<code class="filename">/usr/share/keymaps/i386/qwerty</code> que será lido sem problemas
+pelo sistema encarregado de configurar o teclado e acentuação. 
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>Configurando a fonte de Tela</em></span></span></dt><dd>
+<p>
+Descomente a linha <code class="literal">SCREEN_FONT=LatArCyrHeb-16</code> e modifique-a
+para <code class="literal">CONSOLE_FONT=lat1u-16.psf</code> no arquivo
+<code class="filename">/etc/console-tools/config</code>.
+</p>
+<p>
+Esta linha diz ao sistema que <span class="emphasis"><em>fonte</em></span> deve carregar para
+mostrar os caracteres na tela.  A fonte de caracteres deve ser compatível com o
+idioma local, pois nem todas suportam caracteres acentuados.  A fonte
+preferível para exibir os caracteres acentuados usando padrão ISO é a
+<code class="filename">lat1u-16</code>, o <code class="filename">-16</code> no nome do arquivo
+significa o tamanho da fonte.  As fontes de tela estão disponíveis no diretório
+<code class="filename">/usr/share/consolefonts</code>.
+</p>
+<p>
+Neste ponto você pode verificar se o seu sistema esta reconhecendo corretamente
+a acentuação entrando no editor de textos <span class="command"><strong>ae</strong></span> e digitando:
+<code class="literal">áãâà</code>.  Se todos os acentos apareceram corretamente,
+parabéns!  você já passou pela parte mais difícil.  Agora o próximo passo é a
+acentuação no <span class="command"><strong>Bash</strong></span>.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>Acentuação no aviso de comando (<span class="command"><strong>bash</strong></span>)</em></span></span></dt><dd>
+<p>
+Para acentuar no <span class="command"><strong>Bash</strong></span> (interpretador de comandos) é
+necessário alterar o arquivo <code class="filename">/etc/inputrc</code> e fazer as
+seguintes modificações:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+Descomente a linha: <code class="literal">"#set convert-meta off"</code> você faz isto
+apagando o símbolo "#" antes do nome.
+</p>
+<p>
+Um comentário faz com que o programa ignore linha(s) de comando.  É muito útil
+para descrever o funcionamento de comandos/programas (você vai encontrar muito
+isso no sistema <span class="command"><strong>GNU/Linux</strong></span>, tudo é muito bem documentado).
+</p>
+</li><li class="listitem">
+<p>
+Inclua a seguinte linha no final do arquivo:
+</p>
+<p>
+set meta-flag on
+</p>
+</li><li class="listitem">
+<p>
+O conteúdo deste arquivo deve ficar assim:
+</p>
+<pre class="screen">
+set convert-meta off
+set input-meta on
+set output-meta on
+</pre>
+</li><li class="listitem">
+<p>
+Digite <code class="literal">exit</code> ou pressione
+<code class="literal">CTRL</code>+<code class="literal">D</code> para fazer o logout.  Entre
+novamente no sistema para que as alterações façam efeito.
+</p>
+</li></ol></div>
+</dd></dl></div>
+<p>
+Pronto!  você já esta acentuando em modo texto!.  Talvez seja necessário que
+faça alguma alteração em arquivos de configuração de outros programas para que
+possa acentuar corretamente (veja se existe algum arquivo com o nome
+correspondente ao programa no diretório <code class="filename">/etc</code>).
+</p>
+<p>
+A distribuição <span class="command"><strong>Debian</strong></span> também traz o utilitário
+<span class="command"><strong>kbdconfig</strong></span> que também faz a configuração do mapa de teclados
+de forma interativa e gravando automaticamente o mapa de teclados em
+<code class="filename">/etc/kbd/default.map.gz</code>.  Se preferir usar o
+<span class="command"><strong>kbdconfig</strong></span> ainda será necessário executar os passos acima
+para habilitação da fonte <code class="filename">lat1u-16</code> e acentuação no
+<span class="command"><strong>bash</strong></span>.
+</p>
+</div>
+	
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="cfg-acentuacao-g"></a>Acentuação em modo gráfico</h3></div></div></div>
+<p>
+A acentuação no modo gráfico é feita de maneira simples:
+
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>Configuração do mapa de teclados</em></span></span></dt><dd>
+<p>
+Execute o comando <code class="literal">dpkg-reconfigure xserver-xorg</code> e informe o
+tipo de teclado quando perguntado pelo sistema de configuração.  A configuração
+será gravada na seção <code class="literal">InputDevice</code> do arquivo
+<code class="filename">/etc/X11/xorg.conf</code> e poderá ser modificada manualmente se
+necessário.
+</p>
+</dd></dl></div>
+
+</div>
+
+</div>
+	
+
+
+	
+
+	
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch13s05.html">Anterior</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch14s02.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Magic Filter </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Número de Cores do ambiente gráfico</td></tr></table></div></body></html>

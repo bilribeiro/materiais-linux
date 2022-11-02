@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Formatando Pen-drives/Disquetes</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch04.html" title="Capítulo 4. Discos e Partições" /><link rel="prev" href="ch04.html" title="Capítulo 4. Discos e Partições" /><link rel="next" href="ch04s03.html" title="Pontos de Montagem" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Formatando Pen-drives/Disquetes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04.html">Anterior</a> </td><th width="60%" align="center">Capítulo 4. Discos e Partições</th><td width="20%" align="right"> <a accesskey="n" href="ch04s03.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch04.html">Discos e Partições</a></span> &gt; <span class="breadcrumb-node">Formatando Pen-drives/Disquetes</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="disc-formatando"></a>Formatando Pen-drives/Disquetes</h2></div></div></div>
+<p>
+As subseções seguintes explicarão maneiras de formatar seu pen-drive, memória
+flash, e outras tecnologias (incluindo disquetes) para serem usados no
+<span class="command"><strong>GNU/Linux</strong></span> e <span class="command"><strong>DOS/Windows</strong></span>.
+</p>
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="disc-formatando-l"></a>Formatando pen-drives para serem usados no Linux</h3></div></div></div>
+<p>
+Para formatar pen-drives para serem usados no <span class="command"><strong>GNU/Linux</strong></span> use
+o comando:
+</p>
+<p>
+<span class="command"><strong>mkfs.ext2</strong></span> [<span class="emphasis"><em>-c</em></span>] [<span class="emphasis"><em>/dev/sde1</em></span>]
+</p>
+<p>
+Em alguns sistemas você deve usar <span class="command"><strong>mke2fs</strong></span> no lugar de
+<span class="command"><strong>mkfs.ext2</strong></span>.  A opção <code class="literal">-c</code> faz com que o
+<span class="command"><strong>mkfs.ext2</strong></span> procure por blocos danificados no pen-drive.  Caso
+deseje formatar um disquete, especifique o dispositivo
+<code class="filename">/dev/fd0</code> ao inves de <code class="filename">/dev/sdb1</code>.
+</p>
+<p>
+Note que o nome de dispositivo que é conectado varia de acordo com o sistema e
+quantidade de discos rígidos que sua máquina possui portanto tenha
+<span class="emphasis"><em>ATENCÃO</em></span> para não formatar o dispositivo incorreto (que
+pode ser justamente seu disco rígido principal).  Para maior segurança,
+ao identificar o pen-drive, digite <code class="literal">dmesg</code> ao conectar o
+pen-drive para visualizar o dispositivo correto ou fique atento as mensagens do
+console que mostrará o dispositivo que foi associado ao pen-drive.
+</p>
+
+<p>
+OBS: Este comando cria um sistema de arquivos <span class="emphasis"><em>ext2</em></span> no
+pen-drive e permite usar características como permissões de acesso e outras.
+Isto também faz com que o pen-drive NÃO possa ser lido pelo
+<span class="command"><strong>DOS/Windows</strong></span>.  Para formatar um pen-drive no
+<span class="command"><strong>GNU/Linux</strong></span> usando o <span class="emphasis"><em>FAT16</em></span> ou
+<span class="emphasis"><em>FAT32</em></span> (compatível com o DOS/Windows) veja próxima seção.
+</p>
+
+
+<p>
+Exemplo: <code class="literal">mkfs.ext2 -c /dev/sde1</code>
+</p>
+
+</div>
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="disc-formatando-d"></a>Formatando pen-drives compatíveis com o Windows</h3></div></div></div>
+<p>
+A formatação de pen-drives para serem usados no <span class="command"><strong>Windows</strong></span> é
+feita usando o comando <span class="command"><strong>mkfs.msdos</strong></span> que é geralmente incluído
+no pacote .  
+ O <span class="command"><strong>mkfs.msdos</strong></span> permite tanto a criação de sistemas de arquivos
+FAT16 ou FAT32. 
+</p>
+<p>
+<span class="command"><strong>mkfs.msdos</strong></span> [opções] [<span class="emphasis"><em>dispositivo</em></span>]
+</p>
+
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>dispositivo</em></span></span></dt><dd>
+<p>
+Pen-drive que será formatado.  Normalmente <code class="filename">/dev/sdb1</code>
+(dependendo do dispositivo detectado via comando <code class="literal">dmesg</code>).
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-F [num]</span></dt><dd>
+<p>
+Especifica o tipo de FAT que será usado na formatação.  Podem ser usados os
+valores 12 (para formatação usando FAT12, limitado a 12MB), 16 (para formatação
+usando FAT16, limitado a 2Gb) e 32 (para formatação FAT32, limitado a 128Gb).
+</p>
+</dd><dt><span class="term">-n [nome]</span></dt><dd>
+<p>
+Atribui o <code class="literal">[nome]</code> de volume ao dispositivo.
+</p>
+</dd><dt><span class="term">-c</span></dt><dd>
+<p>
+Faz uma pesquisa por bad blocks antes da criação do sistema de arquivos no
+dispositivo.  Os setores defeituosos encontrados serão automaticamente marcados
+para não serem utilizadas.
+</p>
+</dd><dt><span class="term">-m [arquivo_mensagem]</span></dt><dd>
+<p>
+Especifica o arquivo que contém a mensagem que será exibida ao usuário caso o
+disco não seja inicializável.  A mensagem não pode exceder 418 bytes.
+</p>
+</dd></dl></div>
+
+<p>
+Note que não se deve montar o pen-driv / disquete para formata-lo.
+</p>
+
+<p>
+Segue abaixo exemplos de como formatar seu pen-drive
+<span class="command"><strong>mkfs.msdos</strong></span>:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">mkfs.msdos /dev/sdc1</code> - Formata o pen-drive no terceiro
+dispositivo SCSI Genérico, como FAT32 e usando os valores padrões.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">mkfs.msdos -F 16 /dev/sdc1</code> - Faz a mesma coisa que o acima,
+mas formata o pen-drive como FAT16.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">mkfs.msdos -n teste -F 16 /dev/sdc1</code> - Formata o pen-drive no
+terceiro dispositivo SCSI genérico, como FAT16 e cria o nome de volume
+<code class="literal">teste</code>.
+</p>
+</li></ul></div>
+
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="disc-formatando-g"></a>Programas de Formatação Gráficos</h3></div></div></div>
+<p>
+Além de programas de formatação em modo texto, existem outros para ambiente
+gráfico (X11) que permitem fazer a mesma tarefa.
+</p>
+<p>
+Entre os diversos programas destaco o <span class="command"><strong>gfloppy</strong></span> que além de
+permitir selecionar se o disquete será formatado para o
+<span class="command"><strong>GNU/Linux</strong></span> (ext2), <span class="command"><strong>DOS</strong></span> (FAT12) e permite
+selecionar a capacidade e formatação rápida do disco.
+</p>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s03.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Capítulo 4. Discos e Partições </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Pontos de Montagem</td></tr></table></div></body></html>

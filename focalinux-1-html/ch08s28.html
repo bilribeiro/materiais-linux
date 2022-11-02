@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>chattr</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s27.html" title="seq" /><link rel="next" href="ch08s29.html" title="lsattr" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">chattr</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s27.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s29.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">chattr</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-chattr"></a>chattr</h2></div></div></div>
+<p>
+Modifica atributos de arquivos/diretórios.  Não confunda atributos de arquivo
+com permissões de acesso (<a class="xref" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios">Capítulo 11, <em>Permissões de acesso a arquivos e diretórios</em></a>), os atributos são diferentes
+e definem outras características especiais para os arquivos/diretórios
+especificados.
+</p>
+<p>
+<span class="command"><strong>chattr</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>atributos</em></span>] [<span class="emphasis"><em>arquivos/diretórios</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>arquivos/diretórios</em></span></span></dt><dd>
+<p>
+Arquivos/Diretórios que terão os atributos modificados.  Podem ser usados
+coringas
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-R</span></dt><dd>
+<p>
+Modifica atributos em subdiretórios
+</p>
+</dd><dt><span class="term">-V</span></dt><dd>
+<p>
+Mostra detalhes sobre a modificação de atributos.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>atributos</em></span></span></dt><dd>
+<p>
+Os atributos de arquivos/diretórios podem ser especificados da seguinte
+maneira:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">+</code> - Adiciona o atributo
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-</code> - Remove o atributo
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">=</code> - Define o atributo exatamente como especificado
+</p>
+</li></ul></div>
+<p>
+Os atributos são os seguintes:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">A</code> - Não modifica a hora de acesso de arquivos.  Poder
+aumentar consideravelmente a performance em Notebooks devido a diminuição de
+I/O no disco rígido.  Quando especificada em diretórios, faz com que todos os
+arquivos e subdiretórios residentes nele não tenham a hora de acesso
+modificada.
+</p>
+<p>
+Este atributo funciona apenas em kernels 2.2 e superiores
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">a</code> - Append-Only - Arquivos com este atributo podem somente
+ser gravados em modo incrementais (o conteúdo poderá somente ser adicionado ao
+final do arquivo).  Eles não poderão ser removidos, renomeados e novos links
+não poderão ser criados para estes arquivos.
+</p>
+<p>
+Em diretórios faz com que os arquivos sejam apenas adicionados.  Somente o root
+pode especificar ou retirar este atributo.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">c</code> - Permite compactação nos arquivos especificados de forma
+transparente para o usuário.  Durante a leitura, o kernel retorna dados
+descompactados e durante a gravação os dados são compactados e gravados no
+disco.
+</p>
+<p>
+Este atributo ainda não foi totalmente implementado no código atual do kernel.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">d</code> - Este atributo não é usado pelo kernel, mas faz com que o
+programa <span class="command"><strong>dump</strong></span> evitar backup dos arquivos marcados com este
+atributo.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">i</code> - Imutável - Arquivos imutáveis não podem ser modificados,
+os dados também não podem ser gravados para estes arquivos, não podem ser
+removidos, renomeados.  Até mesmo o usuário root não poderá modificar estes
+arquivos.
+</p>
+<p>
+Em diretórios, faz com que arquivos não possam ser adicionados ou apagados.
+Somente o usuário root pode especificar ou retirar este atributo.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">s</code> - O arquivo especificado é marcado como "apagamento
+seguro"; quando o arquivo é apagado, seus blocos são zerados e gravados de
+volta no disco (eliminando qualquer possibilidade de recuperação).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">S</code> - Faz a gravação imediatamente para o arquivo
+especificado.  É como especificar a opção "sync" na montagem do sistema de
+arquivos ext2, mas afeta somente os arquivos especificados.  Não tem efeito em
+diretórios.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">u</code> - O arquivo especificado é marcado como recuperável.
+Quando o arquivo é apagado, seu conteúdo é salvo para permitir futura
+recuperação.
+</p>
+<p>
+Este atributo ainda não foi implementado totalmente no código atual do kernel.
+</p>
+</li></ul></div>
+</dd></dl></div>
+
+<p>
+Os atributos de arquivos/diretórios são visualizados através do utilitário
+<span class="command"><strong>lsattr</strong></span>.  Existem patches para os kernels da série 2.2 que
+adicionam o suporte experimental aos atributos "c" e "u".
+</p>
+
+<p>
+Exemplos:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">chattr +AacdiSsu teste.txt</code> - Adiciona todos os atributos
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">chattr =ASs teste.txt</code> - Define os atributos para "ASs"
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">chattr +i -A teste.txt</code> - Retira o atributo "A" e adiciona
+"i"
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">chattr = teste.txt</code> - Retira todos os atributos
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s27.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s29.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">seq </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> lsattr</td></tr></table></div></body></html>

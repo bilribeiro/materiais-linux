@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Modo de permissão octal</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="prev" href="ch11s09.html" title="chown" /><link rel="next" href="ch11s11.html" title="umask" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Modo de permissão octal</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s09.html">Anterior</a> </td><th width="60%" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th><td width="20%" align="right"> <a accesskey="n" href="ch11s11.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch11.html">Permissões de acesso a arquivos e diretórios</a></span> &gt; <span class="breadcrumb-node">Modo de permissão octal</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-octal"></a>Modo de permissão octal</h2></div></div></div>
+<p>
+Ao invés de utilizar os modos de permissão <code class="literal">+r</code>,
+<code class="literal">-r</code>, etc, pode ser usado o modo octal para se alterar a
+permissão de acesso a um arquivo.  O modo octal é um conjunto de oito números
+onde cada número define um tipo de acesso diferente.
+</p>
+<p>
+É mais flexível gerenciar permissões de acesso usando o modo octal ao invés do
+comum, pois você especifica diretamente a permissão do dono, grupo, outros ao
+invés de gerenciar as permissões de cada um separadamente.  Abaixo a lista de
+permissões de acesso octal:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">0</code> - Nenhuma permissão de acesso.  Equivalente a -rwx.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">1</code> - Permissão de execução (x).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">2</code> - Permissão de gravação (w).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">3</code> - Permissão de gravação e execução (wx).  Equivalente a
+permissão 2+1
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">4</code> - Permissão de leitura (r).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">5</code> - Permissão de leitura e execução (rx).  Equivalente a
+permissão 4+1
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">6</code> - Permissão de leitura e gravação (rw).  Equivalente a
+permissão 4+2
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">7</code> - Permissão de leitura, gravação e execução.  Equivalente
+a +rwx (4+2+1).
+</p>
+</li></ul></div>
+<p>
+O uso de um deste números define a permissão de acesso do
+<span class="emphasis"><em>dono</em></span>, <span class="emphasis"><em>grupo</em></span> ou <span class="emphasis"><em>outros
+usuários</em></span>.  Um modo fácil de entender como as permissões de acesso
+octais funcionam, é através da seguinte tabela:
+</p>
+<pre class="screen">
+1 = Executar
+2 = Gravar
+4 = Ler
+
+* Para Dono e Grupo, multiplique as permissões acima por x100 e x10.
+</pre>
+
+<p>
+e para as permissões de acesso especiais:
+</p>
+<pre class="screen">
+1000 = Salva imagem do texto no dispositivo de troca
+2000 = Ajusta o bit setgid na execução
+4000 = Ajusta o bit setuid na execução
+</pre>
+
+<p>
+Basta agora fazer o seguinte:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Somente permissão de execução, use 1.
+</p>
+</li><li class="listitem">
+<p>
+Somente a permissão de leitura, use 4.
+</p>
+</li><li class="listitem">
+<p>
+Somente permissão de gravação, use 2.
+</p>
+</li><li class="listitem">
+<p>
+Permissão de leitura/gravação, use 6 (equivale a 2+4 / Gravar+Ler).
+</p>
+</li><li class="listitem">
+<p>
+Permissão de leitura/execução, use 5 (equivale a 1+4 / Executar+Ler).
+</p>
+</li><li class="listitem">
+<p>
+Permissão de execução/gravação, use 3 (equivale a 1+2 / Executar+Gravar).
+</p>
+</li><li class="listitem">
+<p>
+Permissão de leitura/gravação/execução, use 7 (equivale a 1+2+4 /
+Executar+Gravar+Ler).
+</p>
+</li><li class="listitem">
+<p>
+Salvar texto no dispositivo de troca, use 1000.
+</p>
+</li><li class="listitem">
+<p>
+Ajustar bit setgid, use 2000.
+</p>
+</li><li class="listitem">
+<p>
+Ajustar bip setuid, use 4000.
+</p>
+</li><li class="listitem">
+<p>
+Salvar texto e ajustar bit setuid, use 5000 (equivale a 1000+4000 / Salvar
+texto + bit setuid).
+</p>
+</li><li class="listitem">
+<p>
+Ajustar bit setuid e setgid, use 6000 (equivale a 4000+2000 / setuid + setgid).
+</p>
+</li></ul></div>
+<p>
+Vamos a prática com alguns exemplos:
+</p>
+<pre class="screen">
+"chmod 764 teste"
+</pre>
+<p>
+Os números são interpretados da <span class="strong"><strong>direita para a
+esquerda</strong></span> como permissão de acesso aos <span class="emphasis"><em>outros
+usuários</em></span> (4), <span class="emphasis"><em>grupo</em></span> (6), e
+<span class="emphasis"><em>dono</em></span> (7).  O exemplo acima faz os <span class="emphasis"><em>outros
+usuários</em></span> (4) terem acesso somente leitura (r) ao arquivo
+<code class="filename">teste</code>, o <span class="emphasis"><em>grupo</em></span> (6) ter a permissão de
+leitura e gravação (w), e o <span class="emphasis"><em>dono</em></span> (7) ter permissão de
+leitura, gravação e execução (rwx) ao arquivo <code class="filename">teste</code>.
+</p>
+<p>
+Outro exemplo:
+</p>
+<pre class="screen">
+"chmod 40 teste"
+</pre>
+<p>
+O exemplo acima define a permissão de acesso dos <span class="emphasis"><em>outros
+usuários</em></span> (0) como nenhuma, e define a permissão de acesso do
+<span class="emphasis"><em>grupo</em></span> (4) como somente leitura (r).  Note usei somente
+dois números e então a permissão de acesso do <span class="emphasis"><em>dono</em></span> do
+arquivo <code class="literal">não</code> é modificada (leia as permissões de acesso da
+direita para a esquerda!).  Para detalhes veja a lista de permissões de acesso
+em modo octal no inicio desta seção.
+</p>
+<pre class="screen">
+"chmod 751 teste"
+</pre>
+<p>
+O exemplo acima define a permissão de acesso dos <span class="emphasis"><em>outros
+usuários</em></span> (1) para somente execução (x), o acesso do
+<span class="emphasis"><em>grupo</em></span> (5) como leitura e execução (rx) e o acesso do
+<span class="emphasis"><em>dono</em></span> (7) como leitura, gravação e execução (rwx).
+</p>
+
+<pre class="screen">
+"chmod 4751 teste"
+</pre>
+<p>
+O exemplo acima define a permissão de acesso dos <span class="emphasis"><em>outros
+usuários</em></span> (1) para somente execução (x), acesso do
+<span class="emphasis"><em>grupo</em></span> (5) como leitura e execução (rx), o acesso do
+<span class="emphasis"><em>dono</em></span> (7) como leitura, gravação e execução (rwx) e ajusta
+o bit setgid (4) para o arquivo <code class="filename">teste</code>.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s09.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s11.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">chown </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> umask</td></tr></table></div></body></html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>telnet</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch09.html" title="Capítulo 9. Comandos de rede" /><link rel="prev" href="ch09.html" title="Capítulo 9. Comandos de rede" /><link rel="next" href="ch09s03.html" title="finger" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">telnet</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09.html">Anterior</a> </td><th width="60%" align="center">Capítulo 9. Comandos de rede</th><td width="20%" align="right"> <a accesskey="n" href="ch09s03.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch09.html">Comandos de rede</a></span> &gt; <span class="breadcrumb-node">telnet</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdn-telnet"></a>telnet</h2></div></div></div>
+<p>
+Permite acesso a um computador remoto.  
+ É mostrada uma tela de acesso
+correspondente ao computador local onde deve ser feita a autenticação do
+usuário para entrar no sistema.  Muito útil, mas deve ser tomado cuidados ao
+disponibilizar este serviço para evitar riscos de segurança e usado o
+<span class="command"><strong>ssh</strong></span> sempre que possível por ser um protocolo criptografado e
+com recursos avançados de segurança. 
+</p>
+<p>
+<span class="command"><strong>telnet</strong></span> [<span class="emphasis"><em>opções</em></span>] [<span class="emphasis"><em>ip/dns</em></span>]
+[<span class="emphasis"><em>porta</em></span>]
+</p>
+
+<p>
+onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>ip/dns</em></span></span></dt><dd>
+<p>
+Endereço IP do computador de destino ou nome DNS.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>porta</em></span></span></dt><dd>
+<p>
+Porta onde será feita a conexão.  Por padrão, a conexão é feita na porta
+<span class="emphasis"><em>23</em></span>.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span></span></dt><dd>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term">-8</span></dt><dd>
+<p>
+Requisita uma operação binária de 8 bits.  Isto força a operação em modo
+binário para envio e recebimento.  Por padrão, <span class="command"><strong>telnet</strong></span> não
+usa 8 bits.
+</p>
+</dd><dt><span class="term">-a</span></dt><dd>
+<p>
+Tenta um login automático, enviando o nome do usuário lido da variável de
+ambiente <code class="filename">USER</code>.
+</p>
+</dd><dt><span class="term">-d</span></dt><dd>
+<p>
+Ativa o modo de debug.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Ativa a emulação de rlogin.
+</p>
+</dd><dt><span class="term">-l [usuário]</span></dt><dd>
+<p>
+Faz a conexão usando [usuário] como nome de usuário.
+</p>
+</dd></dl></div>
+</dd></dl></div>
+
+
+<p>
+Exemplo: <code class="literal">telnet 192.168.1.1</code>, <code class="literal">telnet 192.168.1.1
+23</code>.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch09.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch09s03.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Capítulo 9. Comandos de rede </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> finger</td></tr></table></div></body></html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tipos de Execução de comandos/programas</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch05.html" title="Capítulo 5. Execução de programas" /><link rel="prev" href="ch05s02.html" title="path" /><link rel="next" href="ch05s04.html" title="Executando programas em seqüência" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Tipos de Execução de comandos/programas</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s02.html">Anterior</a> </td><th width="60%" align="center">Capítulo 5. Execução de programas</th><td width="20%" align="right"> <a accesskey="n" href="ch05s04.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch05.html">Execução de programas</a></span> &gt; <span class="breadcrumb-node">Tipos de Execução de comandos/programas</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="run-tipos"></a>Tipos de Execução de comandos/programas</h2></div></div></div>
+<p>
+Um programa pode ser executado de duas formas:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+<code class="literal">Primeiro Plano</code> - Também chamado de
+<span class="emphasis"><em>foreground</em></span>.  Quando você deve esperar o término da
+execução de um programa para executar um novo comando.  Somente é mostrado o
+aviso de comando após o término de execução do comando/programa.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">Segundo Plano</code> - Também chamado de
+<span class="emphasis"><em>background</em></span>.  Quando você não precisa esperar o término da
+execução de um programa para executar um novo comando.  Após iniciar um
+programa em <span class="emphasis"><em>background</em></span>, é mostrado um número PID
+(identificação do Processo) e o aviso de comando é novamente mostrado,
+permitindo o uso normal do sistema.
+</p>
+<p>
+O programa executado em background continua sendo executado internamente.  Após
+ser concluído, o sistema retorna uma mensagem de pronto acompanhado do número
+PID do processo que terminou.
+</p>
+</li></ol></div>
+<p>
+Para iniciar um programa em <code class="literal">primeiro plano</code>, basta digitar
+seu nome normalmente.  Para iniciar um programa em <code class="literal">segundo
+plano</code>, acrescente o caracter <code class="literal">"&amp;"</code> após o final do
+comando.
+</p>
+
+<p>
+OBS: Mesmo que um usuário execute um programa em segundo plano e saia do
+sistema, o programa continuará sendo executado até que seja concluído ou
+finalizado pelo usuário que iniciou a execução (ou pelo usuário root).
+</p>
+
+
+<p>
+Exemplo: <code class="literal">find / -name boot.b &amp;</code>
+</p>
+<p>
+O comando será executado em segundo plano e deixará o sistema livre para outras
+tarefas.  Após o comando <span class="command"><strong>find</strong></span> terminar, será mostrada uma
+mensagem.
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s02.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s04.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">path </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Executando programas em seqüência</td></tr></table></div></body></html>

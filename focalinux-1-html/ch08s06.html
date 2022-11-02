@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>find</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s05.html" title="du" /><link rel="next" href="ch08s07.html" title="free" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">find</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s05.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s07.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">find</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-find"></a>find</h2></div></div></div>
+<p>
+Procura por arquivos/diretórios no disco.  
+ O<span class="command"><strong>find</strong></span> pode
+procurar arquivos através de sua data de modificação, tamanho, etc através do
+uso de opções.  <span class="command"><strong>find</strong></span>, ao contrário de outros programas, usa
+opções longas através de um <code class="literal">"-"</code>. 
+</p>
+<p>
+<span class="command"><strong>find</strong></span> [<span class="emphasis"><em>diretório</em></span>]
+[<span class="emphasis"><em>opções/expressão</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>diretório</em></span></span></dt><dd>
+<p>
+Inicia a procura neste diretório, percorrendo seu sub-diretórios.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções/expressão</em></span>, </span><span class="term">-name [expressão]</span></dt><dd>
+<p>
+Procura pelo nome [expressão] nos nomes de arquivos e diretórios processados.
+</p>
+</dd><dt><span class="term">-depth</span></dt><dd>
+<p>
+Processa os sub-diretórios primeiro antes de processar os arquivos do diretório
+principal.
+</p>
+</dd><dt><span class="term">-maxdepth [num]</span></dt><dd>
+<p>
+Faz a procura até [num] sub-diretórios dentro do diretório que está sendo
+pesquisado.
+</p>
+</dd><dt><span class="term">-mindepth [num]</span></dt><dd>
+<p>
+Não faz nenhuma procura em diretórios menores que [num] níveis.
+</p>
+</dd><dt><span class="term">-mount, -xdev</span></dt><dd>
+<p>
+Não faz a pesquisa em sistemas de arquivos diferentes daquele de onde o comando
+<span class="command"><strong>find</strong></span> foi executado.
+</p>
+</dd><dt><span class="term">-amin [num]</span></dt><dd>
+<p>
+Procura por arquivos que foram acessados [num] minutos atrás.  Caso for
+antecedido por "-", procura por arquivos que foram acessados entre [num]
+minutos atrás até agora.
+</p>
+</dd><dt><span class="term">-atime [num]</span></dt><dd>
+<p>
+Procura por arquivos que foram acessados [num] dias atrás.  Caso for antecedido
+por "-", procura por arquivos que foram acessados entre [num] dias atrás e a
+data atual.
+</p>
+</dd><dt><span class="term">-gid [num]</span></dt><dd>
+<p>
+Procura por arquivos que possuam a identificação numérica do grupo igual a
+[num].
+</p>
+</dd><dt><span class="term">-group [nome]</span></dt><dd>
+<p>
+Procura por arquivos que possuam a identificação de nome do grupo igual a
+[nome].
+</p>
+</dd><dt><span class="term">-uid [num]</span></dt><dd>
+<p>
+Procura por arquivos que possuam a identificação numérica do usuário igual a
+[num].
+</p>
+</dd><dt><span class="term">-user [nome]</span></dt><dd>
+<p>
+Procura por arquivos que possuam a identificação de nome do usuário igual a
+[nome].
+</p>
+</dd><dt><span class="term">-inum [num]</span></dt><dd>
+<p>
+Procura por arquivos que estão localizados no inodo [num].
+</p>
+</dd><dt><span class="term">-links [num]</span></dt><dd>
+<p>
+Procura por arquivos que possuem [num] links como referência.
+</p>
+</dd><dt><span class="term">-mmin [num]</span></dt><dd>
+<p>
+Procura por arquivos que tiveram seu conteúdo modificado há [num] minutos.
+Caso for antecedido por "-", procura por arquivos que tiveram seu conteúdo
+modificado entre [num] minutos atrás até agora.
+</p>
+</dd><dt><span class="term">-mtime [num]</span></dt><dd>
+<p>
+Procura por arquivos que tiveram seu conteúdo modificado há [num] dias.  Caso
+for antecedido por "-", procura por arquivos que tiveram seu conteúdo
+modificado entre [num] dias atrás até agora.
+</p>
+</dd><dt><span class="term">-ctime [num]</span></dt><dd>
+<p>
+Procura por arquivos que teve seu status modificado há [num] dias.  Caso for
+antecedido por "-", procura por arquivos que tiveram seu conteúdo modificado
+entre [num] dias atrás até agora.
+</p>
+</dd><dt><span class="term">-nouser</span></dt><dd>
+<p>
+Procura por arquivos que não correspondam a identificação do usuário atual.
+</p>
+</dd><dt><span class="term">-nogroup</span></dt><dd>
+<p>
+Procura por arquivos que não correspondam a identificação do grupo do usuário
+atual.
+</p>
+</dd><dt><span class="term">-perm [modo]</span></dt><dd>
+<p>
+Procura por arquivos que possuam os modos de permissão [modo].  Os [modo] de
+permissão pode ser numérico (octal) ou literal.
+</p>
+</dd><dt><span class="term">-used [num]</span></dt><dd>
+<p>
+O arquivo foi acessado [num] vezes antes de ter seu status modificado.
+</p>
+</dd><dt><span class="term">-size [num]</span></dt><dd>
+<p>
+Procura por arquivos que tiverem o tamanho [num].  [num] pode ser antecedido de
+"+" ou "-" para especificar um arquivo maior ou menor que [num].  A opção -size
+pode ser seguida de:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">b</code> - Especifica o tamanho em blocos de 512 bytes.  É o padrão
+caso [num] não seja acompanhado de nenhuma letra.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">c</code> - Especifica o tamanho em bytes.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">k</code> - Especifica o tamanho em Kbytes.
+</p>
+</li></ul></div>
+</dd><dt><span class="term">-type [tipo]</span></dt><dd>
+<p>
+Procura por arquivos do [tipo] especificado.  Os seguintes tipos são aceitos:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">b</code> - bloco</p></li><li class="listitem"><p><code class="literal">c</code> - caracter</p></li><li class="listitem"><p><code class="literal">d</code> - diretório</p></li><li class="listitem"><p><code class="literal">p</code> - pipe</p></li><li class="listitem"><p><code class="literal">f</code> - arquivo regular</p></li><li class="listitem"><p><code class="literal">l</code> - link simbólico</p></li><li class="listitem"><p><code class="literal">s</code> - sockete</p></li></ul></div>
+</dd></dl></div>
+
+<p>
+A maior parte dos argumentos numéricos podem ser precedidos por "+" ou "-".
+Para detalhes sobre outras opções e argumentos, consulte a página de manual.
+</p>
+
+<p>
+Exemplo:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">find / -name grep</code> - Procura no diretório raíz e
+sub-diretórios um arquivo/diretório chamado <code class="filename">grep</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">find / -name grep -maxdepth 3</code> - Procura no diretório raíz e
+sub-diretórios até o 3o.  nível, um arquivo/diretório chamado
+<code class="filename">grep</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">find .  -size +1000k</code> - Procura no diretório atual e
+sub-diretórios um arquivo com tamanho maior que 1000 kbytes (1Mbyte).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">find / -mmin 10</code> - Procura no diretório raíz e sub-diretórios
+um arquivo que foi modificado há 10 minutos atrás.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">find / -links 4</code> - Procura no diretório raíz e
+sub-diretórios, todos os arquivos que possuem 4 links como referência.
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s05.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s07.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">du </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> free</td></tr></table></div></body></html>

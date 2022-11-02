@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Imprimindo diretamente para a porta de impressora</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch13.html" title="Capítulo 13. Impressão" /><link rel="prev" href="ch13.html" title="Capítulo 13. Impressão" /><link rel="next" href="ch13s03.html" title="Imprimindo via spool" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Imprimindo diretamente para a porta de impressora</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch13.html">Anterior</a> </td><th width="60%" align="center">Capítulo 13. Impressão</th><td width="20%" align="right"> <a accesskey="n" href="ch13s03.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch13.html">Impressão</a></span> &gt; <span class="breadcrumb-node">Imprimindo diretamente para a porta de impressora</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="impr-direta"></a>Imprimindo diretamente para a porta de impressora</h2></div></div></div>
+<p>
+Isto é feito direcionando a saída ou o texto com <code class="literal">&gt;</code>
+diretamente para a porta de impressora no diretório <code class="filename">/dev</code>.
+</p>
+<p>
+Supondo que você quer imprimir o texto contido do arquivo
+<code class="filename">trabalho.txt</code> e a porta de impressora em seu sistema é
+<code class="filename">/dev/usb/lp0</code>, você pode usar os seguintes comandos:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">cat trabalho.txt &gt;/dev/usb/lp0</code> - Direciona a saída do
+comando <span class="command"><strong>cat</strong></span> para a impressora USB conectada em lp0.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">cat &lt;trabalho.txt &gt;/dev/usb/lp0</code>.  Faz a mesma coisa
+que o acima.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">cat -n trabalho.txt &gt;/dev/usb/lp0</code> - Numera as linhas
+durante a impressão.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">head -n 30 trabalho.txt &gt;/dev/usb/lp0</code> - Imprime as 30
+linhas iniciais do arquivo.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">cat trabalho.txt|tee /dev/usb/lp0</code> - Mostra o conteúdo do
+<span class="command"><strong>cat</strong></span> na tela e envia também para a impressora USB.
+</p>
+</li></ul></div>
+<p>
+Os métodos acima servem somente para imprimir em modo texto (letras, números e
+caracteres semi-gráficos).
+</p>
+<p>
+OBS: Note que a impressora somente imprimirá diretamente a partir da porta,
+caso ela seja uma impressora com firmware interna (impressora inteligente).
+Algumas impressoras mais recentes (principalmente os modelos mais baratos)
+somente imprimem caso estejam configuradas com o respectivo driver (Win
+Printers ou impressoras via software), e nunca aceitarão o comando diretamente
+para a porta de impressão.  Para <span class="emphasis"><em>Win Printers</em></span>, a melhor
+alternativa de configuração de funcionamento será através do CUPS (Common Unix
+Print System).
+</p>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch13.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch13.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch13s03.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Capítulo 13. Impressão </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Imprimindo via spool</td></tr></table></div></body></html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Capítulo 12. Redirecionamentos e Pipe</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="index.html" title="Guia Foca Linux" /><link rel="prev" href="ch11s11.html" title="umask" /><link rel="next" href="ch12s02.html" title="&gt;&gt;" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Capítulo 12. Redirecionamentos e Pipe</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s11.html">Anterior</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch12s02.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-node">Redirecionamentos e Pipe</span></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="redir"></a>Capítulo 12. Redirecionamentos e Pipe</h1></div></div></div><div class="toc"><p><strong>Índice</strong></p><dl class="toc"><dt><span class="section"><a href="ch12.html#redir-maior">&gt;</a></span></dt><dt><span class="section"><a href="ch12s02.html">&gt;&gt;</a></span></dt><dt><span class="section"><a href="ch12s03.html">&lt;</a></span></dt><dt><span class="section"><a href="ch12s04.html">&lt;&lt;</a></span></dt><dt><span class="section"><a href="ch12s05.html">| (pipe)</a></span></dt><dt><span class="section"><a href="ch12s06.html">Diferença entre o "|" e o "&gt;"</a></span></dt><dt><span class="section"><a href="ch12s07.html">tee</a></span></dt></dl></div>
+<p>
+Esta seção explica o funcionamento dos recursos de direcionamento de entrada e
+saída do sistema <span class="command"><strong>GNU/Linux</strong></span>.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="redir-maior"></a>&gt;</h2></div></div></div>
+<p>
+Redireciona a saída padrão de um programa/comando/script para algum dispositivo
+ou arquivo ao invés do dispositivo de saída padrão (tela).  
+ Quando é usado com arquivos, este redirecionamento cria ou 
+substitui o conteúdo do arquivo. 
+</p>
+<p>
+Por exemplo, você pode usar o comando <span class="command"><strong>ls</strong></span> para listar
+arquivos e usar <code class="literal">ls &gt;listagem</code> para enviar a saída do
+comando para o arquivo <code class="filename">listagem</code>.  Use o comando
+<span class="command"><strong>cat</strong></span> para visualizar o conteúdo do arquivo
+<code class="filename">listagem</code>.
+</p>
+<p>
+O mesmo comando pode ser redirecionado para o segundo console
+<code class="filename">/dev/tty2</code> usando: <code class="literal">ls &gt;/dev/tty2</code>, o
+resultado do comando <span class="command"><strong>ls</strong></span> será mostrado no segundo console
+(pressione <code class="literal">ALT</code> e <code class="literal">F2</code> para mudar para o
+segundo console e <code class="literal">ALT</code> e <code class="literal">F1</code> para retornar
+ao primeiro).  O mesmo resultado pode ser obtido com o comando <code class="literal">ls
+1&gt;/dev/tty2</code>, sendo que o número <code class="literal">1</code> indica que
+será capturada a saída padrão do comando.
+</p>
+<p>
+Para redirecionar somente a saída de erros do comando <span class="command"><strong>ls</strong></span>,
+use a sintaxe: <code class="literal">ls 2&gt;/tmp/erros-do-ls</code>
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s11.html">Anterior</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch12s02.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">umask </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> &gt;&gt;</td></tr></table></div></body></html>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Número de Cores do ambiente gráfico</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch14.html" title="Capítulo 14. Configuração do sistema" /><link rel="prev" href="ch14.html" title="Capítulo 14. Configuração do sistema" /><link rel="next" href="ch15.html" title="Capítulo 15. X Window (ambiente gráfico)" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Número de Cores do ambiente gráfico</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch14.html">Anterior</a> </td><th width="60%" align="center">Capítulo 14. Configuração do sistema</th><td width="20%" align="right"> <a accesskey="n" href="ch15.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch14.html">Configuração do sistema</a></span> &gt; <span class="breadcrumb-node">Número de Cores do ambiente gráfico</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cfg-cores"></a>Número de Cores do ambiente gráfico</h2></div></div></div>
+<p>
+O número de cores do ambiente gráfico pode ser alterado facilmente.
+Normalmente as distribuições realizam a instalação usando o padrão VESA (que é
+compatível com qualquer placa de vídeo) usando 65.000 cores (16 bits), mas por
+usar VESA são deixados de lado recursos como aceleração de hardware, XV, e
+recursos 3D necessário pela maioria dos jogos e aplicativos de vídeo atuais.
+</p>
+<p>
+A configuração apropriada do driver exige que você execute novamente o
+procedimento de configuração da distribuição usando o comando
+<code class="literal">dpkg-reconfigure xserver-xorg</code>.
+</p>
+<p>
+Por exemplo, para configurar minha placa de vídeo Intel 810, é necessário
+selecionar o driver i810 na tela de seleção do driver de video do
+<code class="literal">dpkg-reconfigure xserver-xorg</code>.  O programa
+<span class="command"><strong>xresprobe</strong></span> pode ser útil caso deseja fazer manualmente
+ajustes finos na configuração do <code class="filename">/etc/X11/xorg.conf</code>.  O
+monitor também poderá ser configurado de acordo com o tamanho da tela (em
+polegadas).
+</p>
+<p>
+Com uma configuração correta é possível atingir até 32 bits de cores (pocket
+pixel) no X.  A configuração do X utiliza o <span class="emphasis"><em>número de bits</em></span>
+ao invés do número de cores na sua configuração.  Abaixo uma tabela
+comparativa:
+</p>
+<pre class="screen">
+  Bits      Número Max. Cores  Memória mínima requerida na Placa de Vídeo
+-------     -----------------  -----------------------------------------
+ 4 bits         16 cores                          256Kb
+ 8 bits        256 cores                          512Kb
+16 bits      32.384/65536 cores                   1MB
+24 bits      16 milhões de cores (pixel menor)    1MB
+32 bits      16 milhões de cores                  1MB
+</pre>
+<p>
+Lembre-se que a tabela acima leva em consideração a resolução de vídeo de
+640x480.  Caso utilizar uma resolução de 800x600, 1024x768 ou superior, os
+requerimentos de <span class="emphasis"><em>memória de vídeo</em></span> para mostrar o número de
+cores da tabela acima serão maiores.  Para mostrar 1024x768 - 16 milhões de
+cores serão necessários 2MB de memória de vídeo, por exemplo.  A resolução de
+24 bits normalmente traz problemas em alguns chipsets, considere a utilização
+da resolução de 16 ou 32 bits.
+</p>
+<p>
+O uso de uma resolução de vídeo como 800x600 ou superior, também depende do
+monitor de vídeo.  Nem todos os monitores VGA e SVGAs do mercado suportam
+resoluções acima de 640x480.
+</p>
+
+<p>
+OBS: Se tiver escolha, prefira placas de vídeo independentes da placa mãe.
+Normalmente as placas de vídeo on-board usam parte da memória RAM como memória
+de vídeo (memória compartilhada) e isto diminui a performance de vídeo e a
+performance do sistema porque se você estiver usando 2MB de memória de vídeo,
+terá 2 MB a menos para executar seus programas.  O preço destas placas
+geralmente diminui na proporção do desempenho que oferecem.
+</p>
+
+<p>
+Uma boa escolha para uma melhor qualidade e maior velocidade é <span class="emphasis"><em>16
+bits</em></span>.  O motivo disto é que quanto maior a qualidade e a resolução,
+mais tempo será levado para os pixels serem atualizados no monitor.  Veja
+abaixo como configurar o número de cores para quem esta iniciando o X-Window
+pelo modo texto e <span class="command"><strong>XDM</strong></span>.
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="cfg-cores-t"></a>Configurando o número de cores para quem inicia pelo prompt</h3></div></div></div>
+<p>
+Após configurar corretamente a resolução de vídeo aceita pelo seu servidor X
+com <code class="literal">dpkg-reconfigure xserver-xorg</code> (Debian 4.0) use o comando
+<code class="literal">startx -- -bpp 8</code> no lugar de <code class="literal">startx</code>.
+Note que estou usando 256 cores como exemplo (veja a tabela acima), se quiser
+usar mais cores e sua placa de vídeo tiver memória suficiente, use 16, 24 ou
+32.
+</p>
+<p>
+Uma maneira mais prática de iniciar sempre com uma mesma resolução é incluir um
+<span class="command"><strong>alias</strong></span> no arquivo <code class="filename">.bashrc</code> em seu
+diretório: <code class="literal">alias startx='startx -- -bpp 8'</code>
+</p>
+<p>
+Desta forma toda a vez que se digitar <code class="literal">startx</code>, será executado
+o comando da direita do sinal de igual.
+</p>
+
+<p>
+OBS: Se alguma coisa der errado e a imagem aparecer distorcida ou simplesmente
+não aparecer, não se desespere!  Pressione simultaneamente
+<code class="literal">CTRL+ALT+Back Space</code>, esta é a combinação de teclas finaliza
+imediatamente o servidor X.
+</p>
+
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="cfg-configurando-g"></a>Configurando o número de cores para quem inicia pelo XDM</h3></div></div></div>
+<p>
+Assumindo que o seu arquivo <code class="filename">/etc/X11/xorg.conf</code> foi gerado
+corretamente, modifique o arquivo 
+ <code class="filename">/etc/X11/xdm/Xservers</code>  e
+altere o final da linha colocando <code class="literal">-bpp resolução</code>.  Por
+exemplo, a última linha de meu arquivo <code class="filename">Xservers</code> era:
+</p>
+<pre class="screen">
+:0 local /usr/bin/X11/X vt7 
+
+ eu a modifiquei para 
+
+:0 local /usr/bin/X11/X vt7 -bpp 16
+</pre>
+<p>
+Pronto, basta reiniciar o servidor X (usando <code class="literal">CTRL+ALT+Back
+Space</code>) 
+ ou reiniciando através do arquivo
+<code class="filename">/etc/init.d/xdm</code> usando <code class="literal">xdm restart</code>  
+e seu sistema passará a usar 65.000 cores de vídeo.
+</p>
+
+<p>
+OBS: Lembre-se de salvar todos os seus arquivos antes de reiniciar o servidor
+X, pois todos os programas que estiverem abertos no sistema serão imediatamente
+fechados.
+</p>
+
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="s24.2.3"></a>Ajustando o alinhamento da imagem no X e outras configurações</h3></div></div></div>
+<p>
+Após você ter criado o arquivo de configuração do X com o
+<code class="literal">dpkg-reconfigure xserver-xorg</code>, é possível que a configuração
+precise de um ajuste fino para o alinhamento correto da imagem no monitor.
+Muitos monitores modernos possuem teclas para esta função, mas desde que
+monitor esteja com sua imagem aparecendo corretamente em modo texto, o ajuste
+deverá ser feito no servidor X.  Este ajuste é feito através do utilitário
+<span class="command"><strong>xvidtune</strong></span>.
+</p>
+<p>
+Entre no modo gráfico como usuário <code class="literal">root</code>, abra o
+<span class="command"><strong>xterm</strong></span> e digite <code class="literal">xvidtune</code> uma tela
+aparecerá com um aviso sobre o uso do programa, clique em
+<span class="command"><strong>OK</strong></span>.  Recomendo que ative o botão <code class="literal">AUTO</code>
+para que a tela vá se ajustando na medida que você mexe nos ajustes.
+</p>
+<p>
+Para restaurar a configuração anterior, pressione o botão
+<code class="literal">Restore</code> (não faz efeito caso o botão
+<code class="literal">Apply</code> tenha sido pressionado).  Clicando em
+<code class="literal">Quit</code>, você sai do <span class="command"><strong>xvidtune</strong></span> sem salvar a
+configuração.  Quando estiver satisfeito com a sua configuração/alinhamento da
+imagem, clique em <code class="literal">Apply</code>, a configuração escolhida estará
+salva.
+</p>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch14.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch14.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch15.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Capítulo 14. Configuração do sistema </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Capítulo 15. X Window (ambiente gráfico)</td></tr></table></div></body></html>

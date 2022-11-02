@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Permissões de Acesso Especiais</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch11.html" title="Capítulo 11. Permissões de acesso a arquivos e diretórios" /><link rel="prev" href="ch11s04.html" title="Exemplos práticos de permissões de acesso" /><link rel="next" href="ch11s06.html" title="A conta root" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Permissões de Acesso Especiais</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s04.html">Anterior</a> </td><th width="60%" align="center">Capítulo 11. Permissões de acesso a arquivos e diretórios</th><td width="20%" align="right"> <a accesskey="n" href="ch11s06.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch11.html">Permissões de acesso a arquivos e diretórios</a></span> &gt; <span class="breadcrumb-node">Permissões de Acesso Especiais</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="perm-especiais"></a>Permissões de Acesso Especiais</h2></div></div></div>
+<p>
+Em adição as três permissões básicas (rwx), existem permissões de acesso
+especiais (stX) que afetam os arquivos e diretórios:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">s</code> - Quando é usado na permissão de acesso do
+<span class="emphasis"><em>Dono</em></span>, ajusta a identificação efetiva do usuário do
+processo durante a execução de um programa, também chamado de <span class="emphasis"><em>bit
+setuid</em></span>.  Não tem efeito em diretórios.
+</p>
+<p>
+Quando <code class="literal">s</code> é usado na permissão de acesso do
+<span class="emphasis"><em>Grupo</em></span>, ajusta a identificação efetiva do grupo do processo
+durante a execução de um programa, chamado de <span class="emphasis"><em>bit setgid</em></span>.
+É identificado pela letra <code class="literal">s</code> no lugar da permissão de
+execução do grupo do arquivo/diretório.  Em diretórios, força que os arquivos
+criados dentro dele pertençam ao mesmo grupo do diretório, ao invés do grupo
+primário que o usuário pertence.
+</p>
+<p>
+Ambos <span class="emphasis"><em>setgid</em></span> e <span class="emphasis"><em>setuid</em></span> podem aparecer
+ao mesmo tempo no mesmo arquivo/diretório.  A permissão de acesso especial
+<code class="literal">s</code> somente pode aparecer no campo <span class="emphasis"><em>Dono</em></span> e
+<span class="emphasis"><em>Grupo</em></span>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">S</code> - Idêntico a "s".  Significa que não existe a permissão
+"x" (execução ou entrar no diretório) naquela posição.  Um exemplo é o chmod
+2760 em um diretório.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">t</code> - Salva a imagem do texto do programa no dispositivo swap,
+assim ele será carregado mais rapidamente quando executado, também chamado de
+<span class="emphasis"><em>stick bit</em></span>.
+</p>
+<p>
+Em diretórios, impede que outros usuários removam arquivos dos quais não são
+donos.  Isto é chamado de colocar o diretório em modo
+<code class="literal">append-only</code>.  Um exemplo de diretório que se encaixa
+perfeitamente nesta condição é o <code class="filename">/tmp</code>, todos os usuários
+devem ter acesso para que seus programas possam criar os arquivos temporários
+lá, mas nenhum pode apagar arquivos dos outros.  A permissão especial
+<code class="literal">t</code>, pode ser especificada somente no campo outros usuários
+das permissões de acesso.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">T</code> - Idêntico a "t".  Significa que não existe a permissão
+"x" naquela posição (por exemplo, em um chmod 1776 em um diretório).
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">X</code> - Se você usar <code class="literal">X</code> ao invés de
+<code class="literal">x</code>, a permissão de execução somente é aplicada se o arquivo
+já tiver permissões de execução.  Em diretórios ela tem o mesmo efeito que a
+permissão de execução <code class="literal">x</code>.
+</p>
+</li></ul></div>
+
+
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Exemplo da permissão de acesso especial <code class="literal">X</code>:
+</p>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+<p>
+Crie um arquivo <code class="filename">teste</code> (digitando <code class="literal">touch
+teste</code>) e defina sua permissão para <code class="literal">rw-rw-r--</code>
+(<code class="literal">chmod ug=rw,o=r teste</code> ou <code class="literal">chmod 664
+teste</code>).
+</p>
+</li><li class="listitem">
+<p>
+Agora use o comando <code class="literal">chmod a+X teste</code>
+</p>
+</li><li class="listitem">
+<p>
+digite <code class="literal">ls -l</code>
+</p>
+</li><li class="listitem">
+<p>
+Veja que as permissões do arquivo não foram afetadas.
+</p>
+</li><li class="listitem">
+<p>
+agora digite <code class="literal">chmod o+x teste</code>
+</p>
+</li><li class="listitem">
+<p>
+digite <code class="literal">ls -l</code>, você colocou a permissão de execução para os
+outros usuários.
+</p>
+</li><li class="listitem">
+<p>
+Agora use novamente o comando <code class="literal">chmod a+X teste</code>
+</p>
+</li><li class="listitem">
+<p>
+digite <code class="literal">ls -l</code>
+</p>
+</li><li class="listitem">
+<p>
+Veja que agora a permissão de execução foi concedida a todos os usuários, pois
+foi verificado que o arquivo era executável (tinha permissão de execução para
+outros usuários).
+</p>
+</li><li class="listitem">
+<p>
+Agora use o comando <code class="literal">chmod a-X teste</code>
+</p>
+</li><li class="listitem">
+<p>
+Ele também funcionará e removerá as permissões de execução de todos os
+usuários, porque o arquivo <code class="filename">teste</code> tem permissão de execução
+(confira digitando <code class="literal">ls -l</code>).
+</p>
+</li><li class="listitem">
+<p>
+Agora tente novamente o <code class="literal">chmod a+X teste</code>
+</p>
+</li><li class="listitem">
+<p>
+Você deve ter reparado que a permissão de acesso especial <code class="literal">X</code>
+é semelhante a <code class="literal">x</code>, mas somente faz efeito quanto o arquivo já
+tem permissão de execução para o dono, grupo ou outros usuários.
+</p>
+</li></ol></div>
+<p>
+Em diretórios, a permissão de acesso especial <code class="literal">X</code> funciona da
+mesma forma que <code class="literal">x</code>, até mesmo se o diretório não tiver
+nenhuma permissão de acesso (<code class="literal">x</code>).
+</p>
+</li></ul></div>
+
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s04.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s06.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Exemplos práticos de permissões de acesso </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> A conta root</td></tr></table></div></body></html>

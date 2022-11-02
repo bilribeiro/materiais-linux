@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>sort</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch08.html" title="Capítulo 8. Comandos Diversos" /><link rel="prev" href="ch08s12.html" title="less" /><link rel="next" href="ch08s14.html" title="tail" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">sort</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s12.html">Anterior</a> </td><th width="60%" align="center">Capítulo 8. Comandos Diversos</th><td width="20%" align="right"> <a accesskey="n" href="ch08s14.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch08.html">Comandos Diversos</a></span> &gt; <span class="breadcrumb-node">sort</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="cmdv-sort"></a>sort</h2></div></div></div>
+<p>
+Organiza as linhas de um arquivo texto ou da entrada padrão.  
+ A organização é
+feita por linhas e as linhas são divididas em <span class="emphasis"><em>campos</em></span> que é
+a ordem que as palavras aparecem na linha separadas por um delimitador
+(normalmente um espaço). 
+</p>
+<p>
+<span class="command"><strong>sort</strong></span> [<span class="emphasis"><em>opções</em></span>]
+[<span class="emphasis"><em>arquivo</em></span>]
+</p>
+
+<p>
+Onde:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="emphasis"><em>arquivo</em></span></span></dt><dd>
+<p>
+É o nome do arquivo que será organizado.  Caso não for especificado, será usado
+o dispositivo de entrada padrão (normalmente o teclado ou um "|").
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>opções</em></span>, </span><span class="term">-b</span></dt><dd>
+<p>
+Ignora linhas em branco.
+</p>
+</dd><dt><span class="term">-d</span></dt><dd>
+<p>
+Somente usa letras, dígitos e espaços durante a organização.
+</p>
+</dd><dt><span class="term">-f</span></dt><dd>
+<p>
+Ignora a diferença entre maiúsculas e minúsculas.
+</p>
+</dd><dt><span class="term">-r</span></dt><dd>
+<p>
+Inverte o resultado da comparação.
+</p>
+</dd><dt><span class="term">-n</span></dt><dd>
+<p>
+Caso estiver organizando um campo que contém números, os números serão
+organizados na ordem aritmética.  Por exemplo, se você tiver um arquivo com os
+números
+</p>
+<pre class="screen">
+100
+10
+50
+</pre>
+<p>
+Usando a opção <code class="literal">-n</code>, o arquivo será organizado desta maneira:
+</p>
+<pre class="screen">
+10
+50 
+100
+</pre>
+<p>
+Caso esta opção <span class="strong"><strong>não</strong></span> for usada com o
+<span class="command"><strong>sort</strong></span>, ele organizará como uma listagem alfabética (que
+começam de <code class="literal">a</code> até <code class="literal">z</code> e do
+<code class="literal">0</code> até <code class="literal">9</code>)
+</p>
+<pre class="screen">
+10 
+100
+50
+</pre>
+</dd><dt><span class="term">-c</span></dt><dd>
+<p>
+Verifica se o arquivo já esta organizado.  Caso não estiver, retorna a mensagem
+"disorder on <span class="emphasis"><em>arquivo</em></span>".
+</p>
+</dd><dt><span class="term">-o <span class="emphasis"><em>arquivo</em></span></span></dt><dd>
+<p>
+Grava a saída do comando <span class="command"><strong>sort</strong></span> no
+<span class="emphasis"><em>arquivo</em></span>.
+</p>
+</dd><dt><span class="term">-m <span class="emphasis"><em>arquivo1</em></span> <span class="emphasis"><em>arquivo2</em></span></span></dt><dd>
+<p>
+Combina o conteúdo de <span class="emphasis"><em>arquivo1</em></span> e
+<span class="emphasis"><em>arquivo2</em></span> gerando um único arquivo.  Os dois arquivos
+precisam estar ordenados antes de se utilizar esta opção.
+</p>
+</dd><dt><span class="term">-i</span></dt><dd>
+<p>
+Ignora os caracteres fora da faixa octal ASCII 040-0176 durante a organização.
+</p>
+</dd><dt><span class="term">-t <span class="emphasis"><em>caracter</em></span></span></dt><dd>
+<p>
+Usa <span class="emphasis"><em>caracter</em></span> como delimitador durante a organização de
+linhas.  Por padrão é usado um <span class="emphasis"><em>espaço em branco</em></span> como
+delimitador de caracteres.
+</p>
+</dd><dt><span class="term"><span class="emphasis"><em>+num1 -num2</em></span></span></dt><dd>
+<p>
+Especifica qual o campo dentro na linha que será usado na organização.  O(s)
+campo(s) usado(s) para organização estará entre <span class="emphasis"><em>+num1</em></span> e
+<span class="emphasis"><em>+num2</em></span>.  O delimitador padrão utilizado é um
+<span class="emphasis"><em>espaço em branco</em></span> (use a opção <code class="literal">-t</code> para
+especificar outro).  A contagem é iniciada em "0".  Caso não for especificada,
+a organização é feita no primeiro campo.  Caso <span class="emphasis"><em>-num2</em></span> não
+seja especificado, a organização será feita usando a coluna
+<span class="emphasis"><em>+num1</em></span> até o fim da linha.
+</p>
+</dd><dt><span class="term">-k <span class="emphasis"><em>num1</em></span>, <span class="emphasis"><em>num2</em></span></span></dt><dd>
+<p>
+Esta é uma alternativa ao método acima para especificar as chaves de
+organização.  O uso é idêntico, mas o delimitador é iniciado em "1".
+</p>
+</dd></dl></div>
+
+
+
+<p>
+Abaixo, exemplos de uso do comando <span class="command"><strong>sort</strong></span>:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<code class="literal">sort <code class="filename">texto.txt</code></code> - Organiza o arquivo
+<code class="filename">texto.txt</code> em ordem crescente.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">sort <code class="filename">texto.txt</code> -r</code> - Organiza o conteúdo
+do arquivo <code class="filename">texto.txt</code> em ordem decrescente.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">cat <code class="filename">texto.txt</code>|sort</code> - Faz a mesma coisa
+que o primeiro exemplo, só que neste caso a saída do comando
+<span class="command"><strong>cat</strong></span> é redirecionado a entrada padrão do comando
+<span class="command"><strong>sort</strong></span>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">sort -f <code class="filename">texto.txt</code></code> - Ignora diferenças
+entre letras maiúsculas e minúsculas durante a organização.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">sort +1 -3 texto.txt</code> - Organiza o arquivo
+<code class="filename">texto.txt</code> usando como referência a segunda até a quarta
+palavra (segundo ao quarto campo) que constam naquela linha.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">sort -t : +2 -3 passwd</code> - Organiza o arquivo
+<code class="filename">passwd</code> usando como referência a terceira até a quarta
+palavra (terceiro ao quarto campo).  Note que a opção <code class="literal">-t</code>
+especifica o caracter ":" como delimitador de campos ao invés do espaço.  Neste
+caso, o que estiver após ":" será considerado o próximo campo.
+</p>
+</li></ul></div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s12.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s14.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">less </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> tail</td></tr></table></div></body></html>

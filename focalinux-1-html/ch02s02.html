@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Arquivos</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch02.html" title="Capítulo 2. Explicações Básicas" /><link rel="prev" href="ch02.html" title="Capítulo 2. Explicações Básicas" /><link rel="next" href="ch02s03.html" title="Diretório" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Arquivos</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02.html">Anterior</a> </td><th width="60%" align="center">Capítulo 2. Explicações Básicas</th><td width="20%" align="right"> <a accesskey="n" href="ch02s03.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Explicações Básicas</a></span> &gt; <span class="breadcrumb-node">Arquivos</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basico-arquivo"></a>Arquivos</h2></div></div></div>
+<p>
+É onde gravamos nossos dados.  Um arquivo pode conter um texto feito por nós,
+uma música, programa, planilha, etc.
+</p>
+<p>
+Cada arquivo deve ser identificado por um <code class="literal">nome</code>, assim ele
+pode ser encontrado facilmente quando desejar usa-lo.  Se estiver fazendo um
+trabalho de história, nada melhor que salva-lo com o nome
+<code class="filename">historia</code>.  Um arquivo pode ser binário ou texto (para
+detalhes veja <a class="xref" href="ch02s02.html#basico-arquivo-bintext" title="Arquivo texto e binário">“Arquivo texto e binário”</a>).
+</p>
+<p>
+O <span class="command"><strong>GNU/Linux</strong></span> é <span class="emphasis"><em>Case Sensitive</em></span> ou seja,
+ele diferencia letras <span class="emphasis"><em>maiúsculas</em></span> e
+<span class="emphasis"><em>minúsculas</em></span> nos arquivos.  O arquivo
+<code class="filename">historia</code> é completamente diferente de
+<code class="filename">Historia</code>.  Esta regra também é válido para os
+<span class="emphasis"><em>comandos</em></span> e <span class="emphasis"><em>diretórios</em></span>.  Prefira,
+sempre que possível, usar letras minúsculas para identificar seus arquivos,
+pois quase todos os comandos do sistema estão em
+<span class="emphasis"><em>minúsculas</em></span>.
+</p>
+<p>
+Um arquivo oculto no <span class="command"><strong>GNU/Linux</strong></span> é identificado por um "."  no
+inicio do nome (por exemplo, <code class="filename">.bashrc</code>).  Arquivos ocultos
+não aparecem em listagens normais de diretórios, deve ser usado o comando
+<code class="literal">ls -a</code> para também listar arquivos ocultos.
+</p>
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-arquivo-tipos"></a>Extensão de arquivos</h3></div></div></div>
+<p>
+A extensão serve para identificar o tipo do arquivo.  A extensão são as letras
+após um "."  no nome de um arquivo, explicando melhor:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+relatório<span class="strong"><strong>.txt</strong></span> - O
+<code class="literal">.txt</code> indica que o conteúdo é um arquivo texto.
+</p>
+</li><li class="listitem">
+<p>
+script<span class="strong"><strong>.sh</strong></span> - Arquivo de
+Script (interpretado por <code class="filename">/bin/sh</code>).
+</p>
+</li><li class="listitem">
+<p>
+system<span class="strong"><strong>.log</strong></span> - Registro
+de algum programa no sistema.
+</p>
+</li><li class="listitem">
+<p>
+arquivo<span class="strong"><strong>.gz</strong></span> - Arquivo
+compactado pelo utilitário <span class="command"><strong>gzip</strong></span>.
+</p>
+</li><li class="listitem">
+<p>
+index<span class="strong"><strong>.html</strong></span> - Página de
+Internet (formato Hypertexto).
+</p>
+</li></ul></div>
+<p>
+A extensão de um arquivo também ajuda a saber o que precisamos fazer para
+abri-lo.  Por exemplo, o arquivo <code class="filename">relatório.txt</code> é um texto
+simples e podemos ver seu conteúdo através do comando <a class="xref" href="ch07.html#comandos-cat" title="cat">“cat”</a>, já o arquivo <code class="filename">index.html</code> contém
+uma página de Internet e precisaremos de um navegador para poder visualiza-lo
+(como o <span class="command"><strong>lynx</strong></span>, <span class="command"><strong>Firefox</strong></span> ou o
+<span class="command"><strong>Konqueror</strong></span>).
+</p>
+<p>
+A extensão (na maioria dos casos) não é requerida pelo sistema operacional
+<span class="command"><strong>GNU/Linux</strong></span>, mas é conveniente o seu uso para determinarmos
+facilmente o tipo de arquivo e que programa precisaremos usar para abri-lo.
+</p>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-arquivo-tamanho"></a>Tamanho de arquivos</h3></div></div></div>
+<p>
+A unidade de medida padrão nos computadores é o <code class="literal">bit</code>.  A um
+conjunto de 8 bits nós chamamos de <code class="literal">byte</code>.  Cada
+arquivo/diretório possui um tamanho, que indica o espaço que ele ocupa no disco
+e isto é medido em <code class="literal">bytes</code>.  O byte representa uma letra.
+Assim, se você criar um arquivo vazio e escrever o nome
+<code class="literal">Linux</code> e salvar o arquivo, este terá o tamanho de 5 bytes.
+Espaços em branco e novas linhas também ocupam bytes.
+</p>
+<p>
+Além do byte existem as medidas Kbytes, Mbytes, Gbytes.  Os prefixos K (quilo),
+M (mega), G (giga), T (tera) etc.  vêem da matemática.  O "K" significa
+multiplicar por 10^3, o "M" por 10^6, e assim por diante.  Esta letras servem
+para facilitar a leitura em arquivos de grande tamanho.  Um arquivo de 1K é a
+mesma coisa de um arquivo de 1024 bytes.  Uma forma que pode inicialmente lhe
+ajudar a lembrar: K vem de Kilo que é igual a 1000 - 1Kilo é igual a 1000
+gramas certo?.
+</p>
+<p>
+Da mesma forma 1Mb (ou 1M) é igual a um arquivo de 1024K ou 1.048.576 bytes
+</p>
+<p>
+1Gb (ou 1G) é igual a um arquivo de 1024Mb ou 1048576Kb ou 1.073.741.824 bytes
+(1 Gb é igual a 1.073.741.824 bytes, são muitos números!).  Deu pra notar que é
+mais fácil escrever e entender como 1Gb do que 1.073.741.824 bytes :-)
+</p>
+<p>
+A lista completa em ordem progressiva das unidades de medida é a seguinte:
+</p>
+<pre class="screen">
+Símbolo	10^	2^	Nome
+
+K	 3	10	Quilo
+M	 6	20	Mega
+G	 9	30	Giga
+T	12	40	Tera
+P	15	50	Peta
+E	18	60	Eta
+Z	21	70	Zetta
+Y	24	80	Yotta
+</pre>
+</div>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="basico-arquivo-bintext"></a>Arquivo texto e binário</h3></div></div></div>
+<p>
+Quanto ao tipo, um arquivo pode ser de texto ou binário:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">texto</code></span></dt><dd>
+<p>
+Seu conteúdo é compreendido pelas pessoas.  Um arquivo texto pode ser uma
+carta, um script, um programa de computador escrito pelo programador, arquivo
+de configuração, etc.
+</p>
+</dd><dt><span class="term"><code class="literal">binário</code></span></dt><dd>
+<p>
+Seu conteúdo somente pode ser entendido por computadores.  Contém caracteres
+incompreensíveis para pessoas normais.  Um arquivo binário é gerado através de
+um arquivo de programa (digitado pela pessoa que o criou, o programador)
+através de um processo chamado de <code class="literal">compilação</code>.  Compilação é
+basicamente a conversão de um programa em linguagem humana para a linguagem de
+máquina.
+</p>
+</dd></dl></div>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s03.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Capítulo 2. Explicações Básicas </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Diretório</td></tr></table></div></body></html>

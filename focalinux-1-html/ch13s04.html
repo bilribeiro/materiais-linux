@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Impressão em modo gráfico</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch13.html" title="Capítulo 13. Impressão" /><link rel="prev" href="ch13s03.html" title="Imprimindo via spool" /><link rel="next" href="ch13s05.html" title="Magic Filter" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Impressão em modo gráfico</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch13s03.html">Anterior</a> </td><th width="60%" align="center">Capítulo 13. Impressão</th><td width="20%" align="right"> <a accesskey="n" href="ch13s05.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch13.html">Impressão</a></span> &gt; <span class="breadcrumb-node">Impressão em modo gráfico</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="impr-graficos"></a>Impressão em modo gráfico</h2></div></div></div>
+<p>
+A impressão em modo gráfico requer que conheça a marca e modelo de sua
+impressora e os métodos usados para imprimir seus documentos.  Este guia
+abordará somente a segunda recomendação :-)
+</p>
+
+
+<div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="impr-ghostscript"></a>Ghost Script</h3></div></div></div>
+<p>
+O método mais usados pelos aplicativos do <span class="command"><strong>GNU/Linux</strong></span> para a
+impressão de gráficos do <span class="emphasis"><em>Ghost Script</em></span>.  O Ghost Script
+(chamado de <span class="emphasis"><em>gs</em></span>) é um interpretador do formato
+<span class="emphasis"><em>Pos Script</em></span> (arquivos <code class="filename">.ps</code>) e pode
+enviar o resultado de processamento tanto para a tela como impressora.  Ele
+está disponível para diversas plataformas e sistema operacionais além do
+<span class="command"><strong>GNU/Linux</strong></span>, inclusive o <span class="command"><strong>DOS</strong></span>,
+<span class="command"><strong>Windows</strong></span>, <span class="command"><strong>OS/2</strong></span>, etc.
+</p>
+<p>
+O formato <code class="filename">.ps</code> esta se tornando uma padronização para a
+impressão de gráficos em <span class="command"><strong>GNU/Linux</strong></span> devido a boa qualidade da
+impressão, liberdade de configuração, gerenciamento de impressão feito pelo
+<span class="emphasis"><em>gs</em></span> e por ser um formato universal, compatíveis com outros
+sistemas operacionais.
+</p>
+<p>
+Para imprimir um documento via Ghost Script, você precisará do pacote
+,  (para a distribuição
+<span class="command"><strong>Debian</strong></span> e distribuições baseadas, ou outros de acordo com sua
+distribuição Linux) e suas dependências.  A distribuição
+<span class="command"><strong>Debian</strong></span> vem com vários exemplos Pos Script no diretório
+<code class="filename">/usr/share/doc/gs/example</code> que são úteis para o aprendizado
+e testes com o Ghost Script.
+</p>
+<p>
+Hora da diversão:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+Copie os arquivos <code class="filename">tiger.ps.gz</code> e
+<code class="filename">alphabet.ps.gz</code> do diretório
+<code class="filename">/usr/share/doc/gs/examples</code> (sistemas
+<span class="command"><strong>Debian</strong></span>) para <code class="filename">/tmp</code> e descompacte-os com
+o comando <span class="command"><strong>gzip -d tiger.ps.gz e gzip -d alphabet.ps.gz</strong></span>.  Se
+a sua distribuição não possui arquivos de exemplo ou você não encontra nenhuma
+referência de onde se localizam, mande um e-mail que os envio os 2 arquivos
+acima (são 32Kb).
+</p>
+</li><li class="listitem">
+<p>
+O Ghost Script requer um monitor EGA, VGA ou superior para a visualização dos
+seus arquivos (não tenho certeza se ele funciona com monitores CGA ou Hércules
+Monocromático) .
+</p>
+<p>
+Para visualizar os arquivos na tela digite:
+</p>
+<pre class="screen">
+gs tiger.ps 
+gs alphabet.ps
+</pre>
+<p>
+Para sair do <span class="command"><strong>Ghost Script</strong></span> pressione
+<code class="literal">CTRL+C</code>.  Neste ponto você deve ter visto um desenho de um
+tigre e (talvez) letras do alfabeto.
+</p>
+<p>
+Se o comando <code class="literal">gs alphabet.ps</code> mostrou somente uma tela em
+branco, você se esqueceu de instalar as fontes do Ghost Script (estão
+localizadas no pacote  na
+distribuição Debian).
+</p>
+</li><li class="listitem">
+<p>
+Para imprimir o arquivo <code class="filename">alphabet.ps</code> use o comando:
+</p>
+<pre class="screen">
+gs -q -dSAFER -dNOPAUSE -sDEVICE=epson -r240x72 -sPAPERSIZE=legal -sOutputFile=/dev/lp0 
+alphabet.ps
+</pre>
+<p>
+O arquivo <code class="filename">alphabet.ps</code> deve ser impresso.  Caso aparecerem
+mensagens como <code class="literal">Error: /invalidfont in findfont</code> no lugar das
+letras, você se esqueceu de instalar ou configurar as fontes do Ghost Script.
+Instale o pacote de fontes ( na
+<span class="command"><strong>Debian</strong></span>) ou verifique a documentação sobre como configurar as
+fontes.
+</p>
+<p>
+Cada uma das opções acima descrevem o seguinte:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+<p>
+<code class="literal">-q, -dQUIET</code> - Não mostra mensagens de inicialização do Ghost
+Script.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-dSAFER</code> - É uma opção para ambientes seguros, pois desativa
+a operação de mudança de nome e deleção de arquivo e permite somente a abertura
+dos arquivos no modo somente leitura.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-dNOPAUSE</code> - Desativa a pausa no final de cada página
+processada.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-sDEVICE=dispositivo</code> - Dispositivo que receberá a saída do
+Ghost Script.  Neste local pode ser especificada a marca o modelo de sua
+impressora ou um formato de arquivo diferente (como pcxmono, bmp256) para que o
+arquivo <code class="filename">.ps</code> seja convertido para o formato designado.
+</p>
+<p>
+Para detalhes sobre os dispositivos disponíveis em seu Ghost Script, digite
+<code class="literal">gs --help|less</code> ou veja a página de manual.  Normalmente os
+nomes de impressoras e modelos são concatenados, por exemplo, bjc600 para a
+impressora <span class="emphasis"><em>Canon BJC 600</em></span>, epson para impressoras padrão
+epson, stcolor para <span class="emphasis"><em>Epson Stylus color</em></span>, etc.
+</p>
+<p>
+O Hardware-HOWTO contém referências sobre hardware suportados pelo
+<span class="command"><strong>GNU/Linux</strong></span>, tal como impressoras e sua leitura pode ser útil.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-r&lt;ResH&gt;x&lt;ResV&gt;</code> - Define a resolução de
+impressão (em dpi) Horizontal e Vertical.  Os valores dependem de sua
+impressora.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-sPAPERSIZE=tamanho</code> - Tamanho do papel.  Podem ser usados
+a4, legal, letter, etc.  Veja a página de manual do gs para ver os outros tipos
+suportados e suas medidas.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-sOutputFile=dispositivo</code> - Dispositivo que receberá a saída
+de processamento do gs.  Você pode especificar
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem">
+<p>
+<code class="literal">arquivo.epson</code> - Nome do arquivo que receberá todo o
+resultado do processamento.  O <code class="filename">arquivo.epson</code> terá toda a
+impressão codificada no formato entendido por impressoras epson e poderá ser
+impresso com o comando <code class="literal">cat arquivo.epson &gt;/dev/lp0</code>.
+</p>
+<p>
+Uma curiosidade útil: É possível imprimir este arquivo em outros sistemas
+operacionais, tal como o <span class="command"><strong>DOS</strong></span> digitando: <code class="literal">copy /b
+arquivo.eps prn</code> (lembre-se que o <span class="command"><strong>DOS</strong></span> tem um limite
+de 8 letras no nome do arquivo e 3 na extensão.  Você deve estar compreendendo
+a flexibilidade que o <span class="command"><strong>GNU/Linux</strong></span> e suas ferramentas permitem,
+isso é só o começo.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">impressao%d.epson</code> - Nome do arquivo que receberá o resultado
+do processamento.  Cada página será gravada em arquivos separados como
+<code class="filename">impressao1.epson</code>, <code class="filename">impressao2.epson</code>.
+</p>
+<p>
+Os arquivos podem ser impressos usando os mesmos métodos acima.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">/dev/lp0</code> para uma impressora em
+<code class="filename">/dev/lp0</code>
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">-</code> para redirecionar a saída de processamento do
+<span class="command"><strong>gs</strong></span> para a saída padrão.  É útil para usar o gs com pipes
+<code class="literal">|</code>.
+</p>
+</li><li class="listitem">
+<p>
+<code class="literal">\|lpr</code> - Envia a saída do Ghost Script para o daemon de
+impressão.  O objetivo é deixar a impressão mais rápida.
+</p>
+</li></ul></div>
+<p>
+Se você é curioso ou não esta satisfeito com as opções mostradas acima, veja a
+página de manual do <span class="command"><strong>gs</strong></span>.
+</p>
+</li></ul></div>
+</li></ul></div>
+</div>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch13s03.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch13.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch13s05.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Imprimindo via spool </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Magic Filter</td></tr></table></div></body></html>

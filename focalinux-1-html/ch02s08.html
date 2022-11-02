@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Interpretador de comandos</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch02.html" title="Capítulo 2. Explicações Básicas" /><link rel="prev" href="ch02s07.html" title="Aviso de comando (Prompt)" /><link rel="next" href="ch02s09.html" title="Terminal Virtual (console)" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Interpretador de comandos</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch02s07.html">Anterior</a> </td><th width="60%" align="center">Capítulo 2. Explicações Básicas</th><td width="20%" align="right"> <a accesskey="n" href="ch02s09.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch02.html">Explicações Básicas</a></span> &gt; <span class="breadcrumb-node">Interpretador de comandos</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basico-interpcmd"></a>Interpretador de comandos</h2></div></div></div>
+<p>
+Também conhecido como "shell".  É o programa responsável em interpretar as
+instruções enviadas pelo usuário e seus programas ao sistema operacional (o
+kernel).  
+ Ele que executa comandos lidos do dispositivo de entrada padrão
+(teclado) ou de um arquivo executável.  É a principal ligação entre o usuário,
+os programas e o kernel.  O <span class="command"><strong>GNU/Linux</strong></span> possui diversos tipos
+de interpretadores de comandos, entre eles posso destacar o <span class="command"><strong>bash, ash,
+csh, tcsh, sh,</strong></span> etc.  Entre eles o mais usado é o
+<span class="command"><strong>bash</strong></span>.  O interpretador de comandos do DOS, por exemplo, é o
+<code class="filename">command.com</code>. 
+</p>
+<p>
+Os comandos podem ser enviados de duas maneiras para o interpretador:
+<code class="literal">interativa</code> e <code class="literal">não-interativa</code>:
+</p>
+<div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">Interativa</code></span></dt><dd>
+<p>
+Os comandos são digitados no aviso de comando e passados ao interpretador de
+comandos um a um.  Neste modo, o computador depende do usuário para executar
+uma tarefa, ou próximo comando.
+</p>
+</dd><dt><span class="term"><code class="literal">Não-interativa</code></span></dt><dd>
+<p>
+São usados arquivos de comandos criados pelo usuário (scripts) para o
+computador executar os comandos na ordem encontrada no arquivo.  Neste modo, o
+computador executa os comandos do arquivo um por um e dependendo do término do
+comando, o script pode checar qual será o próximo comando que será executado e
+dar continuidade ao processamento.
+</p>
+<p>
+Este sistema é útil quando temos que digitar por várias vezes seguidas um mesmo
+comando ou para compilar algum programa complexo.
+</p>
+</dd></dl></div>
+<p>
+O shell <span class="command"><strong>Bash</strong></span> possui ainda outra característica interessante:
+A completação dos nomes.  Isto é feito pressionando-se a tecla
+<code class="literal">TAB</code>.  Por exemplo, se digitar "ls tes" e pressionar
+&lt;tab&gt;, o <span class="command"><strong>Bash</strong></span> localizará todos os arquivos que iniciam
+com "tes" e completará o restante do nome.  Caso a completação de nomes
+encontre mais do que uma expressão que satisfaça a pesquisa, ou nenhuma, é
+emitido um beep.  Se você apertar novamente a tecla TAB imediatamente depois do
+beep, o interpretador de comandos irá listar as diversas possibilidades que
+satisfazem a pesquisa, para que você possa escolher a que lhe interessa.  A
+completação de nomes funciona sem problemas para comandos internos.
+</p>
+
+<p>
+Exemplo: <code class="literal">ech</code> (pressione <code class="literal">TAB</code>).
+<code class="literal">ls /vm</code>(pressione <code class="literal">TAB</code>)
+</p>
+
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s07.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch02s09.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Aviso de comando (Prompt) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Terminal Virtual (console)</td></tr></table></div></body></html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Identificação de discos e partições em sistemas Linux</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="Guia Foca Linux" /><link rel="up" href="ch04.html" title="Capítulo 4. Discos e Partições" /><link rel="prev" href="ch04s03.html" title="Pontos de Montagem" /><link rel="next" href="ch04s05.html" title="Montando (acessando) uma partição de disco" /></head><body text="black" link="#0000FF" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Identificação de discos e partições em sistemas Linux</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s03.html">Anterior</a> </td><th width="60%" align="center">Capítulo 4. Discos e Partições</th><td width="20%" align="right"> <a accesskey="n" href="ch04s05.html">Próximo</a></td></tr></table><hr /></div><div xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format" class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Guia Foca Linux</a></span> &gt; <span class="breadcrumb-link"><a href="ch04.html">Discos e Partições</a></span> &gt; <span class="breadcrumb-node">Identificação de discos e partições em sistemas Linux</span></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="disc-id"></a>Identificação de discos e partições em sistemas Linux</h2></div></div></div>
+<p>
+No <span class="command"><strong>GNU/Linux</strong></span>, os dispositivos existentes em seu computador
+(como discos rígidos, pen-drives, flash, storages remotas, disquetes, tela, portas de
+impressora, modem, etc) são identificados por um arquivo referente a este
+dispositivo no diretório <code class="filename">/dev</code>.
+</p>
+<p>
+A identificação de discos rígidos no <span class="command"><strong>GNU/Linux</strong></span> é feita da
+seguinte forma:
+</p>
+<pre class="screen">
+/dev/sda1
+|    | ||
+|    | ||_Número que identifica o número da partição no disco rígido.
+|    | |
+|    | |_Letra que identifica o disco rígido (a=primeiro, b=segundo, etc...).
+|    |
+|    |_Sigla que identifica o tipo do disco rígido (sd=SATA/SCSI, sd=IDE, xt=MFM).
+|
+|_Diretório onde são armazenados os dispositivos existentes no sistema.
+</pre>
+<p>
+Abaixo algumas identificações de discos e partições em sistemas Linux:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/fd0</em></span> - <code class="literal">Primeira unidade de
+disquetes</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/fd1</em></span> - <code class="literal">Segunda unidade de
+disquetes</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/sda</em></span> - <code class="literal">Primeiro disco rígido na primeira
+controladora SATA ou SCSI</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/sda1</em></span> - <code class="literal">Primeira partição do primeiro disco
+rígido SATA ou</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/sdb</em></span> - <code class="literal">Segundo disco rígido na primeira
+controladora SATA ou SCSI</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/sdb1</em></span> - <code class="literal">Primeira partição do segundo disco
+rígido SATA ou SCSI</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/sr0</em></span> - <code class="literal">Primeiro CD-ROM SATA ou
+SCSI</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/sr1</em></span> - <code class="literal">Segundo CD-ROM SATA ou SCSI</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/hda</em></span> - <code class="literal">Primeiro disco rígido na primeira
+controladora IDE do micro (primary master)</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/hda1</em></span> - <code class="literal">Primeira partição do primeiro disco
+rígido IDE</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/hdb</em></span> - <code class="literal">Segundo disco rígido na primeira
+controladora IDE do micro (primary slave)</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/hdb1</em></span> - <code class="literal">Primeira partição do segundo disco
+rígido IDE</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/xda</em></span> - <code class="literal">Primeiro disco rígido XT</code>.
+</p>
+</li><li class="listitem">
+<p>
+<span class="emphasis"><em>/dev/xdb</em></span> - <code class="literal">Segundo disco rígido XT</code>.
+</p>
+</li></ul></div>
+<p>
+As letras de identificação de discos rígidos podem ir além de
+<code class="literal">sdb</code>, por exemplo, caso utilize pen-drives, memória flash, as
+unidades serão detectadas como <code class="literal">sdc</code>, <code class="literal">sdd</code> e
+assim por diante.
+</p>
+<p>
+É importante entender como os discos e partições são identificados no sistema,
+pois será necessário usar os parâmetros corretos para monta-los.
+</p>
+</div><HR xmlns="" xmlns:fo="http://www.w3.org/1999/XSL/Format"></HR><p class="copyright">Copyright © 1999-2020 - Gleydson Mazioli da Silva</p><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Anterior</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Subir</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s05.html">Próximo</a></td></tr><tr><td width="40%" align="left" valign="top">Pontos de Montagem </td><td width="20%" align="center"><a accesskey="h" href="index.html">Voltar ao Índice</a></td><td width="40%" align="right" valign="top"> Montando (acessando) uma partição de disco</td></tr></table></div></body></html>
